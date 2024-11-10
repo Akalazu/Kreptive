@@ -1543,7 +1543,7 @@ class User
       $mail->Host = "smtp.hostinger.com";
       $mail->SMTPAuth = true;
       $mail->Username = "support@kreptive.com";
-      $mail->Password = 'GprZi52642K!';
+      $mail->Password = 'lwsK7|Or';
       $mail->SMTPSecure = "ssl";
       $mail->Port = 465;
 
@@ -1615,12 +1615,12 @@ class User
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@quantumsyncledger.com";
-    $mail->Password = "6nn|Bq|i~R";
+    $mail->Username = "support@kreptive.com";
+    $mail->Password = "lwsK7|Or";
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@quantumsyncledger.com", $bname);
+    $mail->setFrom("support@kreptive.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -2295,7 +2295,7 @@ class User
                                             padding-bottom: 7px;
                                             border: 0;
                                           ">
-                                        <a target="_blank" href="https://www.Kreptive.com" style="
+                                        <a target="_blank" href="https://www.kreptive.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -2453,7 +2453,7 @@ class User
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
     $mail->Username = "support@kreptive.com";
-    $mail->Password = 'GprZi52642K!';
+    $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
@@ -3128,7 +3128,7 @@ class User
                                                   padding-bottom: 7px;
                                                   border: 0;
                                                 ">
-                                              <a target="_blank" href="https://www.Kreptive.com" style="
+                                              <a target="_blank" href="https://www.kreptive.com" style="
                                                     -webkit-text-size-adjust: none;
                                                     -ms-text-size-adjust: none;
                                                     mso-line-height-rule: exactly;
@@ -3286,7 +3286,7 @@ class User
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
     $mail->Username = "support@kreptive.com";
-    $mail->Password = 'GprZi52642K!';
+    $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
@@ -3959,7 +3959,7 @@ class User
                                                   padding-bottom: 7px;
                                                   border: 0;
                                                 ">
-                                              <a target="_blank" href="https://www.Kreptive.com" style="
+                                              <a target="_blank" href="https://www.kreptive.com" style="
                                                     -webkit-text-size-adjust: none;
                                                     -ms-text-size-adjust: none;
                                                     mso-line-height-rule: exactly;
@@ -4117,7 +4117,7 @@ class User
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
     $mail->Username = "support@kreptive.com";
-    $mail->Password = 'GprZi52642K!';
+    $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
@@ -4792,7 +4792,7 @@ class User
                                             padding-bottom: 7px;
                                             border: 0;
                                           ">
-                                        <a target="_blank" href="https://www.Kreptive.com" style="
+                                        <a target="_blank" href="https://www.kreptive.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -4949,7 +4949,7 @@ class User
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
     $mail->Username = "support@kreptive.com";
-    $mail->Password = 'GprZi52642K!';
+    $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
@@ -5626,7 +5626,7 @@ Thank you for choosing Kreptive.
                                             padding-bottom: 7px;
                                             border: 0;
                                           ">
-                                        <a target="_blank" href="https://www.Kreptive.com" style="
+                                        <a target="_blank" href="https://www.kreptive.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -5785,7 +5785,7 @@ Thank you for choosing Kreptive.
       $mail->Host = "smtp.hostinger.com";
       $mail->SMTPAuth = true;
       $mail->Username = "support@kreptive.com";
-      $mail->Password = 'GprZi52642K!';
+      $mail->Password = 'lwsK7|Or';
       $mail->SMTPSecure = "ssl";
       $mail->Port = 465;
 
@@ -6473,7 +6473,7 @@ Kindly click the button below to reset your password
                                             padding-bottom: 7px;
                                             border: 0;
                                           ">
-                                        <a target="_blank" href="https://www.Kreptive.com" style="
+                                        <a target="_blank" href="https://www.kreptive.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -6630,7 +6630,7 @@ Kindly click the button below to reset your password
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
     $mail->Username = "support@kreptive.com";
-    $mail->Password = 'GprZi52642K!';
+    $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
@@ -7258,7 +7258,7 @@ Kindly click the button below to reset your password
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
     $mail->Username = "support@kreptive.com";
-    $mail->Password = "GprZi52642K!";
+    $mail->Password = "lwsK7|Or";
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
@@ -7884,7 +7884,7 @@ Kindly click the button below to reset your password
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
     $mail->Username = "support@kreptive.com";
-    $mail->Password = "GprZi52642K!";
+    $mail->Password = "lwsK7|Or";
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 

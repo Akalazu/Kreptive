@@ -12,7 +12,14 @@
     <meta name="description" content="Kreptive is a marketplace of world-class NFTs" />
     <link rel="icon" href="https://kreptive.com/images/favicon.png" type="image/png">
 
-    <base href="http://localhost/artcribs/">
+    <?php
+    if ($_SERVER['SERVER_NAME'] == 'localhost') {
+        echo '<base href="http://localhost/artcribs/">';
+    } else {
+        echo '<base href="https://kreptive.com/">';
+    }
+    ?>
+    
 
 
     <!-- Favicon icon -->

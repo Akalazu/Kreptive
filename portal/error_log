@@ -1,0 +1,27 @@
+[28-Feb-2024 22:24:25 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home5/mintarte/public_html/portal/logout.php on line 4
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/portal_header.php on line 126
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "image" on null in /home5/mintarte/public_html/portal/portal_header.php on line 126
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/portal_header.php on line 130
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "first_name" on null in /home5/mintarte/public_html/portal/portal_header.php on line 130
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/portal_header.php on line 130
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "last_name" on null in /home5/mintarte/public_html/portal/portal_header.php on line 130
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/portal_header.php on line 157
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "image" on null in /home5/mintarte/public_html/portal/portal_header.php on line 157
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/portal_header.php on line 160
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "first_name" on null in /home5/mintarte/public_html/portal/portal_header.php on line 160
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/portal_header.php on line 160
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "last_name" on null in /home5/mintarte/public_html/portal/portal_header.php on line 160
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/portal_header.php on line 209
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "role" on null in /home5/mintarte/public_html/portal/portal_header.php on line 209
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/index.php on line 23
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "balance" on null in /home5/mintarte/public_html/portal/index.php on line 23
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/index.php on line 24
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "balance" on null in /home5/mintarte/public_html/portal/index.php on line 24
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/index.php on line 30
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "profit" on null in /home5/mintarte/public_html/portal/index.php on line 30
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/index.php on line 31
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "profit" on null in /home5/mintarte/public_html/portal/index.php on line 31
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/index.php on line 37
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "mint_balance" on null in /home5/mintarte/public_html/portal/index.php on line 37
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Undefined variable $currUser in /home5/mintarte/public_html/portal/index.php on line 38
+[28-Feb-2024 23:59:22 Africa/Lagos] PHP Warning:  Attempt to read property "mint_balance" on null in /home5/mintarte/public_html/portal/index.php on line 38

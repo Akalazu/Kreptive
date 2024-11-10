@@ -36,50 +36,7 @@
     <script src="../assets/js/sweetalert.min.js"></script>
     <script src="../assets/js/jquery.min.js"></script>
 
-    <!--<script src="//code.tidio.co/rusrmgb4wisaoozm9akdyx4cuswqzrch.js" async></script>-->
 
-
-    <!-- Smartsupp Live Chat script
-<script type="text/javascript">
-var _smartsupp = _smartsupp || {};
-_smartsupp.key = 'd15cd4a0e10f6fddde56ba56caa823fdec2d9f0b';
-window.smartsupp||(function(d) {
-  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-  c.type='text/javascript';c.charset='utf-8';c.async=true;
-  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-})(document);
-</script>
-<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
- -->
-
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {},
-            Tawk_LoadStart = new Date();
-        (function() {
-            var s1 = document.createElement("script"),
-                s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/66f152444cbc4814f7dd7f8e/1i8fain3c';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
-    <!--End of Tawk.to Script-->
-    <!-- Smartsupp Live Chat script -->
-    <script type="text/javascript">
-        // var _smartsupp = _smartsupp || {};
-        // _smartsupp.key = '56841f61efc4edb1d2ca7444178c14f47c9b935d';
-        // window.smartsupp||(function(d) {
-        //   var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-        //   s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-        //   c.type='text/javascript';c.charset='utf-8';c.async=true;
-        //   c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-        // })(document);
-    </script>
-    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
 </head>
 <style>
     .art__title {

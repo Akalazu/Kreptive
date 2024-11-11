@@ -36,12 +36,10 @@
     <script src="../assets/js/sweetalert.min.js"></script>
     <script src="../assets/js/jquery.min.js"></script>
 
-    <!--<script src="//code.tidio.co/rusrmgb4wisaoozm9akdyx4cuswqzrch.js" async></script>-->
-
     <!-- Smartsupp Live Chat script -->
     <script type="text/javascript">
         var _smartsupp = _smartsupp || {};
-        _smartsupp.key = '40744a05714134e6ca1ee762e35a0144b054eeea';
+        _smartsupp.key = '07e8f4cfbd525e6f4e3c33265f93c811bea2424e';
         window.smartsupp || (function(d) {
             var s, c, o = smartsupp = function() {
                 o._.push(arguments)
@@ -56,7 +54,7 @@
             s.parentNode.insertBefore(c, s);
         })(document);
     </script>
-    <!--<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>-->
+    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
 </head>
 
 

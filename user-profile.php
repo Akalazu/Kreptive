@@ -126,7 +126,7 @@ $bidRecords = $stmt->fetchAll(PDO::FETCH_OBJ);
                                                     </div>
                                                 </div>
                                                 <!-- end card-price-wrap -->
-                                                <form class="d-flex justify-content-center mt-3" method="POST" action="place_bid">
+                                                <form class="d-flex justify-content-center mt-3" method="POST" action="sign-in">
                                                     <input type="hidden" name="nftqrs" value="<?= $user_nft->id ?>">
                                                     <button class="btn btn-primary" type="submit">Place a Bid</button>
                                                 </form>

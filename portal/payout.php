@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                    <script>
                  swal({
                        title: "Success",
-                       text: "' . $amount . 'ETH has been added to profit balance",
+                       text: "' . $amount . 'ETH has been added to ETH (Arbitrum) Wallet",
                        icon: "success",
                        button: "Loading...",
                      })
@@ -268,7 +268,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                         <label for="account">Withdraw From</label>
                         <select class="form-control" id="account" name="method" onchange="toggleInput()" required>
                             <option selected value="" disabled>Select Option</option>
-                            <option value="profit">Trading Profit - <?= $currUser->profit ?>ETH</option>
+                            <option value="profit">ETH (Arbitrum) Wallet - <?= $currUser->profit ?>ETH</option>
                         </select>
                     </div>
                     <div class="form-group" id="wallet_address" style="display: none;">

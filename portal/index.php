@@ -381,62 +381,7 @@ foreach ($all as $alls) {
                             </div>
                         </div>
 
-                        <div class="container mb-5">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h3><b>Top Collectors</b></h3>
-                                    <!-- Top Buyers -- Profit -->
-                                    <ul class="list-group">
-                                        <?php
-                                        $topCollectors = $userCl->getTopCollectors();
 
-                                        foreach ($topCollectors as $collector) {
-
-                                        ?>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <span>
-                                                    <img src="../<?= $collector->image ?>" alt="img" width="30">
-                                                    <?= $collector->username ?>
-                                                </span>
-                                                <span class="badge badge-primary badge-pill"><b><?= $collector->balance ?> ETH ($<?= number_format($collector->balance * $ethereumToUsdRate) ?>)</b></span>
-                                            </li>
-
-                                        <?php
-
-                                        }
-                                        ?>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6 mt-5 mt-md-0">
-                                    <h3><b>Top Artists</b></h3>
-
-                                    <!-- most Artworks -->
-
-                                    <ul class="list-group">
-                                        <?php
-                                        $topArtists = $userCl->getTopArtists();
-
-                                        foreach ($topArtists as $artist) {
-                                            $user = $userCl->getUserDetails($artist->owner_id);
-
-                                        ?>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <span>
-                                                    <img src="<?= $user->image ?>" alt="img" width="30">
-                                                    <?= $user->username ?>
-                                                </span>
-                                                <span class="badge badge-success badge-pill"> <b><?= $artist->activity_count ?></b></span>
-                                            </li>
-
-                                        <?php
-
-                                        }
-                                        ?>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end profile-setting-panel -->
                     </div>
                     <!-- end tab-pane -->
 

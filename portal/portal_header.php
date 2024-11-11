@@ -47,7 +47,7 @@
     .amount__value {
         /* font-family: 'Outfit', sans-serif; */
         font-family: "Inter", sans-serif;
-        font-size: 40px;
+        font-size: 35px;
         font-weight: 900;
     }
 
@@ -178,7 +178,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="eMessage/">
-                            <span class="menu-title">eMessage</span>
+                            <span class="menu-title">Community</span>
                             <i class="mdi mdi-forum menu-icon"></i>
                         </a>
                     </li>
@@ -189,7 +189,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="create_nft">
+                        <a class="nav-link" href="mint_nftguyyy">
                             <span class="menu-title">Create NFT</span>
                             <i class="mdi mdi-diamond menu-icon"></i>
                         </a>

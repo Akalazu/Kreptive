@@ -35,11 +35,11 @@
                     <li>
                         <a href="../" data-title="Portal"><i class="ri-home-3-line"></i></a>
                     </li>
-                    <li class="<?= checkActiveState('index') ?>">
-                        <a href="./" data-title="Chats"><i class="ri-chat-3-line"></i></a>
-                    </li>
                     <li class="<?= checkActiveState('contacts') ?>">
-                        <a href="contacts" data-title="Community"><i class="ri-contacts-line"></i></a>
+                        <a href="contacts" data-title="Chats"><i class="ri-chat-3-line"></i></a>
+                    </li>
+                    <li class="<?= checkActiveState('index') ?>">
+                        <a href="./" data-title="Community"><i class="ri-contacts-line"></i></a>
                     </li>
 
                     <li>

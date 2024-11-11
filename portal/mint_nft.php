@@ -318,25 +318,7 @@ if (isset($_POST['create_item'])) {
                     </div>
                     <div class="form-group">
                         <label for="collections">Collection</label>
-                        <div class="card" style="max-width: 120px;
-    max-height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 15px 10px 20px;
-    border: 2px solid rgba(13, 110, 253, 0.25);
-    box-shadow: 0px 32px 90px 0px rgba(26, 64, 137, 0.12);">
-                            <div class="card-body d-flex justify-content-center">
-                                <span class="text-center">
 
-                                    <img src="../images/eth.svg" width="50">
-                                    <h2 class="amount__value d-flex align-items-center mt-2 mb-0" style="font-size: 16px"><span>Kreptive</span></h2>
-                                    <span style="font-weight: 100;
-    letter-spacing: 3px;">MINT</span>
-
-                                </span>
-                            </div>
-                        </div>
                         <input type="text" class="form-control" name="collections" required>
                     </div>
                     <div class="form-group">

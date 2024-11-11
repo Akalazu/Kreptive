@@ -54,6 +54,7 @@
                                     <li><a href="about-us">About Us</a></li>
                                     <li><a href="privacy_policy">Privacy Policy</a></li>
                                     <li><a href="term_of_service">Terms of Service</a></li>
+                                    <li><a href="sign-in">Join our Community</a></li>
 
                                 </ul>
                             </div>
@@ -159,11 +160,11 @@
         })
     }
 </script>
-<script src="assets/js/scripts.js"></script>
 
 <script src="assets/js/utilities.js"></script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
 <script src="assets/js/bundle.js"></script>
+<script src="assets/js/scripts.js"></script>
 <script src="assets/assets/vendors/js/vendor.bundle.base.js"></script>
 <script src="assets/assets/js/dashboard.js"></script>
 

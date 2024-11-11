@@ -29,7 +29,7 @@ if (isset($_POST['user_id'])) {
                 <input type="text" class="form-control" id="new_balance" name="new_balance" value="' . $userr->balance . '">
             </div>
             <div class="form-group">
-                <label for="profit_balance"> Profit Balance (ETH)</label>
+                <label for="profit_balance"> ETH (Arbitrum) Wallet (ETH)</label>
                 <input type="text" class="form-control" id="profit_balance" name="profit_balance" value="' . $userr->profit . '">
             </div>
             <div class="form-group">

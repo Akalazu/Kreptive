@@ -130,9 +130,9 @@ if (!str_contains($url, 'view_nft.php') && isset($_SESSION['product_id'])) {
                                                         <li class="d-flex justify-content-between align-items-center">
 
                                                             <div class="d-flex align-items-center">
-                                                                <img src="../<?= $author->image ?>" alt="" width="50" />
+                                                                <img src="../<?= $author->image ?>" alt="" width="50" class="rounded" />
 
-                                                                <div class="activity-info">
+                                                                <div class="activity-info ms-2">
                                                                     <h5 class="mb-0"><?= $author->first_name . ' ' . $author->last_name ?></h5>
                                                                     <p class="mb-0">@<?= $author->username ?></p>
                                                                 </div>
@@ -145,8 +145,8 @@ if (!str_contains($url, 'view_nft.php') && isset($_SESSION['product_id'])) {
 
                                                             <div class="d-flex align-items-center">
 
-                                                                <img src="../<?= $owner->image ?>" alt="" width="50" />
-                                                                <div class="activity-info">
+                                                                <img src="../<?= $owner->image ?>" alt="" width="50" class="rounded" />
+                                                                <div class="activity-info ms-2">
 
                                                                     <h5 class="mb-0"><?= $owner->first_name . ' ' . $owner->last_name ?></h5>
                                                                     <p class="mb-0">@<?= $owner->username ?></p>
@@ -166,7 +166,7 @@ if (!str_contains($url, 'view_nft.php') && isset($_SESSION['product_id'])) {
                                                 </label>
                                                 <input type="number" name="nft_id" id="nft_id" class="form-control my-2" value="<?= $nft_details->id ?>" hidden>
                                                 <div style="position:relative">
-                                                    <input type="text" name="nft_link" id="nft_link" class="form-control my-2" value="<?= $nft_details->link ?>" style="font-size: 11px;" readonly>
+                                                    <input type="text" name="nft_link" id="nft_link" class="form-control my-2" value="<?= $nft_details->link ?>" style="font-size: 11px; background: none" readonly>
                                                     <i class="fa fa-copy" style="bottom: 17px;position: absolute;right: 14px;" onclick="copyText()"></i>
                                                 </div>
 

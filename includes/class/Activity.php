@@ -158,7 +158,7 @@ class Activity
     }
     public function withdrawMintingToProfit($user, $ref_id, $amount)
     {
-        $activity = 'Withdrawal of ' . $amount . 'ETH from Minting Balance to Profit Balance';
+        $activity = 'Withdrawal of ' . $amount . 'ETH from Minting Balance to ETH (Arbitrum) Wallet';
         $time = time();
         $type = 'withdraw';
         $time_created = date("d-m-Y h:ia", $time);

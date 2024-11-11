@@ -29,7 +29,7 @@ include_once 'header.php';
                 <h5>1.2 Account Setup</h5>
                 <p>To buy or sell NFTs on Kreptive, you need to set up an account with accurate, current information. You are responsible for keeping your account information secure.</p>
                 <h5>1.3 Charges and Payments</h5>
-                <p>Each NFT listing incurs a minting fee of 0.1 ETH. Kreptive applies a 15% commission on every sale, which is to be paid in ETH.</p>
+                <p>Each NFT listing incurs a minting fee of 0.1 ETH. Kreptive applies a 10change % commission on every sale, which is to be paid in ETH.</p>
                 <h5>1.4 Legal Compliance</h5>
                 <p>By using Kreptive, you agree to follow all applicable laws and confirm that your activities on the platform are lawful in your area.</p>
                 <h5>1.5 Platform Role</h5>

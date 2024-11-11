@@ -135,7 +135,7 @@ if (isset($_POST['place_bid'])) {
                             <div class="top-bid">
                                 <div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 mb-3 mb-md-0">
                                             <img src="../<?= $nft_details->image ?>" class="img-fluid img-thumbnail rounded mb-0 mb-sm-3" alt="..." />
                                         </div>
                                         <div class="col-md-6">

@@ -41,9 +41,6 @@
                                     <li><a href="explore">Explore</a></li>
                                     <li><a href="#faq">FAQ</a></li>
                                     <li><a href="https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2?a=0x1681195C176239ac5E72d9aeBaCf5b2492E0C4ee">Transaction History (Block Explorer)</a></li>
-                                    <button id="theme-toggle">Toggle Dark Mode</button>
-
-
                                 </ul>
                             </div>
                             <!-- end footer-item -->

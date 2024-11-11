@@ -8023,9 +8023,10 @@ fieldset:disabled .btn {
   position: relative;
   display: block;
   padding: 0.5rem 1rem;
-  color: #212529;
+  /* color: #212529; */
+  margin: 10px 0;
   text-decoration: none;
-  background-color: #fff;
+  /* background-color: #fff; */
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .list-group-item:first-child {

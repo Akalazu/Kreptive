@@ -2,146 +2,100 @@
 include_once 'header.php';
 ?>
 
-<h1 class="d-block p-5 bg-primary text-white text-center mb-4">Our Privacy Policy</h1>
+<style>
+	p {
+		color: #1c2a46;
+		margin: 15px 0;
+	}
+</style>
+<h1 class="d-block p-5 text-white text-center mb-4" style="background: #1c2b46; margin: 50px 0; font-size: 35px">Our Privacy Policy</h1>
 
-<div class="container text-justify mb-5">
-	<p class="mb-3">
-		Kreptive wants to keep your information safe and private. We made this Privacy Policy to explain how we collect, use, and share your information when you use our websites and services.
-	</p>
-
-	<b>Types of Information We Collect</b>
-	<p>We collect information about our users, which may be identifiable, pseudonymous, or anonymous (including aggregated and de-identified data), as described below.</p>
-	<b>Information You Provide Us.</b>
-	<ol>
-
-		<li>1. Account Information: When you use our website, you can add information to your profile. We collect the information you add, like your email address, username, favorite things, and collections you want to keep an eye on. Your profile information (except for your email address) can be seen by other people. Just remember that things you share publicly can still be found on the internet even if you delete them from your profile on Kreptive.
-		</li>
-
-		<li>
-			2. Preferences: Our Service allows you to save your choices about how you want things to look, how you get notifications, and what you like. We might connect these choices to your account, the internet browser you use, or the device you use to access the Service.
-		</li>
-		<li>
-			3. Feedback: If you tell us what you think or send us a message, we might get your name, how to get in touch with you (like your email), and anything else you include in the message.
+<div class="container-lg my-5">
+	<section class="row">
+		<div class="col-12">
+			<h2 class="fw-bold mb-4">Last Revised: 20/01/2023</h2>
+			<p class="text-justify">
+				This Privacy Statement outlines how Kreptive ("we," "us," or "our") gathers, utilizes, shares, and safeguards the personal data of users ("you" or "your") who access and engage with our NFT marketplace platform, Kreptive (the "Platform"). We are dedicated to preserving your privacy and ensuring the security of your personal data. By using the Platform, you agree to the collection, usage, and disclosure of your information as set forth in this Privacy Statement.
 			</p>
-		</li>
-		<li> 4. Other Information: We also gather information and other things from other parts of our website where you willingly give it to us or where we say that we are collecting your information.
-		</li>
+		</div>
 
-	</ol>
+		<!-- Information We Collect Section -->
+		<div class="col-12 my-4">
+			<h3 class="fw-bold my-3">1. Data We Gather</h3>
+			<div class="ms-4">
+				<h4>1.1 Personal Data</h4>
+				<p>We may gather personal details that you voluntarily provide when interacting with the Platform, which may include your name, email address, contact information, and payment details. Additionally, we may collect data related to your activities on the Platform, such as the NFTs you create, purchase, or sell, your browsing history, and your communications with other users.</p>
 
-	<p class="my-3">
-		In Kreptive, your blockchain wallet address is like your special name that you use to do things on the internet. You will need a special wallet to use some parts of Kreptive. Just having a wallet address doesn't tell us who you are, but if you use it with Kreptive, we might be able to connect it to your real identity.
-	</p>
-	<div class="container mb-4">
-		<b>Information Collected Automatically</b>. <p>As you navigate through and interact with our Service, we may use automatic data collection technologies to collect certain information, including:</p>
-		<p><b>Interactions with our Service:</b> To provide our Service, analyze trends, enforce our Terms of Service, and make the Service more useful to you, we collect information (typically Anonymous Data) from you when you interact with our Service, including, but not limited to, your browser type or fingerprint, operating system, IP address and associated geolocation, device ID, blockchain wallet address, wallet type, actions and clickstream data, referring/exit pages, and date/time stamps. We may also store this data in log files.</p>
-		<p> <b>Cookies or Other Tracking Technologies:</b> Like many online services, we use cookies to collect information. We may use both session cookies (which expire once you close your web browser) and persistent cookies (which stay on your computer until you delete them) to analyze how users interact with our Service, make improvements to our product quality, and provide users with a more personalized experience. In addition, we use "Pixel Tags" (also referred to as clear Gifs, Web beacons, or Web bugs). Pixel Tags allow us to analyze how users find our Service, make the Service more useful to you, and tailor your experience with us to meet your particular interests and needs.</p>
-		<p>
-			<b>Do Not Track: </b>As there is no common understanding about what a "Do Not Track" signal is supposed to mean, we don’t respond to those signals in any particular way. See further information below regarding how you may be able to withdraw your consent for the use of certain tracking technologies like cookies and pixel tags. You may also contact us help@myKreptive.com
-		</p>
-	</div>
-	<div class="container mb-4">
-		<p>
-			<b> Information Collected from Third-Party Companies</b>. We may receive information about you or related to you or your wallet address from service providers and other sources/companies that offer their products and/or services to us or to you, for use in conjunction with our Service, or whose products and/or services may be linked from our Service. We may add this to the data we have already collected from or about you through our Service. This information may include, for example:
-			third-party wallet providers that provide us with your blockchain wallet address and certain other information you choose to share with those wallet providers;
-			data analytics providers or vendors who provide us information related to certain blockchain wallet addresses;
-			vendors who provide communication and identity verification services to us and which you choose to use; and
-			other vendors who provide us information necessary to run our business or enforce our Terms of Service.
-		</p>
-	</div>
-	<div class="container mb-4">
-		<p>
-			<b>Public Information</b> We collect data from activity and information that is publicly visible and/or accessible on blockchains or other public sources. This may include, for example, blockchain wallet addresses and information regarding purchases, sales, or transfers of NFTs, which may then be associated with other data you have provided to us.
-		</p>
-	</div>
-	<div class="container mb-4">
-		<p>
-			<b>Use of Your Information</b>
+				<h4>1.2 Non-Personal Data</h4>
+				<p>We may automatically collect non-personal data when you access the Platform, such as your IP address, device type, browser details, and operating system. This data is used to monitor trends, administer the Platform, and understand how users navigate within it.</p>
+			</div>
+		</div>
 
-			We process information about and/or related to you to run our business, provide the Service, personalize your experience on the Service, and improve the Service. Specifically, we use your information to:
-			provide, operate and maintain the Service;
-			improve and analyze the Service;
-			analyze, improve, and personalize your use and experience on the Service, including by making recommendations to you;
-			communicate with you;
-			investigate, address, and prevent conduct that may violate our Terms of Service and/or that is otherwise harmful or unlawful;
-			send you newsletters, promotional materials, and other notices related to our Service or third parties’ goods and services;
-			comply with applicable laws, cooperate with investigations by law enforcement or other authorities of suspected violations of law, and/or to protect our and our Affiliates’ legal rights; and
-			act in any other way which we have communicated to you and to which you have consented or we may describe when you provide your information.
+		<!-- Use of Information Section -->
+		<div class="col-12 my-4">
+			<h3 class="fw-bold my-3">2. Use of Collected Data</h3>
+			<div class="ms-4">
+				<h4>2.1 Personal Data</h4>
+				<p>Your personal information may be used to: (i) Deliver and improve the Platform’s features and overall experience. (ii) Facilitate your transactions, including the buying and selling of NFTs. (iii) Communicate with you about your account, transactions, updates, and security alerts. (iv) Send you marketing materials (if you have opted in). (v) Respond to any inquiries, comments, or suggestions you may have.</p>
 
-			We may create anonymized records from identifiable information. We use this data for the same purposes as outlined above, including to improve our Service. We reserve the right to use and/or disclose anonymized information for any purpose.
-		</p>
-	</div>
-	<div class="container mb-4">
-		<p>
-			<b>Disclosure of Your Information</b>
+				<h4>2.2 Prohibited Content</h4>
+				<p>Kreptive strictly prohibits the listing or trading of NFTs that are illegal, fraudulent, offensive, infringe on intellectual property rights, or otherwise violate these Terms and Conditions. You may not list NFTs that include explicit or adult content, promote hate speech, or encourage illegal activity. Kreptive reserves the right to remove any content that breaches these rules and may take further action, such as suspending or terminating accounts of users who repeatedly violate these guidelines.</p>
+			</div>
+		</div>
 
-			We disclose your information and information about you as described below:
-		<p class="my-3">Third Party Service Providers. We may share your information and information about you with third party service providers to: provide technical infrastructure services; conduct quality assurance testing; analyze how our Service is used; prevent, detect, and respond to unauthorized activities or potential violations of our Terms of Service or policies provide technical and customer support; and/or to provide other support to you, us, and/or to the Service.</p>
+		<!-- Sharing of Information Section -->
+		<div class="col-12 my-4">
+			<h3 class="fw-bold my-3">3. Information Sharing</h3>
+			<div class="ms-4">
+				<h4>3.1 Service Providers</h4>
+				<p>We may share your personal information with trusted third-party service providers that help us run, maintain, and enhance the Platform. These providers are required by contract to keep your information secure and use it only for the purposes we specify.</p>
 
-		<p class="my-3"> Legal Rights. Regardless of any choices you make regarding your information (as described below), Kreptive may disclose your information and information about you if it believes in good faith that such disclosure is necessary: (a) in connection with any legal investigation; (b) to comply with relevant laws or to respond to subpoenas, warrants, or other legal process served on Kreptive; (c) to protect or defend the rights or property of Kreptive or users of the Service; and/or (d) to investigate or assist in preventing any violation or potential violation of the law, this Privacy Policy, or our Terms of Service.</p>
-		<p class="my-3">Other Disclosures. We may also disclose your information and information about you: to fulfill the purpose for which you provide it, including to provide you with our Service and new features; for any other purpose disclosed by us when you provide it; or with your consent.</p>
-		<p class="my-3">Third-Party Wallets. To use certain aspects of our Service, you must use a third-party wallet which allows you to engage in transactions on public blockchains. Your interactions with any third-party wallet provider are governed by the applicable terms of service and privacy policy of that third party..</p>
-		</p>
-	</div>
-	<div class="container mb-4">
-		<p>
-			<b>Your Choices Regarding Information</b>
-		<p class="my-3"> You have choices regarding the use of information on our Service:
-		</p>
-		<p class="my-3">Email Communications. We may periodically send you newsletters and/or emails that directly promote the use of our Service or third parties’ goods and services. When you receive email communications from us, you may indicate a preference to stop receiving these communications from us by following the unsubscribe instructions provided in the email you receive or through the Notifications preferences in your Settings page. Despite these preferences, we may send you occasional transactional service-related informational communications.
-		</p>
-		<p class="my-3">Cookies. If you decide at any time that you no longer wish to accept cookies from our Service for any of the purposes described above, you can change your browser settings to stop accepting cookies or to prompt you before accepting a cookie from the websites you visit. Consult your browser’s technical information to learn more. If you do not accept cookies, however, you may not be able to use all portions of the Service or all functionality of the Service.
-		</p>
-		<p class="my-3">Data Access and Control. You can view, access, edit, or delete your information and information about you for certain aspects of the Service via your Settings page. Depending on applicable law where you reside, you may be able to assert certain rights related to your information and information about you. If such rights are not provided under law for your operating entity or jurisdiction, Kreptive has full discretion in fulfilling your request.
-		</p>
-		<p class="my-3">If you are a user in the European Economic Area ("EEA"), United Kingdom ("UK") or Switzerland, you have certain rights under applicable law. These include the right to (i) request access and obtain a copy of your personal information; (ii) request rectification or erasure of your personal information; (iii) object to or restrict the processing of your personal information; and (iv) request portability of your personal information. Additionally, if we have collected and processed your personal information with your consent, you have the right to withdraw your consent at any time.
-		</p>
-		<p class="my-3"> If you are a California resident, you have certain rights under the California Privacy Rights Act ("CPRA"). These include the right to (i) request access to, details regarding, and a copy of the personal information we have collected about you and/or shared with third parties; (ii) request deletion of the personal information that we have collected about you; and (iii) the right to opt-out of sale of your personal information. As the terms are defined under the CPRA, we do not "sell" your "personal information."
-		</p>
-		<p class="my-3"> If you wish to exercise your rights under an applicable data protection or privacy law, please contact us by using the “Submit a request” link help@myKreptive.com specify your request, and reference the applicable law. We may ask you to verify your identity, or ask for more information about your request. We will consider and act upon any above request in accordance with applicable law. We will not discriminate against you for exercising any of these rights.
-		</p>
+				<h4>3.2 Legal Requirements</h4>
+				<p>We may disclose your information if required by law or in response to valid requests from authorities, such as court orders or subpoenas.</p>
 
-		If you believe that we have infringed your rights, we encourage you to first contact us by using the “Submit a request” link help@myKreptive.com so that we can try to resolve the issue or dispute informally.
-		</p>
-	</div>
-	<div class="container mb-4">
-		<p>
-			<b>Data Retention</b>
-		<p class="my-3">We may continue to retain your information or information about you even after you request deletion of your data if such retention is reasonably necessary to comply with our legal obligations, to resolve disputes, prevent fraud and abuse, enforce our Terms or other agreements, and/or protect our legal rights and other interests.
-		</p>
-		<p class="my-3">Security. We care about the security of your information and use physical, administrative, and technological safeguards to preserve the integrity and security of information collected through our Service. However, no security system is impenetrable and we cannot guarantee the security of our systems, or those of our vendors. In the event that any information under our custody and control is compromised as a result of a breach of our security, we will take steps to investigate and remediate the situation and, in accordance with applicable laws and regulations, may notify those individuals whose information may have been compromised. You are responsible for the security of your digital wallet, and we urge you to take steps to ensure it is and remains secure. If you discover an issue related to your wallet, please contact your wallet provider.
-		</p>
-		<p class="my-3">Minors. We do not intentionally gather information from visitors who are under the age of 13. Our Terms of Service require all users to be at least 18 years old. Minors who are at least 13 years old but are under 18 years old may use a parent or guardian’s account, but only with the supervision of the account holder. If a child under 13 submits identifiable information to us and we learn that the identifiable information is the information of a child under 13, we will attempt to delete the information as soon as possible. If you believe that we might have any identifiable information from a child under 13, please contact us by using the “Submit a request” link help@myKreptive.com
-		</p>
+				<h4>3.3 Business Transfers</h4>
+				<p>If we undergo a merger, acquisition, or sale of all or part of our assets, your personal data may be transferred to the new entity or successor.</p>
 
-		<p class="my-3">For users in EEA, UK and Switzerland  Legal Bases for Processing Personal Data. When you access or use the Service, we collect, use, share, and otherwise process your personal data for the purposes described in this Privacy Policy. We rely on a number of legal bases to use your information in these ways.
-		</p>
+				<h4>3.4 Consent</h4>
+				<p>We may share your information with third parties if you have given your explicit consent to do so.</p>
+			</div>
+		</div>
 
-		<ol>
-			<li>1. We process your personal data with your consent, for example, to: communicate with you; send you marketing emails and/or notifications; and for any other purpose that we communicate to you and to which you have consented.</li>
-			<li>2. We process your personal data in order to fulfill our contract with you and to provide you with our Service, for example, to: provide, operate and maintain the Service; and investigate, address, and prevent conduct that may violate our Terms of Service.</li>
-			<li>3. We process your personal data pursuant to legitimate interests, for example, to: improve and analyze the Service; and personalize your experience on the Service.</li>
-			<li>4. We process your personal data in order to comply with legal obligations, in the public interest, or in your vital interests, for example, to: detect, prevent, and address activities that we consider could be fraudulent, violations of our Terms of Service or policies, and/or otherwise harmful or unlawful.</li>
-			<li>5. We will use appropriate safeguards for transferring your personal data out of the EEA, UK and Switzerland where required and only transfer such personal data under a legally valid transfer mechanism.</li>
-		</ol>
-		</p>
-	</div>
-	<div class="container mb-4">
-		<p>
-			<b>Kreptive Privacy Rights Disclosure</b>
-		<p class="my-3"> The categories of personal information we collect about users, as described above in Section 1, include: (1) identifiers, (2) commercial information, (3) internet or online identifiers, (4) geolocation data, and (5) information derived from other personal information about you.
-		</p>
-		<p class="my-3"> The categories of sources from which the personal information is collected are described above in Section 1.
-		</p>
-		<p class="my-3"> The business or commercial purpose for collecting personal information are described above in Sections 2 and 3.
-		</p>
-		<p class="my-3"> he categories of personal information we share with third parties, as described above in Section 3, include: (1) identifiers, (2) commercial information, (3) internet or online identifiers, (4) geolocation data, and (5) information derived from other personal information about you.
-		</p>
+		<!-- Data Security Section -->
+		<div class="col-12 my-4">
+			<h3 class="fw-bold my-3">4. Data Protection</h3>
+			<div class="ms-4">
+				<p>We use reasonable methods to safeguard your personal data from unauthorized access, changes, disclosure, or loss. However, please understand that no data transmission or storage method on the Internet is entirely secure, and we cannot guarantee absolute protection of your information.</p>
+			</div>
+		</div>
 
-		If you have any questions or concerns or complaints about our Privacy Policy or our data collection or processing practices, or if you want to report any security violations to us, please contact us via help@myKreptive.com</p>
-		</p>
-	</div>
+		<!-- Third-Party Links Section -->
+		<div class="col-12 my-4">
+			<h3 class="fw-bold my-3">5. Links to Third-Party Sites</h3>
+			<div class="ms-4">
+				<p>The Platform may contain links to other websites or services. We are not responsible for the privacy practices or the content of these external sites. We encourage you to review their privacy policies before accessing or using any third-party services.</p>
+			</div>
+		</div>
+
+		<!-- Changes to the Privacy Policy Section -->
+		<div class="col-12 my-4">
+			<h3 class="fw-bold">6. Policy Updates</h3>
+			<div class="ms-4">
+				<p>We may periodically update this Privacy Policy. You will be notified of significant changes either through the Platform or other means. Please review this statement periodically for any modifications.</p>
+			</div>
+		</div>
+
+		<!-- Contact Us Section -->
+		<div class="col-12 my-4">
+			<h3 class="fw-bold">7. How to Contact Us</h3>
+			<div class="ms-4">
+				<p>If you have any questions, concerns, or requests regarding this Privacy Policy or our handling of your data, please reach out to us. We will do our best to respond in a timely manner. By using the Kreptive platform, you confirm that you have read, understood, and agree to the terms and conditions set forth in this Privacy Policy.</p>
+			</div>
+		</div>
+	</section>
 </div>
+
+
 <?php
 include_once 'footer.php';
 ?>

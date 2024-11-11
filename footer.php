@@ -90,7 +90,7 @@
         <hr class="bg-white-slim my-0" />
         <div class="copyright-wrap d-flex flex-wrap py-3 align-items-center justify-content-between">
             <p class="footer-copy-text py-2">
-                Copyright &copy; <?= date('Y') ?> Kreptive.
+                Copyright &copy; 2020 - <?= date('Y') ?> Kreptive.
             </p>
 
             <p>

@@ -36,6 +36,12 @@ require_once 'config.php';
     $results = $statement->fetchAll(PDO::FETCH_OBJ);
     foreach ($results as $user) {
 
+      if ($user->badge_verification) {
+        $badge = '<img src="../../images/blue-tick.png" class="rounded-circle img-fluid" alt="User Icon" style="width: 30px;">';
+      } else {
+        $badge = "";
+      }
+
 
     ?>
       <!-- Chat Item 2 -->
@@ -43,7 +49,7 @@ require_once 'config.php';
         <div class="d-flex align-items-center">
           <img src="../../<?= $user->image ?>" class="rounded-circle img-fluid img-thumbnail" alt="User Icon" style="width: 60px;">
           <div class="chat-details ml-3">
-            <h5 class="chat-title mb-1"><?= $user->first_name . ' ' . $user->last_name ?></h5>
+            <h5 class="chat-title mb-1 d-flex align-items-center"><?= $user->first_name . ' ' . $user->last_name ?> <?= $badge ?></h5>
             <p class="chat-preview mb-0 text-muted"> <?= $user->bio ?? "Hello there! I'll love to connect here on Kreptive Community" ?></p>
           </div>
         </div>

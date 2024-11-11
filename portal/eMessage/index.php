@@ -22,7 +22,7 @@ require_once 'config.php';
       <use xlink:href="#info-fill" />
     </svg>
     <div class="ml-3">
-      Only verified members can enjoy this messaging feature
+      Welcome to Kreptive — the community for art enthusiasts! Connect, engage, and explore creative conversations with fellow artists.
     </div>
   </div>
   <div class="chat-list">
@@ -41,7 +41,7 @@ require_once 'config.php';
       <!-- Chat Item 2 -->
       <div class="chat-item d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-          <img src="<?= ucwords($user->image) ?>" class="rounded-circle img-fluid img-thumbnail" alt="User Icon" style="width: 60px;">
+          <img src="../../<?= $user->image ?>" class="rounded-circle img-fluid img-thumbnail" alt="User Icon" style="width: 60px;">
           <div class="chat-details ml-3">
             <h5 class="chat-title mb-1"><?= $user->first_name . ' ' . $user->last_name ?></h5>
             <p class="chat-preview mb-0 text-muted"> <?= $user->bio ?? "Hello there! I'll love to connect here on Kreptive Community" ?></p>

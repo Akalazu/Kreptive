@@ -119,7 +119,7 @@
                 <!-- <a class="navbar-brand brand-logo" href="./"><img src="../images/logo__dark.png" alt="logo" /></a> -->
                 <a class="navbar-brand brand-logo-mini" href="./"><img src="../images/favicon.png" /></a>
                 <img class="navbar-brand brand-logo logo-dark logo-img" src="../images/logo__dark.png" alt="logo" style="width: 250px; height: 100%; object-fit: contain;" />
-                <img class="logo-light logo-img" src="../images/logo.png" alt=" logo" style="width:250px; height: 100%; object-fit: contain;" />
+                <img class=" navbar-brand brand-logo logo-light logo-img" src="../images/logo.png" alt=" logo" style="width:250px; height: 100%; object-fit: contain;" />
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">

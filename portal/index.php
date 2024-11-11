@@ -118,6 +118,10 @@ foreach ($all as $alls) {
     .custom-dot-failed {
         background-color: #c81e1e;
     }
+
+    .mobile-font {
+        font-size: 14px;
+    }
 </style>
 <div class="row">
     <div class="col-12 grid-margin">
@@ -238,7 +242,7 @@ foreach ($all as $alls) {
                                             $status = 'Failed';
                                         }
 
-                                        $brokage = '<span class="badge badge-secondary ms-2 " style="font-size: 10px"> Required </span>';
+                                        $brokage = '<span class="badge badge-secondary ms-2 text-white" style="font-size: 10px"> Required </span>';
 
                                 ?>
                                         <div class="coins d-flex justify-content-between align-items-center gap-3 mb-4">
@@ -250,15 +254,15 @@ foreach ($all as $alls) {
 
 
                                                 <span>
-                                                    <p class="mb-1"><?= ucfirst($transaction['type']) == 'Brokeage Fee' ? ucfirst($transaction['type']) . $brokage : ucfirst($transaction['type']) ?></p>
-                                                    <span class="dollar__equi"><?= $date ?></span>
+                                                    <p class="mb-1 mobile-font"><?= ucfirst($transaction['type']) == 'Brokeage Fee' ? ucfirst($transaction['type']) . $brokage : ucfirst($transaction['type']) ?></p>
+                                                    <span class="dollar__equi" style="font-size: 12px"><?= $date ?></span>
                                                 </span>
                                             </span>
 
                                             <div class="coin-price">
                                                 <span class="dollar__equi"><?= $sign . $transaction['amount'] ?> ETH</span>
 
-                                                <span class="d-flex align-items-center gap-1">
+                                                <span class="d-flex align-items-center gap-1 mobile-font">
                                                     <div class="custom-dot <?= $dot ?>"> </div><?= $status ?>
                                                 </span>
 
@@ -279,16 +283,6 @@ foreach ($all as $alls) {
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card card-full card-s3 bal-cards">
-                            <div class="hero-action-wrap">
-                                <p class="hero-author-username mb-1 ">Royalties</p>
-                                <h2 class="amount__value d-flex align-items-center"><span class="curr_amount" data-val="<?= $currUser->mint_balance ?>">-</span> <span class=" currency_icon">ETH</span></h2>
-                                <span class="dollar__equi">$<?= number_format($currUser->mint_balance * $ethereumToUsdRate) ?></span>
-
-                            </div>
-                        </div>
-                    </div> -->
 
                 </div>
 

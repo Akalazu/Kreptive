@@ -186,4 +186,5 @@ h2 {
 .dark-mode .half .contents .form-control,
 .half .bg .form-control {
   background: none;
+  color: #fff;
 }

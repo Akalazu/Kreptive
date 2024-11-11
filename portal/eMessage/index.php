@@ -22,7 +22,7 @@ require_once 'config.php';
       <use xlink:href="#info-fill" />
     </svg>
     <div class="ml-3">
-      Welcome to Kreptive — the community for art enthusiasts! Connect, engage, and explore creative conversations with fellow artists.
+      Welcome to Kreptive — the community for art enthusiasts! Connect, engage, and explore creative conversations with fellow creators.
     </div>
   </div>
   <div class="chat-list">

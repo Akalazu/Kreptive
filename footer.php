@@ -40,7 +40,6 @@
                                 <ul class="list-item list-item-s1">
                                     <li><a href="explore">Explore</a></li>
                                     <li><a href="#faq">FAQ</a></li>
-                                    <li><a href="https://etherscan.io/token/0x912CE59144191C1204E64559FE8253a0e49E6548?a=0x912CE59144191C1204E64559FE8253a0e49E6548">0x912CE59144191C1204E64559FE8253a0e49E6548</a></li>
                                 </ul>
                             </div>
                             <!-- end footer-item -->

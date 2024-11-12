@@ -22,28 +22,23 @@ require_once 'header.php';
             <!-- Slides -->
             <div class="swiper-slide">
               <a class="card">
-                <img src="https://images.unsplash.com/photo-1672911640817-d2902754be5a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkwfHxuZnR8ZW58MHwwfDB8fHww" alt="" class="card-img-top">
+                <img src="assets/images/what-is-nft.webp" alt="" class="card-img-top">
                 <div class="card-body d-flex align-items-center">
-                  <div class="avatar flex-shrink-0">
-                    <img src="images/user_icon.png" alt="">
-                  </div>
+                
                   <div class="ms-2">
-                    <h5 class="card-title-effect">Space Currency</h5>
-                    <span class="fs-13 text-secondary">By Kevin Martin</span>
+                    <h5 class="card-title-effect">What is NFT?</h5>
                   </div>
                 </div><!-- end card-body -->
               </a><!-- end card -->
             </div><!-- end swiper-slider -->
             <div class="swiper-slide">
               <a class="card">
-                <img src="https://plus.unsplash.com/premium_photo-1672912348671-9a9ec5541b7f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fG5mdHxlbnwwfDB8MHx8fDA%3D " alt="" class="card-img-top">
+                <img src="assets/images/what-is-minting.webp" alt="" class="card-img-top">
                 <div class="card-body d-flex align-items-center">
-                  <div class="avatar flex-shrink-0">
-                    <img src="images/user_icon.png" alt="">
-                  </div>
+
                   <div class="ms-2">
-                    <h5 class="card-title-effect">Sebastian Rainbow</h5>
-                    <span class="fs-13 text-secondary">By Alex Smith</span>
+                    <h5 class="card-title-effect">What is Minting?</h5>
+
                   </div>
                 </div><!-- end card-body -->
               </a><!-- end card -->

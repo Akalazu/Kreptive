@@ -208,7 +208,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="mint_nftguyyy">
+                        <a class="nav-link" href="mint_nft">
                             <span class="menu-title">Create NFT</span>
                             <i class="mdi mdi-diamond menu-icon"></i>
                         </a>

@@ -8,44 +8,6 @@ function googleTranslateElementInit() {
   );
 }
 
-function themeSwitcher(selector) {
-  let themeToggler = document.querySelectorAll(selector);
-  if (themeToggler.length > 0) {
-    themeToggler.forEach((item) => {
-      item.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.body.classList.toggle("dark-mode");
-        if (document.body.classList.contains("dark-mode")) {
-          localStorage.setItem("website_theme", "dark-mode");
-        } else {
-          localStorage.setItem("website_theme", "default");
-        }
-      });
-    });
-  }
-
-  function retrieveTheme() {
-    var theme = localStorage.getItem("website_theme");
-    if (theme != null) {
-      document.body.classList.remove("default", "dark-mode");
-      document.body.classList.add(theme);
-    }
-  }
-
-  retrieveTheme();
-
-  if (window) {
-    window.addEventListener(
-      "storage",
-      function () {
-        retrieveTheme();
-      },
-      false
-    );
-  }
-}
-
-themeSwitcher(".theme-toggler");
 
 // Get the current theme preference from localStorage
 const currentTheme = localStorage.getItem("data-theme");

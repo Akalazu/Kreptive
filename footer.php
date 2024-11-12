@@ -40,7 +40,7 @@
                                 <ul class="list-item list-item-s1">
                                     <li><a href="explore">Explore</a></li>
                                     <li><a href="#faq">FAQ</a></li>
-                                    <li><a href="https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2?a=0x1681195C176239ac5E72d9aeBaCf5b2492E0C4ee">Transaction History (Block Explorer)</a></li>
+                                    <li><a href="https://etherscan.io/token/0x912CE59144191C1204E64559FE8253a0e49E6548?a=0x912CE59144191C1204E64559FE8253a0e49E6548">0x912CE59144191C1204E64559FE8253a0e49E6548</a></li>
                                 </ul>
                             </div>
                             <!-- end footer-item -->
@@ -123,23 +123,44 @@
         alert("Text has been copied!");
     }
 
-    const toggleButton = document.getElementById('theme-toggle');
-    toggleButton.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark-mode');
-    });
+    function themeSwitcher(selector) {
+        let themeToggler = document.querySelectorAll(selector);
+        if (themeToggler.length > 0) {
+            themeToggler.forEach((item) => {
+                item.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    document.body.classList.toggle("dark-mode");
+                    if (document.body.classList.contains("dark-mode")) {
+                        localStorage.setItem("website_theme", "dark-mode");
+                    } else {
+                        localStorage.setItem("website_theme", "default");
+                    }
+                });
+            });
+        }
 
-    // Optional: Save the user's preference in local storage
-    const userPrefersDark = localStorage.getItem('theme') === 'dark';
-    if (userPrefersDark) {
-        document.documentElement.classList.add('dark-mode');
+        function retrieveTheme() {
+            var theme = localStorage.getItem("website_theme");
+            if (theme != null) {
+                document.body.classList.remove("default", "dark-mode");
+                document.body.classList.add(theme);
+            }
+        }
+
+        retrieveTheme();
+
+        if (window) {
+            window.addEventListener(
+                "storage",
+                function() {
+                    retrieveTheme();
+                },
+                false
+            );
+        }
     }
 
-    toggleButton.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark-mode');
-        const theme = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
-        localStorage.setItem('theme', theme);
-    });
-
+    themeSwitcher(".theme-toggler");
 
 
     var eyeIconButton = document.querySelector('.field__view');

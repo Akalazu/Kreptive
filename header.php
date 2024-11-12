@@ -218,7 +218,7 @@
                                     <a href="sign-up" class="btn btn_other">Sign Up</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="theme-toggler" title="Toggle Dark/Light mode">
+                                    <a href="#" class="theme-toggler" id="theme-toggle" title="Toggle Dark/Light mode">
                                         <span>
                                             <em class="ni ni-moon icon theme-toggler-show"></em>
                                             <em class="ni ni-sun icon theme-toggler-hide"></em>

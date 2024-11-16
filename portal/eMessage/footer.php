@@ -358,14 +358,14 @@
                              console.log(sendMessageResponse); // Log the response for debugging
                              modal.hide(); // Close modal after sending message
                              messageField.val(''); // Clear the message field
-                             window.location.href = './'; // Return to chat window
+                             window.location.href = 'contacts'; // Return to chat window
                          } catch (error) {
                              console.error('Error sending message:', error); // Handle error
                          }
                      });
 
                  } else if (res.success === 'falsee') {
-                     window.location.href = './';
+                     window.location.href = 'contacts';
                  } else {
                      alert('Failed to create a new chat, please try again');
                  }

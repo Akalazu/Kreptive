@@ -66,6 +66,7 @@ i.fa-comment {
   flex-direction: column;
   height: 100vh;
   overflow: scroll;
+  margin-top: 66px;
 }
 
 /* Modal Style */

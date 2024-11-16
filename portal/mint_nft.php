@@ -327,11 +327,11 @@ if (isset($_POST['create_item'])) {
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="number" class="form-control" name="price" placeholder="Enter price in ETH" min="0" step=".01" required>
+                        <input type="number" class="form-control" name="price" placeholder="Enter price in ETH(ARB)" min="0" step=".01" required>
                     </div>
                     <div class="form-group">
                         <label for="price">Minting Fee</label>
-                        <input type="text" class="form-control" min="0" step=".01" value="0.1" name="mint_fee" required>
+                        <input type="text" class="form-control" min="0" step=".01" value="<?= $userCl->getDepoCharge() ?> ETH" name="mint_fee" required readonly>
                     </div>
                     <div class="form-group">
                         <label for="price">Royalties</label>

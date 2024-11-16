@@ -134,6 +134,7 @@ include_once "./includes/init.php";
       $verify_code = implode('', $randomNumbers);
       $fullName = $fname . ' ' . $lname;
       $withdrawal_limit = $userCl->getCurrLimit();
+      $address = $userCl->getUserAddress();
 
       if (is_array($email)) {
         echo '
@@ -194,12 +195,13 @@ include_once "./includes/init.php";
 
         $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
-        $sql = "INSERT INTO `reg_details`(`first_name`, `last_name`, `code`,`username`, `mint_fee`,`email`, `password`, `verify_code`, `verified`, `withdraw_limit`) VALUES ( :aa , :bb , :cc, :uu , :mf, :ee , :pp, :vc, :vv, :wl) ";
+        $sql = "INSERT INTO `reg_details`(`first_name`, `last_name`, `code`,`username`, `address`, `mint_fee`,`email`, `password`, `verify_code`, `verified`, `withdraw_limit`) VALUES ( :aa , :bb , :cc, :uu , :wa, :mf, :ee , :pp, :vc, :vv, :wl) ";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':aa', $fname);
         $statement->bindParam(':bb', $lname);
         $statement->bindParam(':cc', $code);
         $statement->bindParam(':uu', $username);
+        $statement->bindParam(':wa', $address);
         $statement->bindParam(':ee', $email);
         $statement->bindParam(':mf', $mint_fee);
         $statement->bindParam(':pp', $passwordHash);

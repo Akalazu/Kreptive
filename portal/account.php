@@ -392,7 +392,7 @@ if (isset($_POST['full_verification'])) {
               <h4 class="my-3">Profile Link</h4>
               <div class="mb-3">
                 <div class="position-relative">
-                  <input type="text" class="form-control form-control-s1" id="profileLink" name="newpwrd" value="https://kreptive.com/user-profile?usrp=<?= $currUser->id ?>" />
+                  <input type="text" class="form-control form-control-s1" id="profileLink" name="newpwrd" value="https://kreptive.com/username/<?= $currUser->address ?>" />
                   <span class="password-toggle" title="Toggle show/hide pasword">
                     <em class="password-shown mdi mdi-content-copy" onClick="copyProfileLink()"></em>
                   </span>

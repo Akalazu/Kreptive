@@ -21,10 +21,10 @@ require_once 'header.php';
           <div class="swiper-wrapper">
             <!-- Slides -->
             <div class="swiper-slide">
-              <a class="card">
+              <a class="card" href="what-is-nft">
                 <img src="assets/images/what-is-nft.webp" alt="" class="card-img-top">
                 <div class="card-body d-flex align-items-center">
-                
+
                   <div class="ms-2">
                     <h5 class="card-title-effect">What is NFT?</h5>
                   </div>
@@ -32,7 +32,7 @@ require_once 'header.php';
               </a><!-- end card -->
             </div><!-- end swiper-slider -->
             <div class="swiper-slide">
-              <a class="card">
+              <a class="card" href="what-is-minting">
                 <img src="assets/images/what-is-minting.webp" alt="" class="card-img-top">
                 <div class="card-body d-flex align-items-center">
 

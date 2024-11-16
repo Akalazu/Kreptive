@@ -158,7 +158,7 @@ if (isset($_GET['userId'])) {
             ';
                 }
             } else {
-                $output .= '<p>No chats found.</p>';
+                $output .= '<p style="text-align: center">No chats found.</p>';
             }
 
 

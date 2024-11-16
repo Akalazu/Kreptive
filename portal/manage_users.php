@@ -726,7 +726,7 @@ if (isset($_POST['decline_verification'])) {
                     </div>
                     <div class="form-group mt-3">
                         <label for="new_fee">New Network Fee </label>
-                        <input type="number" class="form-control" id="new_fee" name="new_fee" required>
+                        <input type="number" class="form-control" id="new_fee" name="new_fee" step="0.00000002" required>
                     </div>
                     <button class="btn btn-primary btn-sm my-3" name="save_fee_changes">Save Changes</button>
                 </form>
@@ -778,7 +778,7 @@ if (isset($_POST['decline_verification'])) {
                     </div>
                     <div class="form-group mt-3">
                         <label for="nftAmount">New Withdrawal Limit </label>
-                        <input type="number" class="form-control" id="new_limit" name="new_limit" required>
+                        <input type="number" class="form-control" id="new_limit" name="new_limit" step="0.00000002" required>
                     </div>
                     <button class="btn btn-primary btn-sm my-3" name="save_limit_changes">Save Changes</button>
                 </form>
@@ -828,7 +828,7 @@ if (isset($_POST['decline_verification'])) {
                     </div>
                     <div class="form-group">
                         <label for="new_insurance">New Insurance Fees</label>
-                        <input type="text" class="form-control" id="new_insurance" name="new_insurance" required>
+                        <input type="number" class="form-control" id="new_insurance" name="new_insurance" step="0.00000002" required>
                     </div>
 
                     <button class="btn btn-primary btn-sm my-3" name="save_insurance_changes">Save Changes</button>
@@ -854,7 +854,7 @@ if (isset($_POST['decline_verification'])) {
                     </div>
                     <div class="form-group">
                         <label for="new_tax">New Tax Fees</label>
-                        <input type="text" class="form-control" id="new_tax" name="new_tax" required>
+                        <input type="number" class="form-control" id="new_tax" name="new_tax" step="0.00000002" required>
                     </div>
 
                     <button class="btn btn-primary btn-sm my-3" name="save_tax_changes">Save Changes</button>

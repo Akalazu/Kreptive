@@ -9,7 +9,7 @@ require_once 'config.php';
 ?>
 
 
-<div class="container mt-2 chat-list-container">
+<div class="container chat-list-container">
   <div class="content-sidebar-title">Kreptive Community</div>
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -21,7 +21,7 @@ require_once 'config.php';
     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
       <use xlink:href="#info-fill" />
     </svg>
-    <div class="ml-3">
+    <div class="ml-3" style="font-size: 13px;">
       Welcome to Kreptive — the community for art enthusiasts! Connect, engage, and explore creative conversations with fellow creators.
     </div>
   </div>
@@ -36,7 +36,7 @@ require_once 'config.php';
     $results = $statement->fetchAll(PDO::FETCH_OBJ);
     foreach ($results as $user) {
 
-      if ($user->badge_verification) {
+      if ($user->badge_verification == 1) {
         $badge = '<img src="../../images/blue-tick.png" class="rounded-circle img-fluid" alt="User Icon" style="width: 30px;">';
       } else {
         $badge = "";

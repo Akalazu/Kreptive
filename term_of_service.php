@@ -99,6 +99,25 @@ include_once 'header.php';
                 <p>Certain features or services may have specific terms that override these general terms in cases of conflict.</p>
             </div>
         </div>
+
+        <!-- Amendments Section -->
+        <div class="col-lg-10 col-md-12">
+            <h3 class="mt-5 mb-3">7. Community</h3>
+            <div class="ms-3">
+                <h5>7.1 Community Access</h5>
+                <p>The community is an exclusive privilege reserved for verified users. It provides a platform where members can interact, share ideas, and connect with like-minded individuals.</p>
+
+                <h5>7.2 Community Guidelines</h5>
+                <p>To maintain a safe and welcoming environment, all members are expected to follow our community guidelines. These guidelines include respecting others, avoiding spam, and fostering positive interactions. Violation of these rules may result in restricted access or removal from the community.</p>
+
+                <h5>7.3 Benefits of the Community</h5>
+                <p>Being part of the community allows verified users to network, collaborate on projects, exchange valuable insights, and participate in exclusive events and discussions designed to enhance their experience on the platform.</p>
+
+                <h5>7.4 Updates to Community Policies</h5>
+                <p>We may update the community policies as needed to ensure a safe and effective space for all members. By continuing to participate in the community, you agree to comply with any updated policies. If you disagree with any changes, you may opt to leave the community at any time.</p>
+            </div>
+        </div>
+
     </section>
 </div>
 

@@ -336,7 +336,7 @@ foreach ($all as $alls) {
                                                 </h5>
                                                 <div class="card-price-wrap d-flex align-items-center justify-content-between pb-3">
                                                     <div class="me-5 me-sm-2">
-                                                        <span class="card-price-title">Price</span>
+                                                        <span class="card-price-title">Floor Price</span>
                                                         <span class="card-price-number"><?= $nft->price ?> ETH</span>
                                                     </div>
                                                     <div class="text-sm-end">

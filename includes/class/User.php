@@ -19,6 +19,15 @@ class User
     $user = $stmt->fetch(PDO::FETCH_OBJ);
     return $user;
   }
+  public function getUserDetailsByWalletAddress($id)
+  {
+    $sql = "SELECT * FROM `reg_details` WHERE `address` = :cd";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(":cd", $id);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_OBJ);
+    return $user;
+  }
 
   public function getAllAdminMails()
   {
@@ -727,6 +736,25 @@ class User
     return $nftId; // Return unique chat ID
 
   }
+
+  public function getUserAddress()
+  {
+
+    do {
+      $userAddr = generateFakeAddress();
+
+      $stmt = $this->pdo->prepare("SELECT * FROM reg_details WHERE `address` = :id");
+      $stmt->bindParam(':id', $userAddr, PDO::PARAM_STR);
+      $stmt->execute();
+
+      $convoId = $stmt->fetch(PDO::FETCH_OBJ);
+    } while ($convoId);
+
+
+    return $userAddr; // Return unique chat ID
+
+  }
+  
   public function checkUserVerificationStatus($userId)
   {
     $query = "SELECT badge_verification FROM reg_details WHERE id = :userId";

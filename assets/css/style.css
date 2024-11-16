@@ -3988,7 +3988,7 @@ textarea.form-control {
 .card-img {
   border-radius: 0.375rem;
   height: 200px;
-  object-fit: contain;
+  object-fit: cover;
 }
 .card-img-top {
   border-top-left-radius: 0.375rem;

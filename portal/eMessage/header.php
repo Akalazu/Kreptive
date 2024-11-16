@@ -33,17 +33,30 @@
                 </a>
                 <ul class="chat-sidebar-menu">
                     <li>
-                        <a href="../" data-title="Portal"><i class="ri-home-3-line"></i></a>
+                        <a href="../" data-title="Portal"><i class="ri-home-3-line"></i>
+                            <span class="icon-title">Home</span>
+                        </a>
                     </li>
                     <li class="<?= checkActiveState('contacts') ?>">
-                        <a href="contacts" data-title="Chats"><i class="ri-chat-3-line"></i></a>
+                        <a href="contacts" data-title="Chats"><i class="ri-chat-3-line"></i>
+
+                            <span class="icon-title">Chats</span>
+                        </a>
+
                     </li>
                     <li class="<?= checkActiveState('index') ?>">
-                        <a href="./" data-title="Community"><i class="ri-contacts-line"></i></a>
+                        <a href="./" data-title="Community"><i class="ri-contacts-line"></i>
+                            <span class="icon-title">Members</span>
+                        </a>
+
                     </li>
 
                     <li>
-                        <a href="#" data-title="Settings"><i class="ri-settings-line"></i></a>
+                        <a href="../account" data-title="Settings"><i class="ri-user-line"></i>
+
+                            <span class="icon-title">Profile</span>
+                        </a>
+
                     </li>
                     <li class="chat-sidebar-profile">
                         <button type="button" class="chat-sidebar-profile-toggle">

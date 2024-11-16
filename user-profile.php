@@ -1,9 +1,9 @@
 <?php
 require_once 'header.php';
 
-if (isset($_GET['usrp'])) {
-    $userID = sanitizeText($_GET['usrp']);
-    $user_details = $userCl->getUserDetails($userID);
+if (isset($_GET['wallet'])) {
+    $userID = sanitizeText($_GET['wallet']);
+    $user_details = $userCl->getUserDetailsByWalletAddress($userID);
     if ($user_details) {
         $fullName = $user_details->first_name . ' ' . $user_details->last_name;
     } else {
@@ -155,7 +155,7 @@ $bidRecords = $stmt->fetchAll(PDO::FETCH_OBJ);
                                         $art = $userCl->getNFTDetailsById($record->art_id);
 
                                         echo '
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
                                                 ' . $art->title . '
                                                 <h5 class="my-0">' . $record->bid . ' ETH</h5>
                                             </li>
@@ -191,7 +191,7 @@ $bidRecords = $stmt->fetchAll(PDO::FETCH_OBJ);
                                     }
 
                                     echo '
-                                        <li class="list-group-item d-flex align-items-center gap-3 py-4">
+                                        <li class="list-group-item d-flex align-items-center gap-3 py-4 bg-transparent">
                                             <span>
                                                 ' . $icon . '
                                             </span>

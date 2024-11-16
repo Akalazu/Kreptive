@@ -93,16 +93,6 @@
                 Copyright &copy; 2020 - <?= date('Y') ?> Kreptive.
             </p>
 
-            <p>
-                <span class="me-2">
-                    Powered By
-                </span>
-                <span>
-                    <img src="images/brand/trust.png" alt="brand_logo" class="img-fluid me-1" width="50">
-                    <img src="images/brand/non_atomic.jpeg" alt="brand_logo" class="img-fluid" width="50">
-                </span>
-            </p>
-
         </div>
         <!-- end d-flex -->
     </div>
@@ -122,44 +112,44 @@
         alert("Text has been copied!");
     }
 
-    function themeSwitcher(selector) {
-        let themeToggler = document.querySelectorAll(selector);
-        if (themeToggler.length > 0) {
-            themeToggler.forEach((item) => {
-                item.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    document.body.classList.toggle("dark-mode");
-                    if (document.body.classList.contains("dark-mode")) {
-                        localStorage.setItem("website_theme", "dark-mode");
-                    } else {
-                        localStorage.setItem("website_theme", "default");
-                    }
-                });
-            });
-        }
+    // function themeSwitcher(selector) {
+    //     let themeToggler = document.querySelectorAll(selector);
+    //     if (themeToggler.length > 0) {
+    //         themeToggler.forEach((item) => {
+    //             item.addEventListener("click", function(e) {
+    //                 e.preventDefault();
+    //                 document.body.classList.toggle("dark-mode");
+    //                 if (document.body.classList.contains("dark-mode")) {
+    //                     localStorage.setItem("website_theme", "dark-mode");
+    //                 } else {
+    //                     localStorage.setItem("website_theme", "default");
+    //                 }
+    //             });
+    //         });
+    //     }
 
-        function retrieveTheme() {
-            var theme = localStorage.getItem("website_theme");
-            if (theme != null) {
-                document.body.classList.remove("default", "dark-mode");
-                document.body.classList.add(theme);
-            }
-        }
+    //     function retrieveTheme() {
+    //         var theme = localStorage.getItem("website_theme");
+    //         if (theme != null) {
+    //             document.body.classList.remove("default", "dark-mode");
+    //             document.body.classList.add(theme);
+    //         }
+    //     }
 
-        retrieveTheme();
+    //     retrieveTheme();
 
-        if (window) {
-            window.addEventListener(
-                "storage",
-                function() {
-                    retrieveTheme();
-                },
-                false
-            );
-        }
-    }
+    //     if (window) {
+    //         window.addEventListener(
+    //             "storage",
+    //             function() {
+    //                 retrieveTheme();
+    //             },
+    //             false
+    //         );
+    //     }
+    // }
 
-    themeSwitcher(".theme-toggler");
+    // themeSwitcher(".theme-toggler");
 
 
     var eyeIconButton = document.querySelector('.field__view');

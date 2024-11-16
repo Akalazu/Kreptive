@@ -4567,7 +4567,7 @@ progress {
 }
 .form-control:disabled,
 .form-control[readonly] {
-  background-color: #e9ecef;
+  /* background-color: #e9ecef; */
   opacity: 1;
 }
 .form-control::file-selector-button {
@@ -8026,7 +8026,7 @@ fieldset:disabled .btn {
   /* color: #212529; */
   margin: 10px 0;
   text-decoration: none;
-  /* background-color: #fff; */
+  background-color: none;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .list-group-item:first-child {

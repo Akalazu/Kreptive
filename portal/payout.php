@@ -23,87 +23,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
     $user_idd = $_SESSION['currid'];
     $refId = genRefId();
 
-    if ($method == 'minting') {
-        if ($currUser->lazy_mint) {
-            if ($amount > $currUser->mint_balance) {
-                echo '
-               <script>
-             swal({
-                   title: "Oops!",
-                    text: "Insufficient Balance in Minting Profit Wallet",
-                    icon: "warning"
-                 });
-             </script>
-         ';
-            } else {
-
-
-                $mint_profit = $currUser->mint_balance; //user current minting balance
-
-                $charge = $userCl->getUserMintFee($currUser->id); //get current charge for this transcaction
-
-                $newMint_profit = $mint_profit - ($amount + $charge); //suppposed balance after transaction
-
-                if ($newMint_profit >= 0) {
-                    $wallet_addr = '-'; //wallet address wont be needed in swapping from mint balance to profit
-
-                    $currency = "Ethereum";
-
-                    $status = 1; //every confirmed swapping should bnot be pending.
-
-                    $newProfitBal = $currUser->profit + $amount; //add amount to profit  balance
-
-                    $sql = "UPDATE `reg_details` SET `profit`= :pp,`mint_balance`= :mb WHERE `id` = :idd";
-                    $statement = $pdo->prepare($sql);
-                    $statement->bindParam(':pp', $newProfitBal);
-                    $statement->bindParam(':mb', $newMint_profit);
-                    $statement->bindParam(':idd', $currUser->id);
-
-                    $query = "INSERT INTO `account_withdraw`(`amount`, `wallet_addr`, `type`, `method`, `withdraw_by`, `time_withdrawn`, `status`) VALUES (:am, :wa, :tp, :md, :wb, :tw, :st)";
-                    $stmtt = $pdo->prepare($query);
-                    $stmtt->bindParam(':am', $amount);
-                    $stmtt->bindParam(':wa', $wallet_addr);
-                    $stmtt->bindParam(':tp', $type);
-                    $stmtt->bindParam(':md', $method);
-                    $stmtt->bindParam(':wb', $withdraw_by);
-                    $stmtt->bindParam(':tw', $time_created);
-                    $stmtt->bindParam(':st', $status);
-
-                    if ($statement->execute() && $stmtt->execute() && $activityCl->withdrawMintingToProfit($currUser->code, $refId, $amount)) {
-                        echo '
-                   <script>
-                 swal({
-                       title: "Success",
-                       text: "' . $amount . 'ETH has been added to ETH (Arbitrum) Wallet",
-                       icon: "success",
-                       button: "Loading...",
-                     })
-                 </script>
-             ';
-                        header('refresh: 2');
-                    }
-                } else {
-                    echo '
-               <script>
-             swal({
-                   title: "Oops!",
-                    text: "Insufficient Balance to make this transaction",
-                    icon: "warning"
-                 });
-             </script>
-         ';
-                }
-            }
-        } else {
+    if ($method == 'balance') {
+        if ($amount > $currUser->balance) {
             echo '
+               <script>
+             swal({
+                   title: "Oops!",
+                    text: "Insufficient Balance in Ethereum Wallet",
+                    icon: "warning"
+                 });
+             </script>
+         ';
+        } else {
+            if ($amount >= $max_limit) {
+                $_SESSION['withdraw_amount'] = $amount;
+                $_SESSION['wallet_address'] = $wallet_addr;
+                $_SESSION['payout_coin'] = 'ETH';
+
+                $status = 0; //every confirmed swapping should bnot be pending.
+
+                $isValid = preg_match('/^0x[a-fA-F0-9]{40}$/', $wallet_addr);
+
+                if (!$isValid) {
+                    echo '
+                        <script>
+                        swal({
+                            title: "Error!",
+                                text: "Please enter a valid Ethereum wallet address.",
+                                icon: "warning"
+                            });
+                        </script>
+                    ';
+                } else {
+                    header('location: payout_review');
+                }
+            } else {
+                echo '
            <script>
          swal({
                title: "Oops!",
-                text: "Lazy Minting is currently disabled",
-                icon: "warning"
+               text: "You can only make a withdrawal of at least ' . $max_limit . 'ETH",
+               icon: "warning",
+               button: "Ok",
              });
          </script>
      ';
+            }
         }
     } else {
 
@@ -121,6 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
 
             $_SESSION['withdraw_amount'] = $amount;
             $_SESSION['wallet_address'] = $wallet_addr;
+            $_SESSION['payout_coin'] = 'ARB';
+
 
             $status = 0; //every confirmed swapping should bnot be pending.
 
@@ -268,7 +235,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                         <label for="account">Withdraw From</label>
                         <select class="form-control" id="account" name="method" onchange="toggleInput()" required>
                             <option selected value="" disabled>Select Option</option>
-                            <option value="profit">ETH (Arbitrum) Wallet - <?= $currUser->profit ?>ETH</option>
+                            <option value="balance">ETH Wallet - <?= $currUser->balance ?>ETH</option>
+                            <option value="profit">ETH (ARB) Wallet - <?= $currUser->profit ?>ETH</option>
                         </select>
                     </div>
                     <div class="form-group" id="wallet_address" style="display: none;">
@@ -326,7 +294,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
         var blurEl = document.getElementById('addr');
 
 
-        if (select.value === 'profit') {
+        if (select.value === 'profit' || select.value === 'balance') {
             console.log('profit');
             inputF.style.display = 'block';
             blurEl.setAttribute('required', 'required')

@@ -7,6 +7,7 @@ $max_limit = $userCl->getCurrLimit();
 $withdraw_by = $currUser->id;
 $status = 0;
 
+
 if (isset($_POST['withdraw_funds'])) {
 
     $amount = $_POST['withdrawal_amount'];
@@ -109,8 +110,11 @@ if (isset($_POST['withdraw_funds'])) {
      ';
     }
 }
-
-
+if (isset($_SESSION['payout_coin']) && $_SESSION['payout_coin'] = 'ETH') {
+    $coin_img = '<img src="../assets/images/ethereum.svg" alt="" width="25" class="me-1">ETH';
+} else {
+    $coin_img = '<img src="../assets/images/arbi.svg" alt="" width="25" class="me-1">ETH (ARB)';
+}
 ?>
 
 <style>
@@ -144,18 +148,18 @@ if (isset($_POST['withdraw_funds'])) {
             <h6 class="text-center"><b>Confirm Withdrawal</b></h6>
             <div class="card-body table__container">
 
-                <h1 class="text-center " style="font-size: 3rem;"><b><?= $_SESSION['withdraw_amount'] ?> ETH</b></h1>
+                <h1 class="text-center " style="font-size: 3rem;"><b><?php echo $_SESSION['withdraw_amount'] ?> ETH</b></h1>
                 <h5 class="text-center mb-5"> = $<?= number_format($_SESSION['withdraw_amount'] * $ethereumToUsdRate) ?></h5>
 
 
                 <div class="transac_details mb-3">
-                    <div class="row p-3 mb-5" style="background: #f0f0f0; border-radius: 5px">
+                    <div class="row p-3 mb-5" style="border-radius: 5px">
                         <div class="col-12 py-3 d-flex justify-content-between align-items-center">
                             <span>
                                 Assets
                             </span>
                             <span>
-                                <b>ETH - Ethereum</b>
+                                <b> <?= $coin_img ?> </b>
                             </span>
                         </div>
                         <div class="col-12 py-3 d-flex justify-content-between align-items-center">

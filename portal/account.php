@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
   $bio = sanitizeText($_POST['bio']);
 
   if (!(empty($fname) || empty($lname) || empty($uname) || empty($email))) {
-    $sql = "UPDATE `reg_details` SET `first_name`= :fn,`last_name`= :ln,`username`= :un, `bio` = :bi, `email`= :em,`phone`= :ph,`address`= :ad WHERE id = :idd";
+    $sql = "UPDATE `reg_details` SET `first_name`= :fn,`last_name`= :ln,`username`= :un, `bio` = :bi, `email`= :em WHERE id = :idd";
     $stmtt = $pdo->prepare($sql);
     $stmtt->bindParam(':idd', $currUser->id);
     $stmtt->bindParam(':fn', $fname);
@@ -22,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
     $stmtt->bindParam(':un', $uname);
     $stmtt->bindParam(':em', $email);
     $stmtt->bindParam(':bi', $bio);
-    $stmtt->bindParam(':ph', $phone);
-    $stmtt->bindParam(':ad', $address);
+
     if ($stmtt->execute()) {
       echo '
               <script>

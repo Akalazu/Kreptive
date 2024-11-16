@@ -755,7 +755,7 @@ class User
 
   }
 
-  public function updateUserAddresses($userCl)
+  public function updateUserAddresses()
   {
     try {
       // Fetch all users from the reg_details table

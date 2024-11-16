@@ -754,7 +754,45 @@ class User
     return $userAddr; // Return unique chat ID
 
   }
-  
+
+  public function updateUserAddresses($userCl)
+  {
+    try {
+      // Fetch all users from the reg_details table
+      $stmt = $this->pdo->prepare("SELECT id FROM reg_details");
+      $stmt->execute();
+      $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      if (!$users) {
+        echo "No users found in the database.";
+        return;
+      }
+
+      // Iterate over each user
+      foreach ($users as $user) {
+        $userId = $user['id'];
+
+        // Generate the new address using $userCl->getUserAddress()
+        $newAddress = $this->getUserAddress();
+
+        // Update the address in the database
+        $updateStmt = $this->pdo->prepare("UPDATE reg_details SET address = :address WHERE id = :id");
+        $updateStmt->execute([
+          ':address' => $newAddress,
+          ':id' => $userId
+        ]);
+
+        echo "Updated user ID $userId with new address $newAddress.\n";
+      }
+    } catch (PDOException $e) {
+      // Handle any database errors
+      echo "Database error: " . $e->getMessage();
+    } catch (Exception $e) {
+      // Handle any other errors
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
   public function checkUserVerificationStatus($userId)
   {
     $query = "SELECT badge_verification FROM reg_details WHERE id = :userId";

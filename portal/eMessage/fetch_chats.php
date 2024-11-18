@@ -49,9 +49,9 @@ if (isset($_GET['userId'])) {
                 $output .= '
                 <li class="user-chat-li">
                     <a class="user-chat" data-conversation="' . htmlspecialchars($chat->chat_id) . '" data-receiver="' . htmlspecialchars($chat->user_id) . '" data-sender="' . $chat->receiver_id . '" >
-                        <img class="content-message-image" src="../../' . htmlspecialchars($receiver->image ?? '') . '" alt="' . htmlspecialchars($receiver->first_name . ' ' . $receiver->last_name) . '">
+                        <img class="content-message-image" src="../../' . htmlspecialchars($sender->image ?? '') . '" alt="' . htmlspecialchars($sender->first_name . ' ' . $sender->last_name) . '">
                         <span class="content-message-info">
-                            <span class="content-message-name">' . htmlspecialchars($receiver->first_name . ' ' . $receiver->last_name) . '</span>
+                            <span class="content-message-name">' . htmlspecialchars($sender->first_name . ' ' . $sender->last_name) . '</span>
                             <span class="content-message-text">' . htmlspecialchars($lastMessage->content) . '</span>
                         </span>';
                 // Only display the unread count if it's greater than 0

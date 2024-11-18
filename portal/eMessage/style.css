@@ -328,6 +328,11 @@ body {
   display: flex;
   align-items: center;
 }
+@media (max-width: 768px) {
+  .conversation-top {
+    margin-top: 55px;
+  }
+}
 .conversation-back {
   background-color: transparent;
   border: none;

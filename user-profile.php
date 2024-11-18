@@ -43,7 +43,7 @@ $bidRecords = $stmt->fetchAll(PDO::FETCH_OBJ);
 
                 <div class="user_info d-flex my-4" style="gap: 50px;">
                     <span>
-                        <h3><?= $user_details->total_volume ?> ETH</h3>
+                        <h3><?= $user_details->total_volume == 0 ?? $userCl->getTotalNftPriceByUser($user_details->id) ?> ETH</h3>
                         <p>Total Volume</p>
                     </span>
                     <span>

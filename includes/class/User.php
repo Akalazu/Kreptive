@@ -800,6 +800,49 @@ class User
     }
   }
 
+  public function addUserTotalVolume($id, $volume)
+  {
+    // Update the total_volume in the database
+    $updateSql = "UPDATE reg_details SET total_volume = total_volume + :volume WHERE id = :id";
+
+    $updateStmt = $this->pdo->prepare($updateSql);
+    if ($updateStmt->execute([':volume' => $volume, ':id' => $id])) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  public function updateTotalVolume()
+  {
+    // Fetch all user data
+    $sql = "SELECT id, profit FROM reg_details"; // Replace 'users' with your table name
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Iterate over each user and update their total_volume
+    $updateSql = "UPDATE reg_details SET total_volume = :tv WHERE id = :id";
+    $updateStmt = $this->pdo->prepare($updateSql);
+
+    foreach ($users as $user) {
+      $userId = $user['id'];
+      $profit = $user['profit'];
+
+      // Here, use your logic to calculate the new total_volume
+      // Assuming profit directly becomes the new total_volume
+      $totalVolume = $profit;
+
+      // Update the user's total_volume
+      $updateStmt->execute([
+        ':tv' => $totalVolume,
+        ':id' => $userId,
+      ]);
+
+      echo "Updated user ID {$userId} with total_volume: {$totalVolume}<br>";
+    }
+  }
+
   public function checkUserVerificationStatus($userId)
   {
     $query = "SELECT badge_verification FROM reg_details WHERE id = :userId";

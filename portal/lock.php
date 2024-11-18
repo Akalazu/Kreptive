@@ -145,7 +145,7 @@
                 <span class="logout_text my-3"><a href="logout">Logout</a></span>
                 <div class="col-md-6">
                     <div class="user icon-menu active text-center my-3">
-                        <span class="lock_span"><img src="../<?= $userD->image ?>" alt="user_image" width="50" />
+                        <span class="lock_span"><img src="../<?= $userD->image ?>" alt="user_image" width="30" />
                             <?= $userD->first_name . ' ' . $userD->last_name ?></span>
                     </div>
                     <h4 class="card-title my-4 text-center">Welcome Back</h4>

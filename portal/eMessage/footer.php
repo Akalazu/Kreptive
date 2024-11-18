@@ -354,19 +354,27 @@
                              const sendMessageResponse = await $.ajax({
                                  url: 'server.php',
                                  type: 'POST',
+                                 beforeSend: function() {
+                                     modal.find('button').prop('disabled', true);
+                                     modal.find('button').html('<img src="images/loader.gif" alt="" width="35">'); // Show loading spinner
+                                 },
                                  data: {
                                      action: 'send_message',
                                      message: message,
                                      sender_id: senderId,
                                      receiver_id: receiverId,
                                      chatId: conversationId
+                                 },
+                                 success: function() {
+                                    //  modal.find('button').prop('disabled', false);
+                                    //  modal.find('button').html('Send'); // Hide loading spinner
+                                     modal.hide(); // Close modal after sending message
+                                     messageField.val(''); // Clear the message field
+                                     window.location.href = 'contacts'; // Return to chat window
                                  }
                              });
 
-                             console.log(sendMessageResponse); // Log the response for debugging
-                             modal.hide(); // Close modal after sending message
-                             messageField.val(''); // Clear the message field
-                             window.location.href = 'contacts'; // Return to chat window
+
                          } catch (error) {
                              console.error('Error sending message:', error); // Handle error
                          }

@@ -123,29 +123,29 @@ if (isset($_POST['delete_nft'])) {
                     $sql = "UPDATE `account_deposit` SET `status`= 1 WHERE `id` = :idd";
                     $statement = $pdo->prepare($sql);
                     $statement->bindParam(':idd', $iddd);
-                    if ($statement->execute() && $userCl->payUserCommission($userIdd)) {
+                    if ($statement->execute() && $userCl->payUserCommission($userIdd) && $userCl->addUserTotalVolume($userIdd, $deposit)) {
                         echo '
-            <script>
-            swal({
-                title: "Success",
-                text: "The deposit has been successfully approved",
-                icon: "success"
-            })
-            </script>
-           
-            ';
+                            <script>
+                            swal({
+                                title: "Success",
+                                text: "The deposit has been successfully approved",
+                                icon: "success"
+                            })
+                            </script>
+                        
+                            ';
                         header('refresh: 2');
                     } else {
                         echo '
-            <script>
-            swal({
-                title: "Oops!",
-                text: "An error occured, kindly try again",
-                icon: "warning"
-            })
-            </script>
-           
-            ';
+                            <script>
+                            swal({
+                                title: "Oops!",
+                                text: "An error occured, kindly try again",
+                                icon: "warning"
+                            })
+                            </script>
+                        
+                            ';
                     }
                 }
             }
@@ -663,7 +663,7 @@ if (isset($_POST['delete_nft'])) {
 
                                             </thead>
                                             <tbody class="fs-13 text-center">
-                                                          <form action="" method="post">
+                                                <form action="" method="post">
                                                     <div class="input-group mb-3">
                                                         <input type="text" class="form-control" placeholder="SEARCH BY NFT TITLE" name="input_value">
 
@@ -674,7 +674,7 @@ if (isset($_POST['delete_nft'])) {
                                                 </form>
 
                                                 <?php
-                                                                       if (isset($_POST['search_item'])) {
+                                                if (isset($_POST['search_item'])) {
                                                     $input = $_POST['input_value'];
 
                                                     $inputF = '%' . $input . '%'; // For partial matches

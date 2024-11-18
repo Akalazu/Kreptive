@@ -7,8 +7,6 @@
 
     if (isset($_POST['accept_bid'])) {
 
-
-
         $bid_id = sanitizeText($_POST['bidid']);
         $bid = sanitizeText($_POST['bid']);
         $buyer = $userCl->getUserDetails(sanitizeText($_POST['buyerid']));
@@ -89,7 +87,7 @@
                     $stmtt->bindParam(':bl', $remaining_balance);
                     $status = 1;
 
-                    if ($stmtt->execute() && $userCl->sendNftPurchaseMail($buyer_fname, $nft->title, $buyer->email, $nft->price) && $userCl->updateBidStatus($status, $bid_id, $nft->id, $new_profit_balance)) {
+                    if ($stmtt->execute() && $userCl->sendNftPurchaseMail($buyer_fname, $nft->title, $buyer->email, $nft->price) && $userCl->updateBidStatus($status, $bid_id, $nft->id, $new_profit_balance) && $userCl->addUserTotalVolume($currUser->id, $bid)) {
 
                         $activityCl->salesArt($currUser->code, $ref_id, $nft->title, $bid, $buyer->username);
                         $activityCl->purchaseArt($buyer->code, $ref_id, $nft->title, $bid);

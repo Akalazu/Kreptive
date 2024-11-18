@@ -197,6 +197,7 @@
 
      // Add event listener for clicking on a chat to load conversations
      $(document).on('click', '.user-chat', function(event) {
+
          const conversationId = $(this).data('conversation'); // Get conversation ID from data attribute
          const receiverId = $(this).data('receiver'); // Get receiver ID from data attribute
          const senderId = $(this).data('sender'); // Get receiver ID from data attribute
@@ -366,8 +367,8 @@
                                      chatId: conversationId
                                  },
                                  success: function() {
-                                    //  modal.find('button').prop('disabled', false);
-                                    //  modal.find('button').html('Send'); // Hide loading spinner
+                                     //  modal.find('button').prop('disabled', false);
+                                     //  modal.find('button').html('Send'); // Hide loading spinner
                                      modal.hide(); // Close modal after sending message
                                      messageField.val(''); // Clear the message field
                                      window.location.href = 'contacts'; // Return to chat window

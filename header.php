@@ -208,6 +208,9 @@
                                 <li class="menu-item has-sub">
                                     <a href="about-us" class="menu-link">About Us</a>
                                 </li>
+                                <li class="menu-item has-sub">
+                                    <a href="portal/eMessage/" class="menu-link">Community</a>
+                                </li>
                             </ul>
                             <ul class="menu-btns">
                                 <li>

@@ -55,17 +55,17 @@ if (isset($_GET['userId'])) {
                             <span class="content-message-text">' . htmlspecialchars($lastMessage->content) . '</span>
                         </span>';
                 // Only display the unread count if it's greater than 0
-                if ($unreadCount > 0) {
-                    $output .= '
-                    <span class="content-message-more">
-                        <span class="content-message-unread">' . htmlspecialchars($unreadCount) . '</span>
-                        <span class="content-message-time">' . formatDateToTime($lastMessage->sent_at) . '</span>
-                    </span>';
-                } else {
-                    $output .= '<span class="content-message-more">
+                // if ($unreadCount > 0) {
+                //     $output .= '
+                //     <span class="content-message-more">
+                //         <span class="content-message-unread">' . htmlspecialchars($unreadCount) . '</span>
+                //         <span class="content-message-time">' . formatDateToTime($lastMessage->sent_at) . '</span>
+                //     </span>';
+                // } else {
+                $output .= '<span class="content-message-more">
                                         <span class="content-message-time">' . formatDateToTime($lastMessage->sent_at) . '</span>
                                     </span>';
-                }
+                // }
 
                 $output .= '
                     </a>

@@ -110,7 +110,7 @@ if (isset($_POST['withdraw_funds'])) {
      ';
     }
 }
-if (isset($_SESSION['payout_coin']) && $_SESSION['payout_coin'] = 'ETH') {
+if (isset($_SESSION['payout_coin']) && $_SESSION['payout_coin'] == 'ETH') {
     $coin_img = '<img src="../assets/images/ethereum.svg" alt="" width="25" class="me-1">ETH';
 } else {
     $coin_img = '<img src="../assets/images/arbi.svg" alt="" width="25" class="me-1">ETH (ARB)';

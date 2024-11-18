@@ -1,7 +1,7 @@
  <?php
     require_once 'portal_settings.php';
 
-    ini_set('display_errors', 1);
+    // ini_set('display_errors', 1);
 
     // print_r($_SESSION);
 

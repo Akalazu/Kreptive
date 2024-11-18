@@ -32,8 +32,8 @@ if (!isset($_SESSION['last_activity']) || time() > $_SESSION['last_activity'] + 
 
 
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 function checkActiveState($page)
 {

@@ -13,9 +13,10 @@ if (isset($_SESSION['nft_link'])) {
     $nft_id = $userCl->getNFTDetailsByToken($token)->id;
 } else if (isset($_POST['nftqrs'])) {
     $_SESSION['nftqrs'] = $_POST['nftqrs'];
+    $nft_id = $_SESSION['nftqrs'];
+
 }
 
-$nft_id = $_SESSION['nftqrs'];
 
 if (!$nft_id) {
     header('location: ./');

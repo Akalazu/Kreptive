@@ -329,20 +329,10 @@ if (isset($_POST['create_item'])) {
                         <label for="price">Price</label>
                         <input type="number" class="form-control" name="price" placeholder="Enter price in ETH(ARB)" min="0" step=".01" required>
                     </div>
-                    <div class="form-group">
-                        <label for="price">Minting Fee</label>
-                        <input type="text" class="form-control" min="0" step=".01" value="<?= $userCl->getDepoCharge() ?> ETH" name="mint_fee" required readonly>
-                    </div>
+
                     <div class="form-group">
                         <label for="price">Royalties</label>
-                        <select name="royalties" id="royalties" class="form-control" required>
-                            <option value="" selected disabled>Choose Option</option>
-                            <option value="0">0%</option>
-                            <option value="10">10%</option>
-                            <option value="20">20%</option>
-                            <option value="30">30%</option>
-                            <option value="50">50%</option>
-                        </select>
+                        <input type="text" class="form-control" min="0" step=".01" value="10%" name="royalties" required readonly>
                         <!-- <input type="number" class="form-control" name="price" min="0" step=".01" required> -->
                     </div>
                     <div class="image__preview">
@@ -359,6 +349,11 @@ if (isset($_POST['create_item'])) {
                             <input type="file" accept=".jpg,.png,.jpeg" id="fileID" name="img_upload" onchange="previewImage(event)" hidden>
                             <button class="btn" type="button">Choose File</button>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Minting Fee</label>
+                        <input type="text" class="form-control" min="0" step=".01" value="<?= $userCl->getDepoCharge() ?> ETH" name="mint_fee" required readonly>
                     </div>
 
                     <!-- checkbox input -->

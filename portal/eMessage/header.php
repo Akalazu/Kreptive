@@ -25,7 +25,7 @@
 
     <!-- start: Chat -->
     <section class="chat-section">
-        <div class="chat-container">
+        <div class="chat-container position-relative overflow-auto">
             <!-- start: Sidebar -->
             <aside class="chat-sidebar">
                 <a href="#" class="chat-sidebar-logo">

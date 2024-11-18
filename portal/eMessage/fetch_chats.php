@@ -9,7 +9,7 @@ if (isset($_GET['userId'])) {
     $userRole = $userCl->getUserDetails($userId);
 
     if ($userRole->role == 'admin') {
-        $sql = "SELECT * FROM `chat`";
+        $sql = "SELECT * FROM `chat` ORDER BY `id` DESC";
         $statement = $pdo->prepare($sql);
         $statement->execute();
         $chats = $statement->fetchAll(PDO::FETCH_OBJ);

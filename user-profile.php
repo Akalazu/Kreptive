@@ -1,19 +1,24 @@
 <?php
 require_once 'header.php';
 
-if (isset($_GET['wallet'])) {
-    $userID = sanitizeText($_GET['wallet']);
+if (isset($_GET['address'])) {
+    $userID = sanitizeText($_GET['address']);
     $user_details = $userCl->getUserDetailsByWalletAddress($userID);
-    if ($user_details) {
+
+    if ($user_details && strtolower($user_details->first_name) == strtolower($_GET['first_name'])) {
         $fullName = $user_details->first_name . ' ' . $user_details->last_name;
     } else {
-        header('Location: ./');
+        echo '
+            <script>
+                window.location.href = "./";
+            </script>
+            ';
     }
 }
 
 $sql = "SELECT * FROM `all_bids` WHERE `recipient` = :rp AND `status` = :st ORDER BY `id` DESC";
 $stmt = $pdo->prepare($sql);
-$stmt->bindParam(':rp', $userID);
+$stmt->bindParam(':rp', $user_details->id);
 $stmt->bindParam(':st', $stat);
 $stmt->execute();
 $bidRecords = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -38,16 +43,16 @@ $bidRecords = $stmt->fetchAll(PDO::FETCH_OBJ);
 
                 <div class="user_info d-flex my-4" style="gap: 50px;">
                     <span>
-                        <h3><?= $userCl->getTotalNftPriceByUser($userID) ?> ETH</h3>
+                        <h3><?= $userCl->getTotalNftPriceByUser($user_details->id) ?> ETH</h3>
                         <p>Total Volume</p>
                     </span>
                     <span>
-                        <h3><?= $userCl->getLowestNftPriceByUser($userID) ?> ETH</h3>
+                        <h3><?= $userCl->getLowestNftPriceByUser($user_details->id) ?> ETH</h3>
                         <p>Floor Price</p>
                     </span>
 
                     <span class="text-center">
-                        <h3><?= count($userCl->getAllNftsOwnedByUser($userID)) ?></h3>
+                        <h3><?= count($userCl->getAllNftsOwnedByUser($user_details->id)) ?></h3>
                         <p>Total Items</p>
                     </span>
                 </div>
@@ -81,7 +86,7 @@ $bidRecords = $stmt->fetchAll(PDO::FETCH_OBJ);
 
                                 $sql = "SELECT * FROM `all_nft` WHERE `owner_id` = :idd";
                                 $statement = $pdo->prepare($sql);
-                                $statement->bindParam(':idd', $userID);
+                                $statement->bindParam(':idd', $user_details->id);
                                 if ($statement->execute()) {
                                     $user_nfts = $statement->fetchAll(PDO::FETCH_OBJ);
                                 }

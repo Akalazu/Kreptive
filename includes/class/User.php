@@ -21,9 +21,9 @@ class User
   }
   public function getUserDetailsByWalletAddress($id)
   {
-    $sql = "SELECT * FROM `reg_details` WHERE `address` = :cd";
+    $sql = "SELECT * FROM `reg_details` WHERE `address` = :ad";
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(":cd", $id);
+    $stmt->bindParam(":ad", $id);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_OBJ);
     return $user;

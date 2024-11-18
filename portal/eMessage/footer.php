@@ -10,7 +10,6 @@
  <!--Contact JS -->
 
  <script>
-     console.log("i am here!");
 
      $('#message_content').emojioneArea();
 

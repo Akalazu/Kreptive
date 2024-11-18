@@ -177,7 +177,7 @@ $bidRecords = $stmt->fetchAll(PDO::FETCH_OBJ);
                             <ul class="list-group">
 
                                 <?php
-                                $sql = "SELECT * FROM `activities_db` WHERE `created_by` = :cb AND `type` = 'sales' || `type` = 'purchase' ORDER BY `id` DESC";
+                                $sql = "SELECT * FROM `activities_db` WHERE `created_by` = :cb AND (`type` = 'sales' OR `type` = 'purchase') ORDER BY `id` DESC";
 
                                 $statement = $pdo->prepare($sql);
                                 $statement->bindParam(':cb', $user_details->code);

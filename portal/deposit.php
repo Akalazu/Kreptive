@@ -127,7 +127,7 @@ if (isset($_POST['send_proof'])) {
                                                                 <input type="text" hidden value="<?= $userCl->getDepoCharge() ?>" name="charges">
 
                                                                 <div class="form-group">
-                                                                    <label for="messsage">Amount</label>
+                                                                    <label for="messsage">Amount in ETH</label>
                                                                     <input type="number" class="form-control" name="amount_deposit" step="0.000001" required="">
                                                                 </div>
 

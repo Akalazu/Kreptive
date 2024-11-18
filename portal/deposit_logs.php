@@ -86,7 +86,6 @@ if (isset($_POST['send_proof'])) {
                             <th>#</th>
                             <th>Payment Method</th>
                             <th>Amount</th>
-                            <th>Charge(s)</th>
                             <th>Reference ID</th>
                             <th>Date | Time</th>
                             <th>Status</th>
@@ -115,7 +114,6 @@ if (isset($_POST['send_proof'])) {
                             <td>' . $j . '</td>
                             <td>Ethereum</td>
                             <td class="text-success">' . $depos_history->amount . 'ETH</td>
-                            <td> ' . $depos_history->charge . '</td>
                             <td>' . $depos_history->reference_id . '</td>
                             <td>' . $depos_history->date_created . '</td>
                             <td> <button type="button" class="btn ' . $color . ' btn-rounded py-2 px-4">' . $status . '</button>

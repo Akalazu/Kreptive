@@ -177,9 +177,8 @@
                     <div class="header-wrap">
                         <div class="header-logo">
                             <a href="./" class="logo-link">
-                                <img class="logo-dark logo-img" src="images/logo__dark.png" alt="logo" style="width: 250px; height: 100%" />
-                                <img class="logo-light logo-img" src="images/logo.png" alt=" logo" style="width:
-                  250px; height: 100%" />
+                                <img class="logo-dark logo-img" src="images/logo__dark.png" alt="logo" style="width: 200px; height: 100%" />
+                                <img class="logo-light logo-img" src="images/logo.png" alt=" logo" style="width:200px; height: 100%" />
                             </a>
                         </div>
                         <!-- .header-logo -->

@@ -6,7 +6,7 @@
                     <div class="footer-item mb-5 mb-lg-0">
                         <a href="./" class="footer-logo-link logo-link">
 
-                            <img class="logo-light logo-img" src="images/logo__dark.png" style="  height: 70px" />
+                            <img class="logo-light logo-img" src="images/logo.png" style="  height: 70px" />
                         </a>
                         <p class="my-4 footer-para">
                             Kreptive - The Home of World class Artworks

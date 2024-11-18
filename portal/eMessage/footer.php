@@ -330,7 +330,7 @@
                  });
 
                  let res = JSON.parse(createChatResponse);
-                 if (res.success) {
+                 if (res.success == true) {
                      // Open modal and store data attributes for receiverId and chatId
                      modal.show().data('receiverId', receiverId).data('chatId', conversationId);
 
@@ -363,7 +363,7 @@
                          }
                      });
 
-                 } else if (res.success === 'falsee') {
+                 } else if (res.success == 'falsee') {
                      window.location.href = 'contacts';
                  } else {
                      alert('Failed to create a new chat, please try again');

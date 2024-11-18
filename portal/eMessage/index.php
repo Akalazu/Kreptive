@@ -22,6 +22,7 @@ require_once 'config.php';
       <use xlink:href="#info-fill" />
     </svg>
     <div class="ml-3" style="font-size: 13px;">
+      
       Welcome to Kreptive — the community for art enthusiasts! Connect, engage, and explore creative conversations with fellow creators.
     </div>
   </div>

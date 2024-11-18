@@ -10,13 +10,12 @@
  <!--Contact JS -->
 
  <script>
-
      $('#message_content').emojioneArea();
 
      // A chat is what is loaded on the left pane, a conversation is what is loaded when the left pane is clicked.
 
      // Function to create and append a message div when a message is sent
-     function sendMessage(messageText) {
+     function sendMessage(messageText, image) {
          // Get the conversation wrapper element
          const conversationWrapper = document.querySelector(".conversation-wrapper");
 
@@ -30,7 +29,7 @@
 
          const messageImage = document.createElement("img");
          messageImage.classList.add("conversation-item-image");
-         messageImage.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVvcGxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60";
+         messageImage.src = image;
          messageImage.alt = "";
 
          messageSide.appendChild(messageImage);
@@ -136,6 +135,11 @@
                          receiver_id: receiverId,
                          chat_id: chatId
                      },
+                     beforeSend: function() {
+                         // Show loading spinner
+                         $('#send_button').prop('disabled', true);
+                         $('#send_button').html('<img src="images/loader.gif" alt="" width="20">');
+                     },
                      success: function(response) {
                          let res = JSON.parse(response);
                          if (res.status == 'success') {
@@ -143,10 +147,15 @@
                              $('#message_content').val('');
                              $('.emojionearea-editor').html('');
                              // Append the new message to the conversation
-                             sendMessage(res.message);
+                             sendMessage(res.message, res.image);
                              scrollToLatestMessage();
                          }
 
+                     },
+                     complete: function() {
+                         // Enable the send button again
+                         $('#send_button').prop('disabled', false);
+                         $('#send_button').html('<i class="ri-send-plane-2-line"></i>');
                      },
                      error: function(xhr, status, error) {
                          console.log("Error: " + error);
@@ -183,7 +192,7 @@
          // Fetch chats on page load
          fetchChats();
 
-          setInterval(fetchChats, 2000);
+         setInterval(fetchChats, 2000);
      });
 
      // Add event listener for clicking on a chat to load conversations

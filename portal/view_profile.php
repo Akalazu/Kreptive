@@ -198,7 +198,7 @@ $bidRecords = $stmt->fetchAll(PDO::FETCH_OBJ);
                                                         $sql = "SELECT * FROM `activities_db` WHERE `created_by` = :cb AND `type` = 'sales' || `type` = 'purchase' ORDER BY `id` DESC";
 
                                                         $statement = $pdo->prepare($sql);
-                                                        $statement->bindParam(':cb', $currUser->code);
+                                                        $statement->bindParam(':cb', $user->code);
                                                         $statement->execute();
                                                         $j = 1;
                                                         while ($activity = $statement->fetch(PDO::FETCH_OBJ)) {

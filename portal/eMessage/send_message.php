@@ -10,6 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $content = $_POST['content'];
 
 
+    $sender_details = $userCl->getUserDetails($sender_id);
+    $receiver_details = $userCl->getUserDetails($receiver_id);
+
+
     $query = "INSERT INTO messages (chat_id, sender_id, receiver_id, content) VALUES (:chat_id, :sender_id, :receiver_id, :content)";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':chat_id', $chat_id);
@@ -17,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':receiver_id', $receiver_id);
     $stmt->bindParam(':content', $content);
 
-    if ($stmt->execute()) {
-        echo json_encode(['status' => 'success', 'message' => $content]);
+    if ($stmt->execute() && $userCl->sendChatRecipientMail($receiver_details->first_name, $receiver_details->email, $content, $sender_details->username)) {
+        echo json_encode(['status' => 'success', 'message' => $content, 'image' => $sender_details->image]);
     } else {
         echo json_encode(['status' => 'error']);
     }

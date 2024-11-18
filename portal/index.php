@@ -213,7 +213,7 @@ foreach ($all as $alls) {
                                     foreach ($transactions as $transaction) {
 
 
-                                        if ($transaction['type'] == 'withdraw' || $transaction['type'] == 'commission') {
+                                        if ($transaction['type'] == 'withdraw' || $transaction['type'] == 'Brokeage Fee') {
                                             $sign = "-";
                                             $icon = "mdi-inbox-arrow-up";
                                             $color = "#e84f11";

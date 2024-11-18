@@ -30,10 +30,15 @@ $admin_mails = $userCl->getAllAdminMails();
 
 // current exchange rate in DB
 $rate = $userCl->getCurrExchangeRate();
-// echo (time() + 600) > strtotime($rate->time) ? 'true' : 'false';
+// echo $rate->time;
+// echo number_format(strtotime($rate->time) + 1200);
+// echo '----------------------------------------------------------------';
+// echo (strtotime($rate->time) + 1200) > time() ? 'true' : 'false';
+// echo '----------------------------------------------------------------';
+// echo number_format(time());
 // die();
 
-if ((strtotime($rate->time) + 1200) > time()) {
+if ((strtotime($rate->time) + 1200) < time()) {
     // API to convert ETH to the current dollar rate
     $coinGeckoApiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd";
 

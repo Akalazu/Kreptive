@@ -15,19 +15,39 @@ if (isset($_POST['action']) && $_POST['action'] == 'send_message') {
     $receiverId = $_POST['receiver_id'];
     $chatID = $_POST['chatId'];
 
-    $sql = "INSERT INTO `messages`(`chat_id`, `sender_id`, `receiver_id`, `content`) VALUES (:cid, :sidd, :ridd, :ctt)";
+    $sender_details = $userCl->getUserDetails($senderId);
+    $receiver_details = $userCl->getUserDetails($receiverId);
 
-    $statement = $pdo->prepare($sql);
+    // Prepare SQL statement
+    $sql = "INSERT INTO `chat` (`chat_id`, `user_id`, `receiver_id`, `created_at`) VALUES (:cid, :uidd, :rid, NOW())";
+    $stmt = $pdo->prepare($sql);
 
-    $statement->bindParam(':cid', $chatID);
-    $statement->bindParam(':sidd', $senderId);
-    $statement->bindParam(':ridd', $receiverId);
-    $statement->bindParam(':ctt', $message);
+    // Bind parameters
+    $stmt->bindParam(":cid", $chatID);
+    $stmt->bindParam(":uidd", $senderId);
+    $stmt->bindParam(":rid", $receiverId);
 
-    $statement->execute();
 
-    echo "Message sent successfully!";
-    $statement = $pdo->prepare($sql);
+    if ($stmt->execute()) {
+        $query = "INSERT INTO `messages`(`chat_id`, `sender_id`, `receiver_id`, `content`) VALUES (:cid, :sidd, :ridd, :ctt)";
+
+        $statement = $pdo->prepare($query);
+
+        $statement->bindParam(':cid', $chatID);
+        $statement->bindParam(':sidd', $senderId);
+        $statement->bindParam(':ridd', $receiverId);
+        $statement->bindParam(':ctt', $message);
+
+        if ($statement->execute() && $userCl->sendChatRecipientMail($receiver_details->first_name, $receiver_details->email, $message, $sender_details->username)) {
+            echo "Message sent successfully!";
+        } else {
+            echo "Failed to insert message record.";
+        }
+    } else {
+        echo "Failed to insert chat record.";
+    }
+
+    // $statement = $pdo->prepare($sql);
 }
 
 if (isset($_POST['receiverId'])) {

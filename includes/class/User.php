@@ -584,6 +584,13 @@ class User
           ];
           return true;
         }
+      }else{
+        // when user does not owe commission
+        $output = [
+          'error' => true,
+          'message' => "User does not owe commission."
+        ];
+        return true;
       }
     } catch (Exception $e) {
       // Rollback the transaction only if it was started

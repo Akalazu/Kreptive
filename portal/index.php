@@ -296,7 +296,7 @@ foreach ($all as $alls) {
                             <!-- <h3 class="mb-1">Your Received Offers:</h3> -->
                             <!-- <div id="google_translate_element" style="margin-bottom: 10px; margin-top: -25px;"></div> -->
 
-                            <p>The NFT Marketplace <?= $userCl->payUserCommission(348) ?></p>
+                            <p>The NFT Marketplace</p>
                             <div class="row">
                                 <?php
                                 $sql = "SELECT * FROM `all_nft` WHERE `status` = 1 AND `owner_id` != :oi ORDER BY `id` DESC LIMIT 15";

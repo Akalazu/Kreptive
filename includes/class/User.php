@@ -1823,7 +1823,7 @@ class User
                   <p>Message preview:</p>
                   <blockquote>$content</blockquote>
                   <p>Click the button below to login and view the full message:</p>
-                  <a href='https://kreptive.com/portal/emessage/contacts' class='button'>View Message</a>
+                  <a href='https://kreptive.com/portal/eMessage/contacts' class='button'>View Message</a>
               </div>
 
               <!-- Footer Section -->

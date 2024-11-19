@@ -16,20 +16,12 @@ if (isset($_POST['send_proof'])) {
 
     $time_created = date("d-m-Y h:ia", $tyme);
 
-    $sql = "INSERT INTO `account_deposit`(`reference_id`, `amount`, `method`, `charge`, `date_created`, `depositor`, `img_upload`) VALUES (:ri, :am, :mt, :ch, :dc, :dp, :iu)";
+    $status = 0;
 
-    $statement = $pdo->prepare($sql);
-    $statement->bindParam(':ri', $refId);
-    $statement->bindParam(':am', $amount);
-    $statement->bindParam(':mt', $method);
-    // $statement->bindParam(':st', $refId);
-    $statement->bindParam(':ch', $charge);
-    $statement->bindParam(':dc', $time_created);
-    // $statement->bindParam(':dv', $refId);
-    $statement->bindParam(':dp', $currUser->id);
-    $statement->bindParam(':iu', $store);
 
-    if ($statement->execute() &&  $activityCl->userDeposit($currUser->code, $refId, $method, $amount)) {
+
+
+    if ($userCl->fundAccount($refId, $amount, $method, $status, $charge, $time_created, $currUser->id, $store) &&  $activityCl->userDeposit($currUser->code, $refId, $method, $amount)) {
         // unset($_SESSION['amount_deposit']);
         echo '
                         <script>

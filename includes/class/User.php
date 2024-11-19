@@ -50,6 +50,25 @@ class User
     return $user;
   }
 
+  public function fundAccount($refId, $amount, $method, $status, $charge, $time_created, $idd, $store)
+  {
+
+    $sql = "INSERT INTO `account_deposit`(`reference_id`, `amount`, `method`,`status`,`charge`, `date_created`, `depositor`, `img_upload`) VALUES (:ri, :am, :mt, :st, :ch, :dc, :dp, :iu)";
+
+    $statement = $this->pdo->prepare($sql);
+    $statement->bindParam(':ri', $refId);
+    $statement->bindParam(':am', $amount);
+    $statement->bindParam(':mt', $method);
+    $statement->bindParam(':st', $status);
+    $statement->bindParam(':ch', $charge);
+    $statement->bindParam(':dc', $time_created);
+    // $statement->bindParam(':dv', $refId);
+    $statement->bindParam(':dp', $idd);
+    $statement->bindParam(':iu', $store);
+
+    return $statement->execute() ?? false;
+  }
+
   public function getTotalArtsCreated($id)
   {
     $sql = "SELECT `total_arts` FROM `reg_details` WHERE `id` = :idd";

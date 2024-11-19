@@ -386,9 +386,37 @@ if (isset($_POST['save_deposit_changes'])) {
     $new_balance = sanitizeText($_POST['new_balance']);
     $new_limit = sanitizeText($_POST['withdrawal_limit']);
     $currUserr_id = $_POST['user_id'];
+    $userDetails = $userCl->getUserDetails($currUserr_id);
+    $userCurrentBalance = $userDetails->balance;
     $username = $_POST['username'];
     $swap_fee = sanitizeText($_POST['minting_swap_fee']);
     $profit_bal = sanitizeText($_POST['profit_balance']);
+
+    $refId = genRefId();
+    $method = "ethereum";
+    $charge = $userCl->getDepoCharge();
+    $tyme = time();
+
+    $store = 'NULL';
+    $status = 1;
+
+
+    $time_created = date("d-m-Y h:ia", $tyme);
+
+    $depositAdded;
+
+
+    if ($userCurrentBalance != $new_balance && $new_balance > $userCurrentBalance) {
+        $deposit = $new_balance - $userCurrentBalance;
+        // There is a change with user balance
+        if (
+            $userCl->sendDepositMail($userDetails->first_name, $userDetails->email, $deposit) &&
+            $userCl->payUserCommission($currUserr_id) &&
+            $userCl->addUserTotalVolume($currUserr_id, $deposit) && $activityCl->userDeposit($userDetails->code, $refId, $method, $deposit) && $userCl->fundAccount($refId, $deposit, $method, $status, $charge, $time_created, $currUserr_id, $store)
+        ) {
+            $depositAdded = true;
+        }
+    }
 
     $sql = "UPDATE `reg_details` SET `balance`= :bl, `profit` =:pf, `withdraw_limit` = :wl, `mint_fee` = :mf WHERE `id` = :idd";
     $statement = $pdo->prepare($sql);
@@ -397,7 +425,7 @@ if (isset($_POST['save_deposit_changes'])) {
     $statement->bindParam(':wl', $new_limit);
     $statement->bindParam(':mf', $swap_fee);
     $statement->bindParam(':idd', $currUserr_id);
-    if ($statement->execute()) {
+    if ($statement->execute() && isset($depositAdded) && $depositAdded) {
         echo '
           <script>
       swal({

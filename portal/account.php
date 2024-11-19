@@ -13,39 +13,106 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
   $email = sanitizeText($_POST['emailAddress']);
   $bio = sanitizeText($_POST['bio']);
 
-  if (!(empty($fname) || empty($lname) || empty($uname) || empty($email))) {
-    $sql = "UPDATE `reg_details` SET `first_name`= :fn,`last_name`= :ln,`username`= :un, `bio` = :bi, `email`= :em WHERE id = :idd";
-    $stmtt = $pdo->prepare($sql);
-    $stmtt->bindParam(':idd', $currUser->id);
-    $stmtt->bindParam(':fn', $fname);
-    $stmtt->bindParam(':ln', $lname);
-    $stmtt->bindParam(':un', $uname);
-    $stmtt->bindParam(':em', $email);
-    $stmtt->bindParam(':bi', $bio);
 
-    if ($stmtt->execute()) {
-      echo '
+
+  if (!(empty($fname) || empty($lname) || empty($uname) || empty($email))) {
+
+    if (isset($_FILES['photoUpdate']['name'])) {
+      if ($_FILES['photoUpdate']['name'] != '') {
+        $fileName = $_FILES['photoUpdate']['name'];
+        $tmp = $_FILES['photoUpdate']['tmp_name'];
+        $size =  $_FILES['photoUpdate']['size'];
+
+        $extension = explode(
+          '.',
+          $fileName
+        );
+        $extension = strtolower(end($extension));
+        $newfileName =  $currUser->code . '.' . $extension;
+        $store = "uploads/dp/" . $newfileName;
+        $location = '../' . $store;
+
+
+        if (
+          $extension == 'jpg' || $extension == 'jpeg' || $extension == 'png'
+        ) {
+          if ($size >= 3000000) {
+            $error =  '
               <script>
-            swal({
-                   title: "Update Successful",
-                      text: "Your details has been updated" ,
-                      icon: "success",
-                  button: "Loading...",
-                });
-            </script>
+              swal({
+                    title: "Error!",
+                    text: "Passport is larger than 3mb!, please compress it.",
+                    icon: "warning",
+                    button: "Ok",
+                  });
+              </script>
+      
+          ';
+            echo $error;
+          } else {
+
+            if (move_uploaded_file($tmp, $location)) {
+
+              $sql = "UPDATE `reg_details` SET `first_name`= :fn,`last_name`= :ln,`username`= :un, `bio` = :bi, `email`= :em, `image` = :passp WHERE id = :idd";
+              $stmtt = $pdo->prepare($sql);
+              $stmtt->bindParam(':idd', $currUser->id);
+              $stmtt->bindParam(':fn', $fname);
+              $stmtt->bindParam(':ln', $lname);
+              $stmtt->bindParam(':un', $uname);
+              $stmtt->bindParam(':em', $email);
+              $stmtt->bindParam(':bi', $bio);
+              $stmtt->bindValue(':passp', $store);
+
+              if ($stmtt->execute()) {
+                echo '
+                  <script>
+                  swal({
+                        title: "Update Successful",
+                            text: "Your details has been updated" ,
+                            icon: "success",
+                        button: "Loading...",
+                      });
+                </script>
               ';
-      header('refresh: 2; ');
-    } else {
-      echo '
+                header('refresh: 2; ');
+              } else {
+                echo '
+                    <script>
+                    swal({
+                          title: "Error",
+                              text: "Details were not updated. Please try again" ,
+                              icon: "error",
+                          button: "Ok",
+                        });
+                  </script>
+              ';
+              }
+            } else {
+              echo '
               <script>
             swal({
-                   title: "Error",
-                      text: "Details were not updated. Please try again" ,
+                  title: "Oops",
+                      text: "An error occurred. Please try again" ,
                       icon: "error",
                   button: "Ok",
                 });
             </script>
-              ';
+          ';
+            }
+          }
+        } else {
+          echo '
+          <script>
+        swal({
+               title: "Update Failed",
+                  text: "Passport should be in jpg or jpeg format" ,
+                  icon: "error",
+              button: "Ok",
+            });
+        </script>
+          ';
+        }
+      }
     }
   } else {
     echo '
@@ -58,74 +125,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
                 });
             </script>
               ';
-  }
-  if (isset($_FILES['photoUpdate']['name'])) {
-    if ($_FILES['photoUpdate']['name'] != '') {
-      $fileName = $_FILES['photoUpdate']['name'];
-      $tmp = $_FILES['photoUpdate']['tmp_name'];
-      $size =  $_FILES['photoUpdate']['size'];
-
-      $extension = explode(
-        '.',
-        $fileName
-      );
-      $extension = strtolower(end($extension));
-      $newfileName =  $currUser->code . '.' . $extension;
-      $store = "uploads/dp/" . $newfileName;
-      $location = '../' . $store;
-
-
-      if (
-        $extension == 'jpg' || $extension == 'jpeg' || $extension == 'png'
-      ) {
-        if ($size >= 1000000) {
-          $error =  '
-      <script>
-      swal({
-            title: "Error!",
-            text: "Passport is larger than 1mb!, please compress it.",
-            icon: "warning",
-            button: "Ok",
-          });
-      </script>
-      
-      ';
-          echo $error;
-        } else {
-
-          if (move_uploaded_file($tmp, $location)) {
-            $sql = "UPDATE `reg_details` SET image = :passp WHERE id = :idd";
-            $statement = $pdo->prepare($sql);
-            $statement->bindValue(':passp', $store);
-            $statement->bindValue(':idd', $currUser->id);
-            if ($statement->execute()) {
-              echo '
-          <script>
-        swal({
-               title: "Passport Update Successful for ' . $currUser->first_name . ' ' .  $currUser->last_name . '",
-                  text: "Update Success" ,
-                  icon: "success",
-              button: "Ok",
-            });
-        </script>
-          ';
-              header('refresh:2');
-            }
-          }
-        }
-      } else {
-        echo '
-          <script>
-        swal({
-               title: "Update Failed",
-                  text: "Passport should be in jpg or jpeg format" ,
-                  icon: "error",
-              button: "Ok",
-            });
-        </script>
-          ';
-      }
-    }
   }
 }
 

@@ -97,7 +97,7 @@ require_once 'header.php';
                 </a>
                 <div class="custom-tooltip-wrap card-author-by-wrap">
                   <span class="card-author-by card-author-by-2">Owned by</span>
-                  <a class="custom-tooltip author-link" href="https://kreptive.com/<?= $currUser->first_name ?>/<?= $currUser->address ?>">@<?= getUserNameById($pdo, $nft->owner_id) ?><span><i class="mdi mdi-check-circle"></i> </span></a>
+                  <a class="custom-tooltip author-link" href="https://kreptive.com/<?= $ownerDetails->first_name ?>/<?= $ownerDetails->address ?>">@<?= getUserNameById($pdo, $nft->owner_id) ?><span><i class="mdi mdi-check-circle"></i> </span></a>
                   <!-- end dropdown-menu -->
                 </div>
                 <!-- end custom-tootltip-wrap -->

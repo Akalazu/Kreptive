@@ -31,9 +31,9 @@ if (!isset($_SESSION['nftqrs']) || empty($_SESSION['nft_id'])) {
 
 $nft_details = $userCl->getNFTDetailsByToken($nft_id);
 
-$bidRecords = $userCl->getAllBidsForArt($nft_id);
+$bidRecords = $userCl->getAllBidsForArt($nft_details->id);
 
-$userBidStatus = $userCl->checkIfUserPlacedBidForArt($currUser->id, $nft_id);
+$userBidStatus = $userCl->checkIfUserPlacedBidForArt($currUser->id, $nft_details->id);
 
 $owner = $userCl->getUserDetails($nft_details->owner_id);
 $author = $userCl->getUserDetails($nft_details->author_id);

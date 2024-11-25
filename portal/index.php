@@ -20,7 +20,7 @@ foreach ($all as $alls) {
         $statement->execute();
     }
 }
-$userCl->updateNFTLinks();
+// $userCl->updateNFTLinks();
 
 ?>
 <style>

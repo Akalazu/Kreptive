@@ -182,7 +182,7 @@ if (isset($_POST['send_proof'])) {
                                             </div>
                                             <!-- end card-price-wrap -->
                                             <form class="d-flex justify-content-center mt-3" method="GET" action="place_bid">
-                                                <input type="hidden" name="nftqrs" value="<?= $nft->id ?>">
+                                                <input type="hidden" name="nftqrs" value="<?= $nft->link_id ?>">
                                                 <button class="btn btn-primary" type="submit" id="<?= $nft->id ?>">Place a Bid</button>
                                             </form>
                                         </div>

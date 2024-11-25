@@ -21,13 +21,11 @@ if (isset($_SESSION['nft_link'])) {
     }
 } else if (isset($_GET['nftqrs'])) {
     $nft_id = $_SESSION['nftqrs'] = $_GET['nftqrs'];
-}
-
-// Now check if the session has a valid NFT ID
-if (!isset($_SESSION['nftqrs']) || empty($_SESSION['nft_id'])) {
+}else{
     echo "Session has invalid";
     die();
 }
+
 
 $nft_details = $userCl->getNFTDetailsByToken($nft_id);
 

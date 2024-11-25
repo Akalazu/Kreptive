@@ -5,7 +5,7 @@ if (isset($_GET['address'])) {
     $userID = sanitizeText($_GET['address']);
     $user_details = $userCl->getUserDetailsByWalletAddress($userID);
 
-    if ($user_details && strtolower($user_details->first_name) == strtolower($_GET['first_name'])) {
+    if ($user_details && strtolower($user_details->first_name) == strtolower(urldecode($_GET['first_name']))) {
         $fullName = $user_details->first_name . ' ' . $user_details->last_name;
     } else {
         echo '

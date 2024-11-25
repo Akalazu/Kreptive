@@ -545,6 +545,19 @@ class User
     }
   }
 
+  public function userPendingCommision($id)
+  {
+    $sql = "SELECT * FROM commission WHERE user_id = :userId ORDER BY time_created DESC LIMIT 1";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':userId', $id);
+    $stmt->execute();
+    $commission = $stmt->fetch(PDO::FETCH_OBJ);
+    if ($commission) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   public function payUserCommission($userId)
   {
 
@@ -742,6 +755,39 @@ class User
     } catch (PDOException $e) {
       echo "Error: " . $e->getMessage();
       return [];
+    }
+  }
+
+  public function updateNFTLinks()
+  {
+    try {
+      // Fetch all data from the all_nft table
+      $query = "SELECT id FROM all_nft LIMIT 5";
+      $stmt = $this->pdo->prepare($query);
+      $stmt->execute();
+      $allNFTs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      // Iterate through each NFT data
+      foreach ($allNFTs as $nft) {
+        $nftId = $nft['id'];
+
+        // Generate new link_id using getNFTId()
+        $newLinkId = $this->getNFTId();
+        $newLink = "https://kreptive.com/preview?ntid=" . $newLinkId;
+
+        // Update the link_id and link columns in the database
+        $updateQuery = "UPDATE all_nft SET link_id = :link_id, link = :link WHERE id = :id";
+        $updateStmt = $this->pdo->prepare($updateQuery);
+        $updateStmt->execute([
+          ':link_id' => $newLinkId,
+          ':link' => $newLink,
+          ':id' => $nftId,
+        ]);
+      }
+
+      echo "All NFT links updated successfully.";
+    } catch (PDOException $e) {
+      echo "Error updating NFT links: " . $e->getMessage();
     }
   }
 

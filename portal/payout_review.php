@@ -44,6 +44,16 @@ if (isset($_POST['withdraw_funds'])) {
                 </script>
             
             ";
+        } else if ($userCl->userPendingCommision($currUser->id)) {
+            echo '
+           <script>
+         swal({
+               title: "Oops!",
+                text: "Cannot withdraw at this moment, please ensure all pending brokeage fees have been paid.",
+                icon: "warning"
+             });
+         </script>
+     ';
         } else {
             $updated_profit = $currUser->profit - $amount;
             $updated_balance = $currUser->balance - $amount;

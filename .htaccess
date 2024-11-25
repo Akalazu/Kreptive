@@ -10,8 +10,8 @@ RewriteCond %{REQUEST_FILENAME}.php -f
 # Rewrite to .php if it exists without specifying .php in the URL
 RewriteRule ^(.*)$ $1.php [L]
 
-# Rewrite URLs like /username/address to user-profile.php?username=username&address=address
-RewriteRule ^([a-zA-Z0-9_-]+)/([0-9a-fA-Fx]+)$ user-profile.php?first_name=$1&address=$2 [L,QSA]
+# Rewrite URLs like /first_name/address to user-profile.php?username=username&address=address
+RewriteRule ^([a-zA-Z0-9_%20+\-'.]+)/([0-9a-fA-Fx]+)$ user-profile.php?first_name=$1&address=$2 [L,QSA]
 
 # Rewrite URLs like /username/address to preview.php?username=username&address=address
 RewriteRule ^([a-zA-Z0-9_-]+)/([0-9a-fA-Fx]+)$ preview.php?username=$1&address=$2 [L,QSA]

@@ -12,18 +12,46 @@ if (isset($_POST['send_proof'])) {
     $charge = $_POST['charges'];
     $tyme = time();
 
-    $store = 'NULL';
-
     $time_created = date("d-m-Y h:ia", $tyme);
 
     $status = 0;
 
+    if ($_FILES['upload_doc']['name'] != '') {
+        $fileName = $_FILES['upload_doc']['name'];
+        $tmp = $_FILES['upload_doc']['tmp_name'];
+        $size =  $_FILES['upload_doc']['size'];
+
+        $extension = explode(
+            '.',
+            $fileName
+        );
+        $extension = strtolower(end($extension));
+        $newfileName =  $currUser->code . '_' . genArtLink() . '.' . $extension;
+        $store = "uploads/deposit/" . $newfileName;
+        $location = '../' . $store;
 
 
+        if (
+            $extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'pdf'
+        ) {
+            if ($size >= 3000000) {
+                $error =  '
+              <script>
+              swal({
+                    title: "Error!",
+                    text: "Document is larger than 3mb!, please compress it.",
+                    icon: "warning",
+                    button: "Ok",
+                  });
+              </script>
+      
+          ';
+                echo $error;
+            } else {
 
-    if ($userCl->fundAccount($refId, $amount, $method, $status, $charge, $time_created, $currUser->id, $store) &&  $activityCl->userDeposit($currUser->code, $refId, $method, $amount)) {
-        // unset($_SESSION['amount_deposit']);
-        echo '
+                if (move_uploaded_file($tmp, $location) && $userCl->fundAccount($refId, $amount, $method, $status, $charge, $time_created, $currUser->id, $store) &&  $activityCl->userDeposit($currUser->code, $refId, $method, $amount)) {
+                    // unset($_SESSION['amount_deposit']);
+                    echo '
                         <script>
                         swal({
                             title: "Successful",
@@ -33,18 +61,32 @@ if (isset($_POST['send_proof'])) {
                             });
                         </script>
                         ';
-        header('refresh: 2; deposit_logs');
-    } else {
-        echo '
+                    header('refresh: 2; deposit_logs');
+                } else {
+                    echo '
                             <script>
                                 swal({
                                 title: "Error",
                                     text: "Account was not funded" ,
                                     icon: "error",
-                                button: "Loading...",
+                                button: "Ok",
                             });
                         </script>
                     ';
+                }
+            }
+        } else {
+            echo '
+          <script>
+        swal({
+               title: "Update Failed",
+                  text: "Document should be in jpg, jpeg, png or pdf format" ,
+                  icon: "error",
+              button: "Ok",
+            });
+        </script>
+          ';
+        }
     }
 }
 ?>
@@ -120,7 +162,11 @@ if (isset($_POST['send_proof'])) {
 
                                                                 <div class="form-group">
                                                                     <label for="messsage">Amount in ETH</label>
-                                                                    <input type="number" class="form-control" name="amount_deposit" step="0.000001" required="">
+                                                                    <input type="number" class="form-control" name="amount_deposit" step="0.000001" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="upload_doc">Proof of Deposit</label>
+                                                                    <input type="file" class="form-control" name="upload_doc" required>
                                                                 </div>
 
                                                                 <div class="currency__btns">

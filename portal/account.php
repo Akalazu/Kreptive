@@ -4,6 +4,7 @@ $pageName = 'Account Settings';
 include_once "portal_settings.php";
 
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
 
   // Array ( [first_name] => Akalazu [last_name] => David [username] => CodeBurster_ [emailAddress] => realearlsamm@gmail.com [bio] => I make art with the simple goal of giving you something pleasing to look at for a few seconds. [save_change] => )
@@ -52,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
           } else {
 
             if (move_uploaded_file($tmp, $location)) {
-
               $sql = "UPDATE `reg_details` SET `first_name`= :fn,`last_name`= :ln,`username`= :un, `bio` = :bi, `email`= :em, `image` = :passp WHERE id = :idd";
               $stmtt = $pdo->prepare($sql);
               $stmtt->bindParam(':idd', $currUser->id);
@@ -111,6 +111,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
             });
         </script>
           ';
+        }
+      } else {
+        $sql = "UPDATE `reg_details` SET `first_name`= :fn,`last_name`= :ln,`username`= :un, `bio` = :bi, `email`= :em WHERE id = :idd";
+        $stmtt = $pdo->prepare($sql);
+        $stmtt->bindParam(':idd', $currUser->id);
+        $stmtt->bindParam(':fn', $fname);
+        $stmtt->bindParam(':ln', $lname);
+        $stmtt->bindParam(':un', $uname);
+        $stmtt->bindParam(':em', $email);
+        $stmtt->bindParam(':bi', $bio);
+
+        if ($stmtt->execute()) {
+          echo '
+                  <script>
+                  swal({
+                        title: "Update Successful",
+                            text: "Your details has been updated" ,
+                            icon: "success",
+                        button: "Loading...",
+                      });
+                </script>
+              ';
+          header('refresh: 2; ');
+        } else {
+          echo '
+                    <script>
+                    swal({
+                          title: "Error",
+                              text: "Details were not updated. Please try again" ,
+                              icon: "error",
+                          button: "Ok",
+                        });
+                  </script>
+              ';
         }
       }
     }

@@ -7,22 +7,29 @@ $url_str = $_SERVER['HTTP_REFERER'];
 //     header('Location: logout');
 // }
 
+
 if (isset($_SESSION['nft_link'])) {
     $token = $_SESSION['nft_link'];
+    $nftDetails = $userCl->getNFTDetailsByToken($token);
 
-    $nft_id = $userCl->getNFTDetailsByToken($token)->id;
-} else if (isset($_POST['nftqrs'])) {
-    $_SESSION['nftqrs'] = $_POST['nftqrs'];
-    $nft_id = $_SESSION['nftqrs'];
-
+    if ($nftDetails) {
+        $nft_id = $nftDetails->id;
+        $_SESSION['nft_id'] = $nft_id; // Save to session for persistence
+    } else {
+        header('location: ./');
+        exit();
+    }
+} else if (isset($_GET['nftqrs'])) {
+    $nft_id = $_SESSION['nftqrs'] = $_GET['nftqrs'];
 }
 
-
-if (!$nft_id) {
-    header('location: ./');
+// Now check if the session has a valid NFT ID
+if (!isset($_SESSION['nftqrs']) || empty($_SESSION['nft_id'])) {
+    echo "Session has invalid";
+    die();
 }
 
-$nft_details = $userCl->getNFTDetailsById($nft_id);
+$nft_details = $userCl->getNFTDetailsByToken($nft_id);
 
 $bidRecords = $userCl->getAllBidsForArt($nft_id);
 
@@ -37,6 +44,8 @@ $recipient_full = $owner->first_name . ' ' . $owner->last_name;
 
 if (isset($_POST['place_bid'])) {
     $nftt_id = $_POST['nft_id'];
+    $nft_det = $userCl->getNFTDetailsById($nftt_id);
+
     $nft_price = $_POST['nft_price'];
     $bidder = $currUser->id;
     $bid_price = $_POST['bidding_value'];
@@ -46,13 +55,13 @@ if (isset($_POST['place_bid'])) {
 
     if ($bid_price < $nft_price) {
         echo '
-                        <script>
-            swal({
-                   title: "Error",
-                      text: "Bidding price must be higher than the current price" ,
-                      icon: "warning",
-                  button: "Ok",
-                })
+            <script>
+                swal({
+                    title: "Error",
+                        text: "Bidding price must be higher than the current price" ,
+                        icon: "warning",
+                    button: "Ok",
+                    })
             </script>
               ';
     } else if ($currUser->balance - $bid_price < 0) {
@@ -84,10 +93,11 @@ if (isset($_POST['place_bid'])) {
 
         // echo $nft_details->title;
         // die();
-        if ($statement->execute() && $userCl->sendBidderMail($fullname, $currUser->email, $nft_details->title, $bid_price) && $userCl->sendRecipientMail($recipient_full, $owner->email, $nft_details->title, $bid_price)) {
+        if ($statement->execute() && $userCl->sendBidderMail($fullname, $currUser->email, $nft_det->title, $bid_price) && $userCl->sendRecipientMail($recipient_full, $owner->email, $nft_det->title, $bid_price)) {
             // if ($statement->execute()) {
             echo '
-                        <script>
+
+         <script>
             swal({
                    title: "Success",
                       text: "Your bid has been successully placed" ,
@@ -95,8 +105,9 @@ if (isset($_POST['place_bid'])) {
                   button: "Ok",
                 }).then(function() {
              window.location.href = "./";
-        });;
-            </script>
+            });
+        </script>
+
               ';
         } else {
             echo '<script>
@@ -111,6 +122,8 @@ if (isset($_POST['place_bid'])) {
         }
     }
 }
+
+
 
 ?>
 

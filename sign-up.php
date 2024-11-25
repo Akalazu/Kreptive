@@ -138,51 +138,62 @@ include_once "./includes/init.php";
 
       if (is_array($email)) {
         echo '
-      <script>
-      swal({
-            title: "Error!",
-            text: "Invalid email address provided",
-            icon: "warning",
-            button: "Ok",
-          });
-      </script>
+        <script>
+        swal({
+              title: "Error!",
+              text: "Invalid email address provided",
+              icon: "warning",
+              button: "Ok",
+            });
+        </script>
       
       ';
       } else if (doesEmailExist($pdo, $email)) {
         echo '
-      <script>
-      swal({
-            title: "Error!",
-            text: "Email address already exist",
-            icon: "warning",
-            button: "Ok",
-          });
-      </script>
+        <script>
+        swal({
+              title: "Error!",
+              text: "Email address already exist",
+              icon: "warning",
+              button: "Ok",
+            });
+        </script>
       
       ';
       } else if (strlen($password) < 6) {
         echo '
-      <script>
-      swal({
-            title: "Error!",
-            text: "Password must be at least 6 characters.",
-            icon: "warning",
-            button: "Ok",
-          });
-      </script>
+        <script>
+        swal({
+              title: "Error!",
+              text: "Password must be at least 6 characters.",
+              icon: "warning",
+              button: "Ok",
+            });
+        </script>
       
       ';
       } else if (strlen($username) < 5) {
         echo '
-      <script>
-      swal({
-            title: "Error!",
-            text: "Username must be at least 5 characters.",
-            icon: "warning",
-            button: "Ok",
-          });
-      </script>
+        <script>
+        swal({
+              title: "Error!",
+              text: "Username must be at least 5 characters.",
+              icon: "warning",
+              button: "Ok",
+            });
+        </script>
       
+      ';
+      } else if (strpos($fname, ' ') !== false || strpos($lname, ' ') !== false) {
+        echo '
+        <script>
+        swal({
+              title: "Error!",
+              text: "First name or Last name cannot spaces",
+              icon: "warning",
+              button: "Ok",
+            });
+        </script>
       ';
       } else {
         $code = genid($pdo);

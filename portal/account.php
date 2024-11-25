@@ -18,27 +18,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
 
   if (!(empty($fname) || empty($lname) || empty($uname) || empty($email))) {
 
-    if (isset($_FILES['photoUpdate']['name'])) {
-      if ($_FILES['photoUpdate']['name'] != '') {
-        $fileName = $_FILES['photoUpdate']['name'];
-        $tmp = $_FILES['photoUpdate']['tmp_name'];
-        $size =  $_FILES['photoUpdate']['size'];
+    if (strpos($fname, ' ') !== false || strpos($lname, ' ') !== false) {
+      echo '
+        <script>
+        swal({
+              title: "Error!",
+              text: "First name or Last name cannot spaces",
+              icon: "warning",
+              button: "Ok",
+            });
+        </script>
+      ';
+    } else {
+      if (isset($_FILES['photoUpdate']['name'])) {
+        if ($_FILES['photoUpdate']['name'] != '') {
+          $fileName = $_FILES['photoUpdate']['name'];
+          $tmp = $_FILES['photoUpdate']['tmp_name'];
+          $size =  $_FILES['photoUpdate']['size'];
 
-        $extension = explode(
-          '.',
-          $fileName
-        );
-        $extension = strtolower(end($extension));
-        $newfileName =  $currUser->code . '.' . $extension;
-        $store = "uploads/dp/" . $newfileName;
-        $location = '../' . $store;
+          $extension = explode(
+            '.',
+            $fileName
+          );
+          $extension = strtolower(end($extension));
+          $newfileName =  $currUser->code . '.' . $extension;
+          $store = "uploads/dp/" . $newfileName;
+          $location = '../' . $store;
 
 
-        if (
-          $extension == 'jpg' || $extension == 'jpeg' || $extension == 'png'
-        ) {
-          if ($size >= 3000000) {
-            $error =  '
+          if (
+            $extension == 'jpg' || $extension == 'jpeg' || $extension == 'png'
+          ) {
+            if ($size >= 3000000) {
+              $error =  '
               <script>
               swal({
                     title: "Error!",
@@ -49,22 +61,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
               </script>
       
           ';
-            echo $error;
-          } else {
+              echo $error;
+            } else {
 
-            if (move_uploaded_file($tmp, $location)) {
-              $sql = "UPDATE `reg_details` SET `first_name`= :fn,`last_name`= :ln,`username`= :un, `bio` = :bi, `email`= :em, `image` = :passp WHERE id = :idd";
-              $stmtt = $pdo->prepare($sql);
-              $stmtt->bindParam(':idd', $currUser->id);
-              $stmtt->bindParam(':fn', $fname);
-              $stmtt->bindParam(':ln', $lname);
-              $stmtt->bindParam(':un', $uname);
-              $stmtt->bindParam(':em', $email);
-              $stmtt->bindParam(':bi', $bio);
-              $stmtt->bindValue(':passp', $store);
+              if (move_uploaded_file($tmp, $location)) {
+                $sql = "UPDATE `reg_details` SET `first_name`= :fn,`last_name`= :ln,`username`= :un, `bio` = :bi, `email`= :em, `image` = :passp WHERE id = :idd";
+                $stmtt = $pdo->prepare($sql);
+                $stmtt->bindParam(':idd', $currUser->id);
+                $stmtt->bindParam(':fn', $fname);
+                $stmtt->bindParam(':ln', $lname);
+                $stmtt->bindParam(':un', $uname);
+                $stmtt->bindParam(':em', $email);
+                $stmtt->bindParam(':bi', $bio);
+                $stmtt->bindValue(':passp', $store);
 
-              if ($stmtt->execute()) {
-                echo '
+                if ($stmtt->execute()) {
+                  echo '
                   <script>
                   swal({
                         title: "Update Successful",
@@ -74,9 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
                       });
                 </script>
               ';
-                header('refresh: 2; ');
-              } else {
-                echo '
+                  header('refresh: 2; ');
+                } else {
+                  echo '
                     <script>
                     swal({
                           title: "Error",
@@ -86,9 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
                         });
                   </script>
               ';
-              }
-            } else {
-              echo '
+                }
+              } else {
+                echo '
               <script>
             swal({
                   title: "Oops",
@@ -98,10 +110,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
                 });
             </script>
           ';
+              }
             }
-          }
-        } else {
-          echo '
+          } else {
+            echo '
           <script>
         swal({
                title: "Update Failed",
@@ -111,19 +123,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
             });
         </script>
           ';
-        }
-      } else {
-        $sql = "UPDATE `reg_details` SET `first_name`= :fn,`last_name`= :ln,`username`= :un, `bio` = :bi, `email`= :em WHERE id = :idd";
-        $stmtt = $pdo->prepare($sql);
-        $stmtt->bindParam(':idd', $currUser->id);
-        $stmtt->bindParam(':fn', $fname);
-        $stmtt->bindParam(':ln', $lname);
-        $stmtt->bindParam(':un', $uname);
-        $stmtt->bindParam(':em', $email);
-        $stmtt->bindParam(':bi', $bio);
+          }
+        } else {
+          $sql = "UPDATE `reg_details` SET `first_name`= :fn,`last_name`= :ln,`username`= :un, `bio` = :bi, `email`= :em WHERE id = :idd";
+          $stmtt = $pdo->prepare($sql);
+          $stmtt->bindParam(':idd', $currUser->id);
+          $stmtt->bindParam(':fn', $fname);
+          $stmtt->bindParam(':ln', $lname);
+          $stmtt->bindParam(':un', $uname);
+          $stmtt->bindParam(':em', $email);
+          $stmtt->bindParam(':bi', $bio);
 
-        if ($stmtt->execute()) {
-          echo '
+          if ($stmtt->execute()) {
+            echo '
                   <script>
                   swal({
                         title: "Update Successful",
@@ -133,9 +145,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
                       });
                 </script>
               ';
-          header('refresh: 2; ');
-        } else {
-          echo '
+            header('refresh: 2; ');
+          } else {
+            echo '
                     <script>
                     swal({
                           title: "Error",
@@ -145,6 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_change'])) {
                         });
                   </script>
               ';
+          }
         }
       }
     }

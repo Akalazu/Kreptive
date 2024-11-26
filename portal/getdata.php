@@ -141,8 +141,8 @@ if (isset($_POST['row'])) {
                                                     </div>
                                                 </div>
                                                 <!-- end card-price-wrap -->
-                                                <form class="d-flex justify-content-center mt-3" method="POST" action="place_bid">
-                                                    <input type="hidden" name="nftqrs" value="' . $nft->id . '">
+                                                 <form class="d-flex justify-content-center mt-3" method="GET" action="place_bid">
+                                                    <input type="hidden" name="nftqrs" value="' . $nft->link_id . '">
                                                     <button class="btn btn-primary" type="submit">Place a Bid</button>
                                                 </form>
                                             </div>

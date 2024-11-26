@@ -14,7 +14,6 @@ if (isset($_POST['conversationId'])) {
             // Execute statement and prepare response
             $response = [];
             $response['success'] = true;
-            $response['chat_id'] = $chatId;
 
             // Output JSON response
             echo json_encode($response);

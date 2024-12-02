@@ -451,6 +451,8 @@ class User
     }
   }
 
+  
+
   public function getInsuranceFee()
   {
     $query = "SELECT * FROM `withdrawal_limit` WHERE `id` = 4";

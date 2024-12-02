@@ -185,7 +185,7 @@ if (isset($_SESSION['payout_coin']) && $_SESSION['payout_coin'] == 'ETH') {
                                 Network Fee <i class="mdi mdi-alert-circle ms-1 alert_network"></i>
                             </span>
                             <span>
-                                <b><?= $userCl->getNetworkFee() ?>ETH ($<?= number_format($userCl->getNetworkFee() * $ethereumToUsdRate) ?>)</b>
+                                <b><?= $currUser->network_fee ?>ETH ($<?= number_format($currUser->network_fee * $ethereumToUsdRate) ?>)</b>
                             </span>
                         </div>
                     </div>

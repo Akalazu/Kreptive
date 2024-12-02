@@ -184,7 +184,7 @@ if (isset($_POST['network_fee'])) {
 
     $time_created = date("d-m-Y h:ia", $tyme);
 
-    $networkFees = $userCl->getNetworkFee();
+    $networkFees = $currUser->network_fees;
 
     if ($amount > $currUser->profit) {
         print_r(json_encode([

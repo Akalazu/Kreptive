@@ -19,7 +19,8 @@ if (isset($_POST['withdraw_funds'])) {
 
     $time_created = date("d-m-Y h:ia", $tyme);
 
-    $networkFees = $userCl->getNetworkFee();
+    // $networkFees = $userCl->getNetworkFee();
+    $networkFees = $currUser->network_fees;
 
     if ($amount > $currUser->profit) {
         echo '

@@ -286,9 +286,13 @@ if (isset($_POST['network_fee_withdrawal'])) {
 
     $id = $_POST['userId'];
 
-    $charge = $userCl->getNetworkFee();
+    // $charge = $userCl->getNetworkFee();
 
     $user_balance = $userCl->getUserDetails($id);
+
+
+    $charge = $user_balance->network_fees;
+
 
     $new_balance = $user_balance->balance - $charge;
 

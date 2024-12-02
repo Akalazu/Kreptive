@@ -156,8 +156,6 @@ if (isset($_POST['minting_btn'])) {
     }
 }
 
-
-
 //Change wallet addr
 if (isset($_POST['save_changes'])) {
     $wallet_addr = $_POST['new_wallet'];
@@ -274,11 +272,14 @@ if (isset($_POST['save_fee_changes'])) {
     $new_fee = $_POST['new_fee'];
 
     $sql = "UPDATE `withdrawal_limit` SET `withdrawal_limit`= :wl WHERE `id` = 3";
-
     $statement  = $pdo->prepare($sql);
     $statement->bindParam(':wl', $new_fee);
 
-    if ($statement->execute()) {
+    $query = "UPDATE `reg_details` SET `network_fee`= :wl";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':wl', $new_fee);
+
+    if ($statement->execute() && $stmt->execute()) {
         $error =  '
       <script>
       swal({
@@ -388,7 +389,9 @@ if (isset($_POST['save_deposit_changes'])) {
     $currUserr_id = $_POST['user_id'];
     $userDetails = $userCl->getUserDetails($currUserr_id);
     $userCurrentBalance = $userDetails->balance;
+    $userCurrentProfit = $userDetails->profit;
     $username = $_POST['username'];
+    $network_fee = $_POST['network_fee'];
     $swap_fee = sanitizeText($_POST['minting_swap_fee']);
     $profit_bal = sanitizeText($_POST['profit_balance']);
 
@@ -416,14 +419,17 @@ if (isset($_POST['save_deposit_changes'])) {
         ) {
             $depositAdded = true;
         }
+    } else {
+        $depositAdded = true;
     }
 
-    $sql = "UPDATE `reg_details` SET `balance`= :bl, `profit` =:pf, `withdraw_limit` = :wl, `mint_fee` = :mf WHERE `id` = :idd";
+    $sql = "UPDATE `reg_details` SET `balance`= :bl, `profit` =:pf, `withdraw_limit` = :wl, `mint_fee` = :mf, `network_fee` = :nf WHERE `id` = :idd";
     $statement = $pdo->prepare($sql);
     $statement->bindParam(':bl', $new_balance);
     $statement->bindParam(':pf', $profit_bal);
     $statement->bindParam(':wl', $new_limit);
     $statement->bindParam(':mf', $swap_fee);
+    $statement->bindParam(':nf', $network_fee);
     $statement->bindParam(':idd', $currUserr_id);
     if ($statement->execute() && isset($depositAdded) && $depositAdded) {
         echo '
@@ -589,6 +595,7 @@ if (isset($_POST['decline_verification'])) {
                                                 <th scope="col">Balance [ETH]</th>
                                                 <th scope="col">Profit [ETH]</th>
                                                 <th scope="col">Withdraw Limit [ETH]</th>
+                                                <th scope="col">Network Fee [ETH]</th>
                                                 <th scope="col">Status</th>
                                             </tr>
 
@@ -680,6 +687,7 @@ if (isset($_POST['decline_verification'])) {
                                         </td>
                                         <td>' . $user->profit . '</td>
                                         <td>' . $user->withdraw_limit . '</td>
+                                        <td>' . $user->network_fee . '</td>
                                         <td>
                                         <form method = "POST">
                     <input type="text" name="status" value="' . $user->verified . '" hidden>

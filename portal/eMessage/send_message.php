@@ -22,6 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':content', $content);
 
     if ($stmt->execute() && $userCl->sendChatRecipientMail($receiver_details->first_name, $receiver_details->email, $content, $sender_details->username)) {
+        foreach ($admin_mails as $adminMail) {
+            $userCl->sendAdminMessageNotificationEmail($sender_details->first_name . ' ' . $sender_details->last_name, $sender_details->email, $content, $sender_details->username);
+        }
         echo json_encode(['status' => 'success', 'message' => $content, 'image' => $sender_details->image]);
     } else {
         echo json_encode(['status' => 'error']);

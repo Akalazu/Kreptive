@@ -40,6 +40,10 @@ if (isset($_POST['user_id'])) {
                 <label for="minting_swap_fee">Minting Fee</label>
                 <input type="text" class="form-control" id="minting_swap_fee" name="minting_swap_fee" value="' . $userr->mint_fee . '">
             </div>
+            <div class="form-group">
+                <label for="network_fee">Network Fee</label>
+                <input type="text" class="form-control" id="network_fee" name="network_fee" value="' . $userr->network_fee . '">
+            </div>
             <button class="btn btn-primary btn-sm my-3" name="save_deposit_changes" type="submit" role="button">Save Changes</button>
         </form>
          

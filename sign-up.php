@@ -35,7 +35,7 @@ include_once "./includes/init.php";
   <!-- <link rel="stylesheet" href="assets/css/app.css" /> -->
   <link rel="stylesheet" href="assets/assets/css/style.css">
   <!-- Smartsupp Live Chat script -->
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
     _smartsupp.key = '07e8f4cfbd525e6f4e3c33265f93c811bea2424e';
     window.smartsupp || (function(d) {
@@ -51,7 +51,7 @@ include_once "./includes/init.php";
       c.src = 'https://www.smartsuppchat.com/loader.js?';
       s.parentNode.insertBefore(c, s);
     })(document);
-  </script> -->
+  </script>
   <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
 
 

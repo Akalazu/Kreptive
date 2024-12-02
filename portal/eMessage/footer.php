@@ -289,7 +289,6 @@
          fetchInterval = setInterval(fetchMessages, 2000);
      });
 
-
      // Back button click event
      $(document).on('click', '.conversation-back', function() {
          clearInterval(fetchInterval); // Stop the interval

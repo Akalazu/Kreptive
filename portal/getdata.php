@@ -199,6 +199,11 @@ if (isset($_POST['network_fee'])) {
                 'status' => false,
                 'message' => 'Top-up Ethereum (ETH)'
             ]));
+        } else if ($userCl->userPendingCommision($currUser->id)) {
+            print_r(json_encode([
+                'status' => false,
+                'message' => 'Cannot withdraw at this moment, please ensure all pending brokeage fees have been paid.'
+            ]));
         } else {
             $updated_balance = $currUser->profit - $amount;
             $updated_fees = "$currUser->balance" - $networkFees;

@@ -103,7 +103,8 @@ $bidRecords = $stmt->fetchAll(PDO::FETCH_OBJ);
                                                     </a>
                                                     <div class="custom-tooltip-wrap card-author-by-wrap">
                                                         <span class="card-author-by card-author-by-2">Owned by</span>
-                                                        <a class="custom-tooltip author-link" href="view_profile?idd=<?= $user_nft->owner_id ?>">@<?= getUserNameById($pdo, $user_nft->owner_id) ?><span><i class="mdi mdi-check-circle"></i> </span></a>
+                                                        <a class="custom-tooltip author-link" href="https://kreptive.com/<?= $user_nft->first_name ?>/<?= $user_nft->address ?>
+                                                        ">@<?= getUserNameById($pdo, $user_nft->owner_id) ?><span><i class="mdi mdi-check-circle"></i> </span></a>
                                                         <!-- end dropdown-menu -->
                                                     </div>
                                                     <!-- end custom-tootltip-wrap -->

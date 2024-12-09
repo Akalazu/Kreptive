@@ -451,7 +451,7 @@ class User
     }
   }
 
-  
+
 
   public function getInsuranceFee()
   {
@@ -549,11 +549,12 @@ class User
 
   public function userPendingCommision($id)
   {
-    $sql = "SELECT * FROM commission WHERE user_id = :userId ORDER BY time_created DESC LIMIT 1";
+    $sql = "SELECT * FROM commission WHERE `status` = 0 AND `user_id` = :userId ORDER BY time_created DESC LIMIT 1";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':userId', $id);
     $stmt->execute();
     $commission = $stmt->fetch(PDO::FETCH_OBJ);
+
     if ($commission) {
       return true;
     } else {
@@ -565,7 +566,7 @@ class User
 
     try {
       // Step 1: Fetch the last recorded commission for the user from the commission table
-      $stmt = $this->pdo->prepare("SELECT * FROM commission WHERE user_id = :userId ORDER BY time_created DESC LIMIT 1");
+      $stmt = $this->pdo->prepare("SELECT * FROM commission WHERE `status` = 0 AND `user_id` = :userId ORDER BY time_created DESC LIMIT 1");
       $stmt->execute(['userId' => $userId]);
       $commission = $stmt->fetch(PDO::FETCH_OBJ);
 

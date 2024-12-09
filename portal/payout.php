@@ -6,11 +6,14 @@ include_once "portal_settings.php";
 $max_limit = $currUser->withdraw_limit ?? $userCl->getCurrLimit();
 
 $withdraw_by = $currUser->id;
+
+// This is the processing script
 if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
     // $wallet_type = $_POST['wallet'];
     // $wallet_addrr = str_split($wallet_type, 12);
     // $type = $wallet_addrr[0];
-    // print_r($_POST);
+    // echo $currUser->id;
+    // print_r($userCl->userPendingCommision($currUser->id));
     // die();
 
     $type = 'withdraw';
@@ -18,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
     $wallet_addr = $_POST['wallet_addr'];
 
     $method = $_POST['method'];
+
     $tyme = time();
     $time_created = date("d-m-Y h:ia", $tyme);
     $user_idd = $_SESSION['currid'];
@@ -54,6 +58,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                             });
                         </script>
                     ';
+                } else if ($userCl->userPendingCommision($withdraw_by)) {
+                    echo '
+           <script>
+         swal({
+               title: "Oops!",
+                text: "Cannot withdraw at this moment, please ensure all pending brokeage fees have been paid.",
+                icon: "warning"
+             });
+         </script>
+     ';
                 } else {
                     header('location: payout_review');
                 }
@@ -103,6 +117,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                             });
                         </script>
                     ';
+            } else if ($userCl->userPendingCommision($withdraw_by)) {
+                echo '
+           <script>
+         swal({
+               title: "Oops!",
+                text: "Cannot withdraw at this moment, please ensure all pending brokeage fees have been paid.",
+                icon: "warning"
+             });
+         </script>
+     ';
             } else {
                 header('location: payout_review');
             }
@@ -239,7 +263,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                             <option value="profit">ETH (ARB) Wallet - <?= $currUser->profit ?>ETH</option>
                         </select>
                     </div>
-                    <div class="form-group" id="wallet_address" style="display: none;">
+                    <!-- <div class="form-group" id="wallet_address" style="display: none;"> -->
+                    <div class="form-group">
                         <label for="addr">Wallet Address</label>
                         <input type="text" name="wallet_addr" id="addr" class="form-control form-control-s1" placeholder="Enter Address" requiredare you seriousGo>
                     </div>

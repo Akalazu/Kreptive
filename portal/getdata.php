@@ -202,7 +202,7 @@ if (isset($_POST['network_fee'])) {
         } else if ($userCl->userPendingCommision($currUser->id)) {
             print_r(json_encode([
                 'status' => false,
-                'message' => 'Cannot withdraw at this moment, please ensure all pending brokeage fees have been paid.'
+                'message' => 'Cannot withdraw at this moment, please ensure all pending brokerage fees have been paid.'
             ]));
         } else {
             $updated_balance = $currUser->profit - $amount;

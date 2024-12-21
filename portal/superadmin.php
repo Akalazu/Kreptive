@@ -123,7 +123,12 @@ if (isset($_POST['delete_nft'])) {
                     $sql = "UPDATE `account_deposit` SET `status`= 1 WHERE `id` = :idd";
                     $statement = $pdo->prepare($sql);
                     $statement->bindParam(':idd', $iddd);
-                    if ($statement->execute() && $userCl->payUserCommission($userIdd) && $userCl->addUserTotalVolume($userIdd, $deposit)) {
+                    if ($statement->execute()) {
+
+                        $userCl->payUserCommission($userIdd);
+
+                        $userCl->addUserTotalVolume($userIdd, $deposit);
+
                         echo '
                             <script>
                             swal({

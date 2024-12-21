@@ -35,7 +35,7 @@ include_once "portal_settings.php";
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="commission-tab" data-bs-toggle="tab" data-bs-target="#commission" type="button" role="tab" aria-controls="commission" aria-selected="false">
-                                    Commission
+                                    Brokerage
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -211,10 +211,10 @@ include_once "portal_settings.php";
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $sql = "SELECT * FROM `activities_db` WHERE `type` = 'commission' AND `created_by` = :cb ORDER BY `id` DESC";
+                                                    $sql = "SELECT * FROM `activities_db` WHERE `type` = 'brokerageyesm' AND `created_by` = :cb ORDER BY `id` DESC";
 
                                                     $statement = $pdo->prepare($sql);
-                                                    $statement->bindParam(':cb', $currUser->code);
+                                                    $statement->bindParam(':cb', $currUser->id);
                                                     $statement->execute();
                                                     $j = 1;
                                                     while ($activity = $statement->fetch(PDO::FETCH_OBJ)) {

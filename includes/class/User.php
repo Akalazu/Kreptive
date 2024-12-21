@@ -566,59 +566,64 @@ class User
 
     try {
       // Step 1: Fetch the last recorded commission for the user from the commission table
-      $stmt = $this->pdo->prepare("SELECT * FROM commission WHERE `status` = 0 AND `user_id` = :userId ORDER BY time_created DESC LIMIT 1");
+      $stmt = $this->pdo->prepare("SELECT * FROM commission WHERE `status` = 0 AND `user_id` = :userId ORDER BY time_created DESC");
       $stmt->execute(['userId' => $userId]);
-      $commission = $stmt->fetch(PDO::FETCH_OBJ);
+      $commissions = $stmt->fetchAll(PDO::FETCH_OBJ);
 
       // Check if a commission record exists for the user
-      if ($commission) {
-        // Step 2: Get the commission amount from the latest record
-        $commissionAmount = $commission->amount;
+      if ($commissions) {
 
-        // Step 3: Retrieve user details using getUserDetails function
-        $userDetails = $this->getUserDetails($userId);
+        foreach ($commissions as $commission) {
 
-        // Check if user details were found
-        if (!$userDetails) {
-          $output = [
-            'error' => true,
-            'message' => "User details not found."
-          ];
-          return false;
+          $userDetails = $this->getUserDetails($userId);
+          $userBalance = $userDetails->balance;
+          // Step 2: Get the commission amount from the latest record
+          $commissionAmount = $commission->amount;
+
+          // Step 3: Retrieve user details using getUserDetails function
+
+          // Check if user details were found
+          if (!$userDetails) {
+            $output = [
+              'error' => true,
+              'message' => "User details not found."
+            ];
+            return false;
+          }
+
+          // Step 4: Check if the user's balance is enough to pay the commission
+
+          if ($userBalance > $commissionAmount) {
+
+            // Step 5: Deduct the commission amount from the user's balance
+            $newBalance = $userBalance - $commissionAmount;
+
+            // Begin transaction for atomicity
+            $this->pdo->beginTransaction();
+
+            // Step 6: Update the user's balance in the database
+            $updateBalanceStmt = $this->pdo->prepare("UPDATE reg_details SET balance = :newBalance WHERE id = :userId");
+            $updateBalanceStmt->execute([
+              'newBalance' => $newBalance,
+              'userId' => $userId
+            ]);
+
+            // Step 7: Update the commission status to 1 (indicating it's paid)
+            $updatecommissiontmt = $this->pdo->prepare("UPDATE commission SET status = 1 WHERE id = :commissionId");
+            $updatecommissiontmt->execute([
+              'commissionId' => $commission->id
+            ]);
+
+            // Commit transaction
+            $this->pdo->commit();
+          }
         }
 
-        // Step 4: Check if the user's balance is enough to pay the commission
-        $userBalance = $userDetails->balance;
-        if ($userBalance > $commissionAmount) {
-
-          // Step 5: Deduct the commission amount from the user's balance
-          $newBalance = $userBalance - $commissionAmount;
-
-          // Begin transaction for atomicity
-          $this->pdo->beginTransaction();
-
-          // Step 6: Update the user's balance in the database
-          $updateBalanceStmt = $this->pdo->prepare("UPDATE reg_details SET balance = :newBalance WHERE id = :userId");
-          $updateBalanceStmt->execute([
-            'newBalance' => $newBalance,
-            'userId' => $userId
-          ]);
-
-          // Step 7: Update the commission status to 1 (indicating it's paid)
-          $updatecommissiontmt = $this->pdo->prepare("UPDATE commission SET status = 1 WHERE id = :commissionId");
-          $updatecommissiontmt->execute([
-            'commissionId' => $commission->id
-          ]);
-
-          // Commit transaction
-          $this->pdo->commit();
-
-          $output = [
-            'error' => false,
-            'message' => "Commission paid successfully."
-          ];
-          return true;
-        }
+        $output = [
+          'error' => false,
+          'message' => "Commission paid successfully."
+        ];
+        return true;
       } else {
         // when user does not owe commission
         $output = [
@@ -635,6 +640,7 @@ class User
       return "Error: " . $e->getMessage();
     }
   }
+
 
   public function initiateUserCommission($id, $amount)
   {

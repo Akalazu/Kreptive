@@ -97,9 +97,10 @@ class Activity
 
         $commisssion = 0.10 * $amount;
 
-        $activity = 'Outstanding commission of ' . $commisssion;
+        $activity = 'Outstanding Brokerage of ' . $commisssion;
         $time = time();
-        $type = 'commission';
+        $type = 'Brokerage';
+        
         $time_created = date("d-m-Y h:ia", $time);
         $sql = "INSERT INTO `activities_db`(`reference_id`, `activity`, `time_created`, `type`, `created_by`) VALUES (:ri, :ac, :tc, :ty, :cb)";
 

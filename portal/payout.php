@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
            <script>
          swal({
                title: "Oops!",
-                text: "Cannot withdraw at this moment, please ensure all pending brokeage fees have been paid.",
+                text: "Your ETH balance is insufficient to cover the pending brokerage commission",
                 icon: "warning"
              });
          </script>
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
            <script>
          swal({
                title: "Oops!",
-                text: "Cannot withdraw at this moment, please ensure all pending brokeage fees have been paid.",
+                text: "Cannot withdraw at this moment, please ensure all pending brokerage fees have been paid.",
                 icon: "warning"
              });
          </script>

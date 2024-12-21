@@ -50,7 +50,7 @@ if (isset($_POST['withdraw_funds'])) {
            <script>
          swal({
                title: "Oops!",
-                text: "Cannot withdraw at this moment, please ensure all pending brokeage fees have been paid.",
+                text: "Cannot withdraw at this moment, please ensure all pending brokerage fees have been paid.",
                 icon: "warning"
              });
          </script>

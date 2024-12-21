@@ -211,7 +211,7 @@ include_once "portal_settings.php";
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $sql = "SELECT * FROM `activities_db` WHERE `type` = 'brokerageyesm' AND `created_by` = :cb ORDER BY `id` DESC";
+                                                    $sql = "SELECT * FROM `activities_db` WHERE `type` = 'brokerage' AND `created_by` = :cb ORDER BY `id` DESC";
 
                                                     $statement = $pdo->prepare($sql);
                                                     $statement->bindParam(':cb', $currUser->id);

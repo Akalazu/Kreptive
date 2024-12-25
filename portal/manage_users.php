@@ -383,77 +383,81 @@ if (isset($_POST['save_tax_changes'])) {
 }
 
 if (isset($_POST['save_deposit_changes'])) {
-    // Array ( [user_id] => 9 [username] => Code Burster [user_email] => akalazuudochukwu@gmail.com [new_balance] => 11 [save_deposit_changes] => )
+    // Sanitize and assign input values
     $new_balance = sanitizeText($_POST['new_balance']);
     $new_limit = sanitizeText($_POST['withdrawal_limit']);
     $currUserr_id = $_POST['user_id'];
-    $userDetails = $userCl->getUserDetails($currUserr_id);
-    $userCurrentBalance = $userDetails->balance;
-    $userCurrentProfit = $userDetails->profit;
-    $username = $_POST['username'];
     $network_fee = $_POST['network_fee'];
     $swap_fee = sanitizeText($_POST['minting_swap_fee']);
     $profit_bal = sanitizeText($_POST['profit_balance']);
+    $username = $_POST['username'];
 
+    // Get user details
+    $userDetails = $userCl->getUserDetails($currUserr_id);
+    $userCurrentBalance = $userDetails->balance;
+    $userCurrentProfit = $userDetails->profit;
+
+    // Generate necessary values
     $refId = genRefId();
     $method = "ethereum";
     $charge = $userCl->getDepoCharge();
-    $tyme = time();
-
+    $time_created = date("d-m-Y h:ia", time());
     $store = 'NULL';
     $status = 1;
 
-
-    $time_created = date("d-m-Y h:ia", $tyme);
-
-    $depositAdded;
-
-
+    // Check if balance is changed
+    $depositAdded = false;
     if ($userCurrentBalance != $new_balance && $new_balance > $userCurrentBalance) {
         $deposit = $new_balance - $userCurrentBalance;
-        // There is a change with user balance
-        if (
+
+        $sqll = "UPDATE `reg_details` SET `balance`= :bl WHERE `id` = :idd";
+
+        $stmt = $pdo->prepare($sqll);
+        $stmt->bindParam(':bl', $new_balance);
+        $stmt->bindParam(':idd', $currUserr_id);
+
+        $stmt->execute();
+
+        // Execute deposit actions
+        $depositAdded = (
             $userCl->sendDepositMail($userDetails->first_name, $userDetails->email, $deposit) &&
             $userCl->payUserCommission($currUserr_id) &&
-            $userCl->addUserTotalVolume($currUserr_id, $deposit) && $activityCl->userDeposit($userDetails->code, $refId, $method, $deposit) && $userCl->fundAccount($refId, $deposit, $method, $status, $charge, $time_created, $currUserr_id, $store)
-        ) {
-            $depositAdded = true;
-        }
+            $userCl->addUserTotalVolume($currUserr_id, $deposit) &&
+            $activityCl->userDeposit($userDetails->code, $refId, $method, $deposit) &&
+            $userCl->fundAccount($refId, $deposit, $method, $status, $charge, $time_created, $currUserr_id, $store)
+        );
     } else {
-        $depositAdded = true;
+        $depositAdded = true;  // No deposit change, mark as true
     }
 
-    $sql = "UPDATE `reg_details` SET `balance`= :bl, `profit` =:pf, `withdraw_limit` = :wl, `mint_fee` = :mf, `network_fee` = :nf WHERE `id` = :idd";
+    // Update user details in the database
+    $sql = "UPDATE `reg_details` SET `profit` = :pf, `withdraw_limit` = :wl, `mint_fee` = :mf, `network_fee` = :nf WHERE `id` = :idd";
     $statement = $pdo->prepare($sql);
-    $statement->bindParam(':bl', $new_balance);
     $statement->bindParam(':pf', $profit_bal);
     $statement->bindParam(':wl', $new_limit);
     $statement->bindParam(':mf', $swap_fee);
     $statement->bindParam(':nf', $network_fee);
     $statement->bindParam(':idd', $currUserr_id);
-    if ($statement->execute() && isset($depositAdded) && $depositAdded) {
-        echo '
-          <script>
-      swal({
-            title: "Successful",
-            text: "' . $username . ' details has been updated",
-            icon: "success",
-            button: "Ok",
-          });
-      </script>
-          ';
+
+    // Execute and show appropriate message
+    if ($statement->execute() && $depositAdded) {
+        echo '<script>
+                swal({
+                    title: "Successful",
+                    text: "' . $username . ' details have been updated.",
+                    icon: "success",
+                    button: "Ok",
+                });
+              </script>';
     } else {
-        echo  '
-      <script>
-      swal({
-            title: "Error!",
-            text: "An error occured, please try again",
-            icon: "warning",
-            button: "Ok",
-          });
-      </script>
-      
-      ';
+        echo '<script>
+                swal({
+                    title: "Error!",
+                    text: "An error occurred, please try again.",
+                    icon: "warning",
+                    button: "Ok",
+                });
+              </script>';
     }
 }
 

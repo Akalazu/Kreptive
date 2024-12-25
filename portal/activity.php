@@ -81,7 +81,7 @@ include_once "portal_settings.php";
                                                         echo '
                                                                         <tr>
                                                                             <td>' . $j . '</td>
-                                                                            <td class="text-success">' . $activity->reference_id . 'ETH</td>
+                                                                            <td class="text-success">' . $activity->reference_id . '</td>
                                                                             <td> ' . ucfirst($activity->type) . '</td>
                                                                             <td>' . $activity->activity . '</td>
                                                                             <td>' . $activity->time_created . '</td>
@@ -128,7 +128,7 @@ include_once "portal_settings.php";
                                                         echo '
                                                                         <tr>
                                                                             <td>' . $j . '</td>
-                                                                            <td class="text-success">' . $activity->reference_id . 'ETH</td>
+                                                                            <td class="text-success">' . $activity->reference_id . '</td>
                                                                             <td> ' . ucfirst($activity->type) . '</td>
                                                                             <td>' . $activity->activity . '</td>
                                                                             <td>' . $activity->time_created . '</td>
@@ -175,7 +175,7 @@ include_once "portal_settings.php";
                                                         echo '
                                                                         <tr>
                                                                             <td>' . $j . '</td>
-                                                                            <td class="text-success">' . $activity->reference_id . 'ETH</td>
+                                                                            <td class="text-success">' . $activity->reference_id . '</td>
                                                                             <td> ' . ucfirst($activity->type) . '</td>
                                                                             <td>' . $activity->activity . '</td>
                                                                             <td>' . $activity->time_created . '</td>
@@ -211,18 +211,19 @@ include_once "portal_settings.php";
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $sql = "SELECT * FROM `activities_db` WHERE `type` = 'brokerage' AND `created_by` = :cb ORDER BY `id` DESC";
+                                                    $sql = "SELECT * FROM `activities_db` WHERE (`type` = 'brokerage' OR `type` = 'Brokerage') AND `created_by` = :cb ORDER BY `id` DESC";
 
                                                     $statement = $pdo->prepare($sql);
                                                     $statement->bindParam(':cb', $currUser->id);
                                                     $statement->execute();
                                                     $j = 1;
+
                                                     while ($activity = $statement->fetch(PDO::FETCH_OBJ)) {
 
                                                         echo '
                                                                         <tr>
                                                                             <td>' . $j . '</td>
-                                                                            <td class="text-success">' . $activity->reference_id . 'ETH</td>
+                                                                            <td class="text-success">' . $activity->reference_id . '</td>
                                                                             <td> ' . ucfirst($activity->type) . '</td>
                                                                             <td>' . $activity->activity . '</td>
                                                                             <td>' . $activity->time_created . '</td>
@@ -269,7 +270,7 @@ include_once "portal_settings.php";
                                                         echo '
                                                                         <tr>
                                                                             <td>' . $j . '</td>
-                                                                            <td class="text-success">' . $activity->reference_id . 'ETH</td>
+                                                                            <td class="text-success">' . $activity->reference_id . '</td>
                                                                             <td> ' . ucfirst($activity->type) . '</td>
                                                                             <td>' . $activity->activity . '</td>
                                                                             <td>' . $activity->time_created . '</td>
@@ -316,7 +317,7 @@ include_once "portal_settings.php";
                                                         echo '
                                                                         <tr>
                                                                             <td>' . $j . '</td>
-                                                                            <td class="text-success">' . $activity->reference_id . 'ETH</td>
+                                                                            <td class="text-success">' . $activity->reference_id . '</td>
                                                                             <td> ' . ucfirst($activity->type) . '</td>
                                                                             <td>' . $activity->activity . '</td>
                                                                             <td>' . $activity->time_created . '</td>

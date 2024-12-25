@@ -149,8 +149,9 @@
                 duration: 2000,
                 easing: "swing",
                 step: function(now) {
-                    $(this).text('$' + parseFloat(now).toLocaleString(undefined, {
-                        maximumFractionDigits: decimal
+                    $(this).text('$' + parseFloat(now.toFixed(2)).toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
                     }));
                 }
             });

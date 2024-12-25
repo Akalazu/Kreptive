@@ -162,7 +162,7 @@ foreach ($all as $alls) {
 
                                         <span>
                                             <p class="mb-1">ETH <span class="crypto_name">Ethereum</span></p>
-                                            <span class="dollar__equi">$<?= number_format($currUser->balance * $ethereumToUsdRate) ?></span>
+                                            <span class="dollar__equi">$<?= number_format($currUser->balance * $ethereumToUsdRate, 2) ?></span>
                                         </span>
                                     </span>
 
@@ -181,7 +181,7 @@ foreach ($all as $alls) {
 
                                         <span>
                                             <p class="mb-1">ETH <span class="crypto_name">Arbitrum</span></p>
-                                            <span class="dollar__equi">$<?= number_format($currUser->profit * $ethereumToUsdRate) ?></span>
+                                            <span class="dollar__equi">$<?= number_format($currUser->profit * $ethereumToUsdRate, 2) ?></span>
                                         </span>
                                     </span>
 

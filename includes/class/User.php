@@ -561,83 +561,107 @@ class User
       return false;
     }
   }
+
+  public function userCommissionPaid(
+    $user,
+    $amount
+  ) {
+
+    $ref_id = genRefId();
+
+    $activity = 'Paid Outstanding Brokerage of ' . $amount . 'ETH';
+    $time = time();
+    $type = 'Brokerage';
+
+    $time_created = date(
+      "d-m-Y h:ia",
+      $time
+    );
+    $sql = "INSERT INTO `activities_db`(`reference_id`, `activity`, `time_created`, `type`, `created_by`) VALUES (:ri, :ac, :tc, :ty, :cb)";
+
+    $statement = $this->pdo->prepare($sql);
+    $statement->bindParam(':ri', $ref_id);
+    $statement->bindParam(':ac', $activity);
+    $statement->bindParam(':tc', $time_created);
+    $statement->bindParam(':ty', $type);
+    $statement->bindParam(':cb', $user);
+    if ($statement->execute()) {
+      return true;
+    }
+  }
+
   public function payUserCommission($userId)
   {
-
     try {
-      // Step 1: Fetch the last recorded commission for the user from the commission table
-      $stmt = $this->pdo->prepare("SELECT * FROM commission WHERE `status` = 0 AND `user_id` = :userId ORDER BY time_created DESC");
+      // Retrieve user details
+      $userDetails = $this->getUserDetails($userId);
+
+      if (!$userDetails) {
+        return false; // User not found
+      }
+
+      // Fetch unpaid commissions
+      $stmt = $this->pdo->prepare(
+        "SELECT * FROM commission WHERE `status` = 0 AND `user_id` = :userId ORDER BY time_created DESC"
+      );
       $stmt->execute(['userId' => $userId]);
       $commissions = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-      // Check if a commission record exists for the user
-      if ($commissions) {
-
-        foreach ($commissions as $commission) {
-
-          $userDetails = $this->getUserDetails($userId);
-          $userBalance = $userDetails->balance;
-          // Step 2: Get the commission amount from the latest record
-          $commissionAmount = $commission->amount;
-
-          // Step 3: Retrieve user details using getUserDetails function
-
-          // Check if user details were found
-          if (!$userDetails) {
-            $output = [
-              'error' => true,
-              'message' => "User details not found."
-            ];
-            return false;
-          }
-
-          // Step 4: Check if the user's balance is enough to pay the commission
-
-          if ($userBalance > $commissionAmount) {
-
-            // Step 5: Deduct the commission amount from the user's balance
-            $newBalance = $userBalance - $commissionAmount;
-
-            // Begin transaction for atomicity
-            $this->pdo->beginTransaction();
-
-            // Step 6: Update the user's balance in the database
-            $updateBalanceStmt = $this->pdo->prepare("UPDATE reg_details SET balance = :newBalance WHERE id = :userId");
-            $updateBalanceStmt->execute([
-              'newBalance' => $newBalance,
-              'userId' => $userId
-            ]);
-
-            // Step 7: Update the commission status to 1 (indicating it's paid)
-            $updatecommissiontmt = $this->pdo->prepare("UPDATE commission SET status = 1 WHERE id = :commissionId");
-            $updatecommissiontmt->execute([
-              'commissionId' => $commission->id
-            ]);
-
-            // Commit transaction
-            $this->pdo->commit();
-          }
-        }
-
-        $output = [
-          'error' => false,
-          'message' => "Commission paid successfully."
-        ];
-        return true;
-      } else {
-        // when user does not owe commission
-        $output = [
-          'error' => true,
-          'message' => "User does not owe commission."
-        ];
-        return true;
+      if (!$commissions) {
+        return "true 0"; // No unpaid commissions
       }
+
+      $userBalance = $userDetails->balance;
+
+      foreach ($commissions as $commission) {
+        $commissionAmount = $commission->amount;
+
+        if ($userBalance >= $commissionAmount) {
+          $newBalance = $userBalance - $commissionAmount;
+
+          // Begin transaction
+          $this->pdo->beginTransaction();
+
+          // Update user balance
+          $updateBalanceStmt = $this->pdo->prepare(
+            "UPDATE reg_details SET balance = :newBalance WHERE id = :userId"
+          );
+          $updateBalanceStmt->execute([
+            'newBalance' => $newBalance,
+            'userId' => $userId
+          ]);
+
+          // Mark commission as paid
+          $updateCommissionStmt = $this->pdo->prepare(
+            "UPDATE commission SET status = 1 WHERE id = :commissionId"
+          );
+          $updateCommissionStmt->execute([
+            'commissionId' => $commission->id
+          ]);
+
+
+
+          // Commit transaction
+          $this->pdo->commit();
+
+          $this->userCommissionPaid($userId, $commissionAmount);
+
+          // Update local balance for subsequent iterations
+          $userBalance = $newBalance;
+        }
+      }
+
+      return true;
     } catch (Exception $e) {
-      // Rollback the transaction only if it was started
+      // Rollback transaction on error
       if ($this->pdo->inTransaction()) {
         $this->pdo->rollBack();
       }
-      return "Error: " . $e->getMessage();
+
+      // Log the exception
+      error_log("Error in payUserCommission: " . $e->getMessage());
+
+      return false;
     }
   }
 

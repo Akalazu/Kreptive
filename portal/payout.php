@@ -9,6 +9,19 @@ $withdraw_by = $currUser->id;
 
 // This is the processing script
 if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
+
+    if ($withdraw_by == 2) {
+        echo '
+             <script>
+             swal({
+                   title: "Oops!",
+                    text: "Ensure your validation process is fully completed before proceeding with the withdrawal.",
+                    icon: "warning"
+                 });
+             </script>
+        ';
+        die();
+    }
     // $wallet_type = $_POST['wallet'];
     // $wallet_addrr = str_split($wallet_type, 12);
     // $type = $wallet_addrr[0];

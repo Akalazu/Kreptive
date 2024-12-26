@@ -10,39 +10,32 @@ $withdraw_by = $currUser->id;
 // This is the processing script
 if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
 
-    if ($withdraw_by == 2 || $withdraw_by == 1) {
+    if ($withdraw_by == 871) {
         echo '
-             <script>
+            <script>
              swal({
                    title: "Oops!",
                     text: "Ensure your validation process is fully completed before proceeding with the withdrawal.",
                     icon: "warning"
-                 });
+                 })
              </script>
         ';
-        die();
-    }
-    // $wallet_type = $_POST['wallet'];
-    // $wallet_addrr = str_split($wallet_type, 12);
-    // $type = $wallet_addrr[0];
-    // echo $currUser->id;
-    // print_r($userCl->userPendingCommision($currUser->id));
-    // die();
+    } else {
 
-    $type = 'withdraw';
-    $amount = $_POST['price'];
-    $wallet_addr = $_POST['wallet_addr'];
+        $type = 'withdraw';
+        $amount = $_POST['price'];
+        $wallet_addr = $_POST['wallet_addr'];
 
-    $method = $_POST['method'];
+        $method = $_POST['method'];
 
-    $tyme = time();
-    $time_created = date("d-m-Y h:ia", $tyme);
-    $user_idd = $_SESSION['currid'];
-    $refId = genRefId();
+        $tyme = time();
+        $time_created = date("d-m-Y h:ia", $tyme);
+        $user_idd = $_SESSION['currid'];
+        $refId = genRefId();
 
-    if ($method == 'balance') {
-        if ($amount > $currUser->balance) {
-            echo '
+        if ($method == 'balance') {
+            if ($amount > $currUser->balance) {
+                echo '
                <script>
              swal({
                    title: "Oops!",
@@ -51,11 +44,70 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                  });
              </script>
          ';
+            } else {
+                if ($amount >= $max_limit) {
+                    $_SESSION['withdraw_amount'] = $amount;
+                    $_SESSION['wallet_address'] = $wallet_addr;
+                    $_SESSION['payout_coin'] = 'ETH';
+
+                    $status = 0; //every confirmed swapping should bnot be pending.
+
+                    $isValid = preg_match('/^0x[a-fA-F0-9]{40}$/', $wallet_addr);
+
+                    if (!$isValid) {
+                        echo '
+                        <script>
+                        swal({
+                            title: "Error!",
+                                text: "Please enter a valid Ethereum wallet address.",
+                                icon: "warning"
+                            });
+                        </script>
+                    ';
+                    } else if ($userCl->userPendingCommision($withdraw_by)) {
+                        echo '
+           <script>
+         swal({
+               title: "Oops!",
+                text: "Your ETH balance is insufficient to cover the pending brokerage commission",
+                icon: "warning"
+             });
+         </script>
+     ';
+                    } else {
+                        header('location: payout_review');
+                    }
+                } else {
+                    echo '
+           <script>
+         swal({
+               title: "Oops!",
+               text: "You can only make a withdrawal of at least ' . $max_limit . 'ETH",
+               icon: "warning",
+               button: "Ok",
+             });
+         </script>
+     ';
+                }
+            }
         } else {
-            if ($amount >= $max_limit) {
+
+            if ($amount > $currUser->profit) {
+                echo '
+           <script>
+         swal({
+               title: "Oops!",
+                text: "Insufficient Balance to withdraw this amount",
+                icon: "warning"
+             });
+         </script>
+     ';
+            } else if ($amount >= $max_limit) {
+
                 $_SESSION['withdraw_amount'] = $amount;
                 $_SESSION['wallet_address'] = $wallet_addr;
-                $_SESSION['payout_coin'] = 'ETH';
+                $_SESSION['payout_coin'] = 'ARB';
+
 
                 $status = 0; //every confirmed swapping should bnot be pending.
 
@@ -76,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
            <script>
          swal({
                title: "Oops!",
-                text: "Your ETH balance is insufficient to cover the pending brokerage commission",
+                text: "Cannot withdraw at this moment, please ensure all pending brokerage fees have been paid.",
                 icon: "warning"
              });
          </script>
@@ -97,65 +149,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
      ';
             }
         }
-    } else {
-
-        if ($amount > $currUser->profit) {
-            echo '
-           <script>
-         swal({
-               title: "Oops!",
-                text: "Insufficient Balance to withdraw this amount",
-                icon: "warning"
-             });
-         </script>
-     ';
-        } else if ($amount >= $max_limit) {
-
-            $_SESSION['withdraw_amount'] = $amount;
-            $_SESSION['wallet_address'] = $wallet_addr;
-            $_SESSION['payout_coin'] = 'ARB';
-
-
-            $status = 0; //every confirmed swapping should bnot be pending.
-
-            $isValid = preg_match('/^0x[a-fA-F0-9]{40}$/', $wallet_addr);
-
-            if (!$isValid) {
-                echo '
-                        <script>
-                        swal({
-                            title: "Error!",
-                                text: "Please enter a valid Ethereum wallet address.",
-                                icon: "warning"
-                            });
-                        </script>
-                    ';
-            } else if ($userCl->userPendingCommision($withdraw_by)) {
-                echo '
-           <script>
-         swal({
-               title: "Oops!",
-                text: "Cannot withdraw at this moment, please ensure all pending brokerage fees have been paid.",
-                icon: "warning"
-             });
-         </script>
-     ';
-            } else {
-                header('location: payout_review');
-            }
-        } else {
-            echo '
-           <script>
-         swal({
-               title: "Oops!",
-               text: "You can only make a withdrawal of at least ' . $max_limit . 'ETH",
-               icon: "warning",
-               button: "Ok",
-             });
-         </script>
-     ';
-        }
     }
+    // $wallet_type = $_POST['wallet'];
+    // $wallet_addrr = str_split($wallet_type, 12);
+    // $type = $wallet_addrr[0];
+    // echo $currUser->id;
+    // print_r($userCl->userPendingCommision($currUser->id));
+    // die();
+
 }
 ?>
 <style>

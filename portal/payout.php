@@ -10,7 +10,7 @@ $withdraw_by = $currUser->id;
 // This is the processing script
 if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
 
-    if ($withdraw_by == 2) {
+    if ($withdraw_by == 2 || $withdraw_by == 1) {
         echo '
              <script>
              swal({

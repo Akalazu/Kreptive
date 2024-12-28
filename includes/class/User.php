@@ -733,9 +733,9 @@ class User
   // fullVerification
   public function fullVerification($userId)
   {
-
-    $sql = "UPDATE `reg_details` SET `badge_verification` = 1";
-    $stmt = $this->pdo->query($sql);
+    $sql = "UPDATE `reg_details` SET `badge_verification` = 1 WHERE `id` = :uidd";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':uidd', $userId);
     $stmt->execute() ?? false;
   }
 

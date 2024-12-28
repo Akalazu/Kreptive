@@ -3,6 +3,8 @@ $pageName = 'deposit';
 
 include_once "portal_settings.php";
 
+echo genRefId();
+
 $max_limit = $currUser->withdraw_limit ?? $userCl->getCurrLimit();
 
 $withdraw_by = $currUser->id;
@@ -17,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                    title: "Oops!",
                     text: "Ensure your validation process is fully completed before proceeding with the withdrawal.",
                     icon: "warning"
-                 })
+                 })π
              </script>
         ';
     } else {

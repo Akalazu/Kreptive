@@ -126,9 +126,6 @@
         padding: 7px;
         width: fit-content;
     }
-    h2 span.new-label{
-        
-    }
 </style>
 
 

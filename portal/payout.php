@@ -3,8 +3,6 @@ $pageName = 'deposit';
 
 include_once "portal_settings.php";
 
-echo genRefId();
-
 $max_limit = $currUser->withdraw_limit ?? $userCl->getCurrLimit();
 
 $withdraw_by = $currUser->id;
@@ -265,7 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                     <!-- <div class="input-group my-4"> -->
                     <div class="form-group">
                         <label for="amount"> Amount</label>
-                        <input type="number" name="price" id="amount" class="form-control form-control-s1 " min="0" step=".01" placeholder="<?= $output ?>" required>
+                        <input type="number" name="price" id="amount" class="form-control form-control-s1 " min="0" step=".00000000000000000000000000001" placeholder="<?= $output ?>" required>
                         <b>
                             <p class="ex_rate mb-3">= $0</p>
                         </b>

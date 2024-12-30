@@ -243,6 +243,14 @@ foreach ($all as $alls) {
                                             $status = 'Failed';
                                         }
 
+                                        if ($transaction['type'] == 'Brokeage Fee') {
+                                            $ttype = 'Brokeage Fee';
+                                        } else if ($transaction['type'] == 'bonus') {
+                                            $ttype = 'Royalties Bonus';
+                                        } else {
+                                            $ttype = ucfirst($transaction['type']);
+                                        }
+
                                         $brokage = '<span class="badge badge-secondary ms-2 text-white" style="font-size: 10px"> Required </span>';
 
                                 ?>
@@ -255,7 +263,7 @@ foreach ($all as $alls) {
 
 
                                                 <span>
-                                                    <p class="mb-1 mobile-font"><?= ucfirst($transaction['type']) == 'Brokeage Fee' ? ucfirst($transaction['type']) . $brokage : ucfirst($transaction['type']) ?></p>
+                                                    <p class="mb-1 mobile-font"><?= $ttype  ?></p>
                                                     <span class="dollar__equi" style="font-size: 12px"><?= $date ?></span>
                                                 </span>
                                             </span>

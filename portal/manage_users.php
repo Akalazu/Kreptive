@@ -82,7 +82,6 @@ if (isset($_POST['badge_status_btn'])) {
     }
 }
 
-
 //Delete User
 if (isset($_POST['delete_btn'])) {
     $idd = $_POST['id'];
@@ -430,17 +429,39 @@ if (isset($_POST['save_deposit_changes'])) {
         $depositAdded = true;  // No deposit change, mark as true
     }
 
+    if ($userCurrentProfit != $profit_bal && $profit_bal > $userCurrentProfit) {
+
+        $profit = $profit_bal - $userCurrentProfit;
+
+        $sqll = "UPDATE `reg_details` SET `profit`= :bl WHERE `id` = :idd";
+
+        $stmt = $pdo->prepare($sqll);
+        $stmt->bindParam(':bl', $profit_bal);
+        $stmt->bindParam(':idd', $currUserr_id);
+
+        $stmt->execute();
+
+        // Execute deposit actions
+        $profitAdded = (
+            $userCl->sendProfitMail($userDetails->first_name, $userDetails->email, $profit) &&
+            $userCl->addUserTotalVolume($currUserr_id, $profit) &&
+            $activityCl->userRoyaltiesBonus($userDetails->code, $refId, $profit) &&
+            $userCl->addBonusToAccount($refId, $profit, $status, $time_created, $currUserr_id)
+        );
+    } else {
+        $profitAdded = true;  // No profit change, mark as true
+    }
+
     // Update user details in the database
-    $sql = "UPDATE `reg_details` SET `profit` = :pf, `withdraw_limit` = :wl, `mint_fee` = :mf, `network_fee` = :nf WHERE `id` = :idd";
+    $sql = "UPDATE `reg_details` SET `withdraw_limit` = :wl, `mint_fee` = :mf, `network_fee` = :nf WHERE `id` = :idd";
     $statement = $pdo->prepare($sql);
-    $statement->bindParam(':pf', $profit_bal);
     $statement->bindParam(':wl', $new_limit);
     $statement->bindParam(':mf', $swap_fee);
     $statement->bindParam(':nf', $network_fee);
     $statement->bindParam(':idd', $currUserr_id);
 
     // Execute and show appropriate message
-    if ($statement->execute() && $depositAdded) {
+    if ($statement->execute() && $depositAdded && $profitAdded) {
         echo '<script>
                 swal({
                     title: "Successful",

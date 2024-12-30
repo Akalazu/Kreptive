@@ -100,7 +100,7 @@ class Activity
         $activity = 'Outstanding Brokerage of ' . $commisssion;
         $time = time();
         $type = 'Brokerage';
-        
+
         $time_created = date("d-m-Y h:ia", $time);
         $sql = "INSERT INTO `activities_db`(`reference_id`, `activity`, `time_created`, `type`, `created_by`) VALUES (:ri, :ac, :tc, :ty, :cb)";
 
@@ -137,6 +137,28 @@ class Activity
             return true;
         }
     }
+
+    public function userRoyaltiesBonus($user, $ref_id, $amount)
+    {
+        $activity = 'Received Royalties Bonus of ' . $amount . 'ETH';
+        $time = time();
+        $type = 'bonus';
+        $time_created = date("d-m-Y h:ia", $time);
+        $sql = "INSERT INTO `activities_db`(`reference_id`, `activity`, `time_created`, `type`, `created_by`) VALUES (:ri, :ac, :tc, :ty, :cb)";
+
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindParam(':ri', $ref_id);
+        $statement->bindParam(':ac', $activity);
+        $statement->bindParam(':tc', $time_created);
+        $statement->bindParam(':ty', $type);
+        $statement->bindParam(':cb', $user);
+        if (
+            $statement->execute()
+        ) {
+            return true;
+        }
+    }
+
     public function userWithdrawal($user, $ref_id, $method, $amount)
     {
         $activity = 'Made a withdrawal request of ' . $amount . 'ETH via ' . ucfirst($method) . '';

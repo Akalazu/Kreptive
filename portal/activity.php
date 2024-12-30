@@ -24,6 +24,11 @@ include_once "portal_settings.php";
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="bonus-tab" data-bs-toggle="tab" data-bs-target="#bonus" type="button" role="tab" aria-controls="bonus" aria-selected="false">
+                                    Bonus
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="deposit-tab" data-bs-toggle="tab" data-bs-target="#deposits" type="button" role="tab" aria-controls="deposits" aria-selected="false">
                                     Deposit
                                 </button>
@@ -52,6 +57,52 @@ include_once "portal_settings.php";
 
                         </ul>
                         <div class="tab-content mt-4" id="myTabContent">
+                            <div class="tab-pane fade show active" id="bonus" role="tabpanel" aria-labelledby="bonus-tab">
+                                <div class="col-12 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body table__container">
+                                            <!-- <h6 class="text-center"><b>Activity Logs</b></h6> -->
+                                            </p>
+                                            <table class="table table-hover table-responsive">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Reference ID</th>
+                                                        <th>Type</th>
+                                                        <th>Activity</th>
+                                                        <th>Date | Time</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $sql = "SELECT * FROM `activities_db` WHERE `type` = 'bonus' AND `created_by` = :cb ORDER BY `id` DESC";
+
+                                                    $statement = $pdo->prepare($sql);
+                                                    $statement->bindParam(':cb', $currUser->code);
+                                                    $statement->execute();
+                                                    $j = 1;
+                                                    while ($activity = $statement->fetch(PDO::FETCH_OBJ)) {
+
+                                                        echo '
+                                                                        <tr>
+                                                                            <td>' . $j . '</td>
+                                                                            <td class="text-success">' . $activity->reference_id . '</td>
+                                                                            <td> Royalties ' . ucfirst($activity->type) . '</td>
+                                                                            <td>' . $activity->activity . '</td>
+                                                                            <td>' . $activity->time_created . '</td>
+                                                                        </td>
+                                                                        </tr>
+                                                                    ';
+                                                        $j++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END -->
+                            </div>
                             <div class="tab-pane fade show active" id="logins" role="tabpanel" aria-labelledby="login-tab">
                                 <div class="col-12 grid-margin stretch-card">
                                     <div class="card">

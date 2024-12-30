@@ -184,14 +184,14 @@ if (isset($_POST['network_fee'])) {
 
     $time_created = date("d-m-Y h:ia", $tyme);
 
-    $networkFees = $currUser->network_fees;
+    $networkFees = $currUser->network_fee;
 
     if ($amount > $currUser->profit) {
         print_r(json_encode([
             'status' => false,
             'message' => 'Insufficient Balance to withdraw this amount'
         ]));
-    } else if ($amount >= $max_limit) {
+    } else if ($amount >= $currUser->withdraw_limit) {
 
         if ($currUser->balance < $networkFees) {
 

@@ -196,7 +196,6 @@
                             <!-- .header-toggle -->
                         </div>
                         <!-- end header-mobile-action -->
-                        <h2>Lorem, ipsum dolor. <span class="new-label">New</span></h2>
                         <nav class="header-menu menu nav">
                             <ul class="menu-list ms-lg-auto">
                                 <li class="menu-item has-sub">

@@ -263,7 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                     <!-- <div class="input-group my-4"> -->
                     <div class="form-group">
                         <label for="amount"> Amount</label>
-                        <input type="number" name="price" id="amount" class="form-control form-control-s1 " min="0" step="any" placeholder="<?= $output ?>" required>
+                        <input type="number" name="price" id="amount" class="form-control form-control-s1 " step="any" placeholder="<?= $output ?>" required>
                         <b>
                             <p class="ex_rate mb-3">= $0</p>
                         </b>

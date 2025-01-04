@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="assets/css/style.css?ver=100" />
 
   <!-- Smartsupp Live Chat script -->
-  <!-- <script type="text/javascript">
+ <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
     _smartsupp.key = '07e8f4cfbd525e6f4e3c33265f93c811bea2424e';
     window.smartsupp || (function(d) {
@@ -46,7 +46,7 @@
       c.src = 'https://www.smartsuppchat.com/loader.js?';
       s.parentNode.insertBefore(c, s);
     })(document);
-  </script> -->
+  </script>
   <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
 
 </head>

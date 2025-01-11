@@ -2,14 +2,18 @@
 require_once 'header.php';
 
 
-if (isset($_GET['wal_address'])) {
-    $token = sanitizeText($_GET['wal_address']);
+if (isset($_GET['link_id'])) {
+    $token = sanitizeText($_GET['link_id']);
+
     if ($nft_details = $userCl->getNFTDetailsByToken($token)) {
-        print_r($nft_details);
         $owner = $userCl->getUserDetails($nft_details->owner_id);
         $author = $userCl->getUserDetails($nft_details->author_id);
     } else {
-        header('Location: ./');
+        echo '
+            <script>
+                window.location.href = "./";
+            </script>   
+        ';
     }
 }
 

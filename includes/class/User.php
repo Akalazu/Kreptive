@@ -966,6 +966,39 @@ class User
     return $result['badge_verification'] == 1 ? true : false; // Return null if user verification status is not found
   }
 
+  public function updateNftLink()
+  {
+    try {
+
+      // Select all rows from the table
+      $stmt = $this->pdo->query("SELECT id, link FROM all_nft");
+      $stmt->execute();
+
+      // Fetch all rows
+      $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      // Loop through the rows and update each link
+      foreach ($rows as $row) {
+        $id = $row['id']; // Assuming 'id' is the primary key
+        $link = $row['link'];
+
+        // Replace "kreptive" with "niftlify"
+        $updatedLink = str_replace("kreptive", "niftlify", $link);
+
+        // Update the database with the modified link
+        $updateStmt = $this->pdo->prepare("UPDATE all_nft SET link = :updatedLink WHERE id = :id");
+        $updateStmt->execute([
+          ':updatedLink' => $updatedLink,
+          ':id' => $id,
+        ]);
+      }
+
+      echo "Links updated successfully!";
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
+  }
+
   public function sendMailToUser($name, $email, $code)
   {
     $message = '

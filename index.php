@@ -1,6 +1,9 @@
 <?php
 require_once 'header.php';
 
+// Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''all_nft'' at line 1
+
+$userCl->updateNftLink();
 ?>
 <style>
   .btn-primary {

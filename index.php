@@ -11,7 +11,7 @@ require_once 'header.php';
 <!-- .header-main-->
 <div class="hero-wrap hero-wrap-2 section-space">
   <div class="container">
-    <div class="row flex-lg-row-reverse justify-content-between align-items-center align-items-xl-start" style="flex-direction: column-reverse;
+    <div class="row flex-lg-row-reverse justify-content-between align-items-center" style="flex-direction: column-reverse;
     gap: 5rem;">
       <div class="col-lg-5" data-aos="fade-left">
         <div class="swiper swiper-carousel swiper-button-s1" data-breakpoints='{
@@ -52,17 +52,27 @@ require_once 'header.php';
       </div><!-- end col-lg-5 -->
       <div class="col-lg-6" data-aos="fade-right">
         <div class="hero-content pt-xl-3 pt-lg-0 pb-0">
-          <h1 class="hero-title hero-title-s1 mb-3" style="font-family: 'Rubik', sans-serif;">Discover rare, <br> world class artworks</h1>
-          <p class="hero-text mb-4 pb-1">With Kreptive' top-notch platform, launching your own white-label NFT store or NFT Marketplace is a breeze.
+          <h1 class="hero-title hero-title-s1 mb-3 text-white" style="font-family: 'Rubik', sans-serif;" id="app">NFTs made simple,<br> secure, and accessible.</h1>
+
+          <p class="hero-text mb-4 pb-1" style="color: #e9ecef;">Launch your own white-label NFT store or marketplace effortlessly with Niftlify's top-tier platform. Start now and redefine the future of digital ownership!
           </p>
           <ul class="hero-btns btns-group">
-            <li><a href="explore" class="btn btn-lg btn-primary">Explore</a></li>
-            <li><a href="sign-in" class="btn btn-lg btn-outline-dark">Mint an Art</a></li>
+            <li><a href="sign-in" class="btn btn-md btn-dark">Mint an Art</a></li>
+            <li><a href="explore" class="btn btn-md btn-outline-light text-white">Explore</a></li>
           </ul>
         </div><!-- hero-content -->
       </div><!-- col-lg-6 -->
     </div><!-- end row -->
   </div><!-- .container-->
+  <svg class="shape1" viewBox="0 0 198 342" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M77.0989 212.77C4.94983 240.593 -3.65619 310.516 1.05944 342L199.558 342L200 -8.74228e-06C138.549 -6.05619e-06 149.16 97.8604 144.739 127.866C142.263 176.694 95.6667 204.359 77.0989 212.77Z" fill="#fff"></path>
+  </svg>
+  <svg class="shape2" viewBox="0 0 198 342" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M77.0989 212.77C4.94983 240.593 -3.65619 310.516 1.05944 342L199.558 342L200 -8.74228e-06C138.549 -6.05619e-06 149.16 97.8604 144.739 127.866C142.263 176.694 95.6667 204.359 77.0989 212.77Z" fill="#fff"></path>
+  </svg>
+  <svg class="shape3" viewBox="0 0 93 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M31.7243 33.8972C9.47383 37.2 1.30374 12.6752 0 0H93V77.5724C78.8762 75.8341 74.7477 66.7079 71.271 58.0164C67.7944 49.3248 59.5374 29.7687 31.7243 33.8972Z" fill="#fff"></path>
+  </svg>
 </div>
 <!-- end hero-wrap -->
 </header>
@@ -70,7 +80,7 @@ require_once 'header.php';
 <section class="section-space trending-section bg-gray">
   <div class="container">
     <div class="section-head text-center">
-      <h2>Latest Auctions</h2>
+      <h2>Hot Auctions 🔥</h2>
     </div>
     <!-- end section-head -->
     <div class="row g-gs">
@@ -97,7 +107,7 @@ require_once 'header.php';
                 </a>
                 <div class="custom-tooltip-wrap card-author-by-wrap">
                   <span class="card-author-by card-author-by-2">Owned by</span>
-                  <a class="custom-tooltip author-link" href="https://kreptive.com/<?= $ownerDetails->first_name ?>/<?= $ownerDetails->address ?>">@<?= getUserNameById($pdo, $nft->owner_id) ?><span><i class="mdi mdi-check-circle"></i> </span></a>
+                  <a class="custom-tooltip author-link" href="https://niftlify.com/<?= $ownerDetails->first_name ?>/<?= $ownerDetails->address ?>">@<?= getUserNameById($pdo, $nft->owner_id) ?><span><i class="mdi mdi-check-circle"></i> </span></a>
                   <!-- end dropdown-menu -->
                 </div>
                 <!-- end custom-tootltip-wrap -->
@@ -155,7 +165,7 @@ require_once 'header.php';
   <div class="container">
     <div class="section-head text-center">
       <h2>How to get started?</h2>
-      <small class="mt-2">Get on-the-go with kreptive by doing the following</small>
+      <small class="mt-2">Get on-the-go with niftlify by doing the following</small>
     </div>
     <!-- end section-head -->
     <section class="section-space-b how-it-work-section pt-2" data-aos="zoom-in-up">
@@ -230,10 +240,10 @@ require_once 'header.php';
             <div class="card-body">
               <h4 class="mb-3 card-title">
                 <em class="ni ni-question icon icon-sm text-orange icon-circle icon-wbg shadow-sm me-2"></em>
-                What is Kreptive NFT Marketplace?
+                What is Niftlify NFT Marketplace?
               </h4>
               <p class="card-text">
-                Artists, creators, and cryptocurrency enthusiasts come together on Kreptive NFT Marketplace to collectively create and trade premium NFTs.
+                Artists, creators, and cryptocurrency enthusiasts come together on Niftlify NFT Marketplace to collectively create and trade premium NFTs.
               </p>
             </div>
             <!-- end card-body -->

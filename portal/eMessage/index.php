@@ -10,7 +10,7 @@ require_once 'config.php';
 
 
 <div class="container chat-list-container">
-  <div class="content-sidebar-title">Kreptive Community</div>
+  <div class="content-sidebar-title">Niftlify Community</div>
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
       <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
@@ -23,7 +23,7 @@ require_once 'config.php';
     </svg>
     <div class="ml-3" style="font-size: 13px;">
 
-      Welcome to Kreptive — the community for art enthusiasts! Connect, engage, and explore creative conversations with fellow creators.
+      Welcome to Niftlify — the community for art enthusiasts! Connect, engage, and explore creative conversations with fellow creators.
     </div>
   </div>
   <div class="chat-list">
@@ -51,7 +51,7 @@ require_once 'config.php';
           <img src="../../<?= $user->image ?>" class="rounded-circle img-fluid img-thumbnail" alt="User Icon" style="width: 60px;">
           <div class="chat-details ml-3">
             <h5 class="chat-title mb-1 d-flex align-items-center"><?= $user->first_name . ' ' . $user->last_name ?> <?= $badge ?></h5>
-            <p class="chat-preview mb-0 text-muted"> <?= $user->bio ?? "Hello there! I'll love to connect here on Kreptive Community" ?></p>
+            <p class="chat-preview mb-0 text-muted"> <?= $user->bio ?? "Hello there! I'll love to connect here on Niftlify Community" ?></p>
           </div>
         </div>
         <div class="text-right" data-id="<?= $user->id ?>">

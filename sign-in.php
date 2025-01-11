@@ -6,9 +6,9 @@
   <meta name="author" content="Sortnio" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,  initial-scale=1.0" />
-  <meta name="description" content="Kreptive - NFT Marketplace" />
+  <meta name="description" content="Niftlify - NFT Marketplace" />
   <meta name="keywords" content="nft, crypto" />
-  <title>Kreptive - Portal</title>
+  <title>Niftlify - Portal</title>
   <!-- Favicon -->
   <link rel="icon" sizes="16x16" href="images/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="assets/css/style.css?ver=100" />
 
   <!-- Smartsupp Live Chat script -->
- <script type="text/javascript">
+  <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
     _smartsupp.key = '07e8f4cfbd525e6f4e3c33265f93c811bea2424e';
     window.smartsupp || (function(d) {
@@ -226,7 +226,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                 </svg>
                 Go Back </a>
-              <h2>Login to <strong>Kreptive</strong></h2>
+              <h2>Login to <strong>Niftlify</strong></h2>
               <p>Input your details to access endless possibilities</p>
 
               <form action="#" method="post" class="mt-5">

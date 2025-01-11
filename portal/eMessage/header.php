@@ -12,11 +12,11 @@
     <!-- Emoji CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css" integrity="sha512-vEia6TQGr3FqC6h55/NdU3QSM5XR6HSl5fW71QTKrgeER98LIMGwymBVM867C1XHIkYD9nMTfWK2A0xcodKHNA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Kreptive Community</title>
+    <title>Niftlify Community</title>
 
-    <link rel="shortcut icon" href="https://kreptive.com/images/favicon.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kreptive.com/images/favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kreptive.com/images/favicon.png" />
+    <link rel="shortcut icon" href="https://niftlify.com/images/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://niftlify.com/images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://niftlify.com/images/favicon.png" />
 
 
 </head>

@@ -104,12 +104,12 @@ include_once 'header.php';
       <!-- end col-lg-6 -->
       <div class="col-lg-6 ps-xl-5 mt-5 mt-md-1">
         <div class="about-content-wrap">
-          <h2 class="mb-3">About Kreptive</h2>
+          <h2 class="mb-3">About Niftlify</h2>
           <p>
-            At Kreptive, we are passionate about bringing the world of digital art to life through blockchain technology. Our platform serves as a gateway for artists, collectors, and enthusiasts to explore, create, and trade unique digital assets known as Non-Fungible Tokens (NFTs).
+            At Niftlify, we are passionate about bringing the world of digital art to life through blockchain technology. Our platform serves as a gateway for artists, collectors, and enthusiasts to explore, create, and trade unique digital assets known as Non-Fungible Tokens (NFTs).
           </p>
           <p>
-            Whether you're an artist looking to showcase your talent, a collector seeking exclusive digital assets, or simply an enthusiast eager to explore the world of NFTs, Kreptive welcomes you to join our growing community.
+            Whether you're an artist looking to showcase your talent, a collector seeking exclusive digital assets, or simply an enthusiast eager to explore the world of NFTs, Niftlify welcomes you to join our growing community.
             <br />
 
             <br />

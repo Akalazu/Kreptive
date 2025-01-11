@@ -9,7 +9,7 @@
                             <img class="logo-light logo-img" src="images/logo.png" style="  height: 70px" />
                         </a>
                         <p class="my-4 footer-para">
-                            Kreptive - The Home of World class Artworks
+                            Niftlify - The Home of World class Artworks
                         </p>
                         <div class="header__link" id="google_translate_element"></div>
                         <!-- <ul class="styled-icon">
@@ -90,7 +90,7 @@
         <hr class="bg-white-slim my-0" />
         <div class="copyright-wrap d-flex flex-wrap py-3 align-items-center justify-content-between">
             <p class="footer-copy-text py-2">
-                Copyright &copy; 2020 - <?= date('Y') ?> Kreptive.
+                Copyright &copy; 2020 - <?= date('Y') ?> Niftlify.
             </p>
 
         </div>
@@ -101,6 +101,7 @@
 <!-- end footer-section -->
 </div>
 <!-- Scripts -->
+<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 <script>
     AOS.init();
 </script>
@@ -111,6 +112,22 @@
         document.execCommand("copy");
         alert("Text has been copied!");
     }
+
+    var app = document.getElementById('app');
+
+    var typewriter = new Typewriter(app, {
+        loop: true
+    });
+
+    typewriter.typeString('Your story, your art, your NFT.')
+        .pauseFor(2500)
+        .deleteAll()
+        .typeString('NFTs made simple, secure, and accessible.')
+        .pauseFor(2500)
+        .deleteAll()
+        .typeString('<strong>Discover. Trade. Collect.</strong>')
+        .pauseFor(2500)
+        .start();
 
     // function themeSwitcher(selector) {
     //     let themeToggler = document.querySelectorAll(selector);
@@ -177,6 +194,7 @@
 <script src="assets/js/scripts.js"></script>
 <script src="assets/assets/vendors/js/vendor.bundle.base.js"></script>
 <script src="assets/assets/js/dashboard.js"></script>
+
 
 
 </body>

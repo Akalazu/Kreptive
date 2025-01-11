@@ -15,7 +15,7 @@ include_once 'header.php';
 		<div class="col-12">
 			<h2 class="fw-bold mb-4">Last Revised: 20/01/2023</h2>
 			<p class="text-justify">
-				This Privacy Statement outlines how Kreptive ("we," "us," or "our") gathers, utilizes, shares, and safeguards the personal data of users ("you" or "your") who access and engage with our NFT marketplace platform, Kreptive (the "Platform"). We are dedicated to preserving your privacy and ensuring the security of your personal data. By using the Platform, you agree to the collection, usage, and disclosure of your information as set forth in this Privacy Statement.
+				This Privacy Statement outlines how Niftlify ("we," "us," or "our") gathers, utilizes, shares, and safeguards the personal data of users ("you" or "your") who access and engage with our NFT marketplace platform, Niftlify (the "Platform"). We are dedicated to preserving your privacy and ensuring the security of your personal data. By using the Platform, you agree to the collection, usage, and disclosure of your information as set forth in this Privacy Statement.
 			</p>
 		</div>
 
@@ -39,7 +39,7 @@ include_once 'header.php';
 				<p>Your personal information may be used to: (i) Deliver and improve the Platform’s features and overall experience. (ii) Facilitate your transactions, including the buying and selling of NFTs. (iii) Communicate with you about your account, transactions, updates, and security alerts. (iv) Send you marketing materials (if you have opted in). (v) Respond to any inquiries, comments, or suggestions you may have.</p>
 
 				<h4>2.2 Prohibited Content</h4>
-				<p>Kreptive strictly prohibits the listing or trading of NFTs that are illegal, fraudulent, offensive, infringe on intellectual property rights, or otherwise violate these Terms and Conditions. You may not list NFTs that include explicit or adult content, promote hate speech, or encourage illegal activity. Kreptive reserves the right to remove any content that breaches these rules and may take further action, such as suspending or terminating accounts of users who repeatedly violate these guidelines.</p>
+				<p>Niftlify strictly prohibits the listing or trading of NFTs that are illegal, fraudulent, offensive, infringe on intellectual property rights, or otherwise violate these Terms and Conditions. You may not list NFTs that include explicit or adult content, promote hate speech, or encourage illegal activity. Niftlify reserves the right to remove any content that breaches these rules and may take further action, such as suspending or terminating accounts of users who repeatedly violate these guidelines.</p>
 			</div>
 		</div>
 
@@ -89,7 +89,7 @@ include_once 'header.php';
 		<div class="col-12 my-4">
 			<h3 class="fw-bold">7. How to Contact Us</h3>
 			<div class="ms-4">
-				<p>If you have any questions, concerns, or requests regarding this Privacy Policy or our handling of your data, please reach out to us. We will do our best to respond in a timely manner. By using the Kreptive platform, you confirm that you have read, understood, and agree to the terms and conditions set forth in this Privacy Policy.</p>
+				<p>If you have any questions, concerns, or requests regarding this Privacy Policy or our handling of your data, please reach out to us. We will do our best to respond in a timely manner. By using the Niftlify platform, you confirm that you have read, understood, and agree to the terms and conditions set forth in this Privacy Policy.</p>
 			</div>
 		</div>
 	</section>

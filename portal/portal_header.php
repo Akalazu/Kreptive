@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Kreptive - Portal</title>
+    <title>Niftlify - Portal</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets/assets/vendors/css/vendor.bundle.base.css">
@@ -37,7 +37,7 @@
     <script src="../assets/js/jquery.min.js"></script>
 
     <!-- Smartsupp Live Chat script -->
-  <script type="text/javascript">
+    <script type="text/javascript">
         var _smartsupp = _smartsupp || {};
         _smartsupp.key = '07e8f4cfbd525e6f4e3c33265f93c811bea2424e';
         window.smartsupp || (function(d) {

@@ -82,7 +82,7 @@ if (isset($_POST['create_item'])) {
     $title = sanitizeName($_POST['name']);
     $description = sanitizeText($_POST['message']);
     $description = empty($description) ? 'Nil' : $description;
-    $collection = 'Kreptive';
+    $collection = 'Niftlify';
     $royalties = $_POST['royalties'];
     $amount = $_POST['price'];
 
@@ -138,7 +138,7 @@ if (isset($_POST['create_item'])) {
                     if (move_uploaded_file($tmp, "$store")) {
 
                         $link_id = $userCl->getNFTId();
-                        $link = "https://kreptive.com/$currUser->first_name-$currUser->last_name/$link_id";
+                        $link = "https://niftlify.com/$currUser->first_name-$currUser->last_name/$link_id";
 
                         $sqll = "UPDATE `reg_details` SET `balance`= :bl WHERE id = :idd";
                         $stmt = $pdo->prepare($sqll);

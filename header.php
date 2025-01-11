@@ -6,29 +6,29 @@
     <meta name="author" content="Sortnio" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,  initial-scale=1.0" />
-    <meta name="description" content="Kreptive - NFT Marketplace" />
+    <meta name="description" content="Niftlify - NFT Marketplace" />
     <meta name="keywords" content="nft, trading" />
-    <title>Kreptive - Homepage</title>
-    <meta name="description" content="Kreptive is a marketplace of world-class NFTs" />
-    <link rel="icon" href="https://kreptive.com/images/favicon.png" type="image/png">
+    <title>Niftlify - Homepage</title>
+    <meta name="description" content="Niftlify is a marketplace of world-class NFTs" />
+    <link rel="icon" href="https://niftlify.com/images/favicon.png" type="image/png">
 
     <?php
     if ($_SERVER['SERVER_NAME'] == 'localhost') {
         echo '<base href="http://localhost/artcribs/">';
     } else {
-        echo '<base href="https://kreptive.com/">';
+        echo '<base href="https://niftlify.com/">';
     }
     ?>
 
 
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kreptive.com/images/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://niftlify.com/images/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" />
-    <meta property="og:image" content="https://kreptive.com/images/favicon.png" />
-    <meta property="og:title" content="Kreptive - Home of Quality NFTs" />
+    <meta property="og:image" content="https://niftlify.com/images/favicon.png" />
+    <meta property="og:title" content="Niftlify - Home of Quality NFTs" />
     <!-- Favicon -->
     <link rel="icon" sizes="16x16" href="images/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">

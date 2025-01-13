@@ -64,11 +64,11 @@
 
     require_once '../includes/init.php';
 
-    if (isset($_SERVER['HTTP_REFERER'])) {
-        $location = $_SERVER['HTTP_REFERER'];
-    } {
-        $location = './';
-    }
+    // if (isset($_SERVER['HTTP_REFERER'])) {
+    //     $location = $_SERVER['HTTP_REFERER'];
+    // } {
+    //     $location = './';
+    // }
 
     if (!isset($_SESSION['currid'])) {
         header('Location: logout');
@@ -95,7 +95,7 @@
                   });
               </script>
                 ';
-            header("refresh: 1; $location");
+            header("refresh: 1; ./");
             // header("Location: dashboard");
             // exit();
         } else {

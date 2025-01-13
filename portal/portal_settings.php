@@ -9,6 +9,7 @@ include_once "../includes/init.php";
  * 
  */
 //  error_reporting(E_ALL);
+
 if (isset($_SESSION['currid'])) {
     $idd = $_SESSION['currid'];
     $sql = "SELECT * FROM `reg_details` WHERE id = :idd";

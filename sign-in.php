@@ -148,14 +148,14 @@
               $_SESSION['last_activity'] = time();
 
               echo '
-              <script>
-            swal({
-                   title: "Welcome ' . $reg_det->username . ' ",
-                      text: "Login Successful" ,
-                      icon: "success",
-                  button: "Loading...",
-                });
-            </script>
+                <script>
+              swal({
+                    title: "Welcome ' . $reg_det->username . ' ",
+                        text: "Login Successful" ,
+                        icon: "success",
+                    button: "Loading...",
+                  });
+              </script>
               ';
               if (isset($_SESSION['nft_link'])) {
                 header('refresh: 2; portal/place_bid');

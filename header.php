@@ -77,7 +77,7 @@
             c.src = 'https://www.smartsuppchat.com/loader.js?';
             s.parentNode.insertBefore(c, s);
         })(document);
-    </!--> --> 
+    </!-->
 
 </head>
 <style>

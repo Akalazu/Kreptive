@@ -34,7 +34,7 @@ include_once "./includes/init.php";
   <link rel="stylesheet" href="assets/css/login-style.css">
   <!-- <link rel="stylesheet" href="assets/css/app.css" /> -->
   <link rel="stylesheet" href="assets/assets/css/style.css">
-  <!-- Smartsupp Live Chat script -->
+
   <!-- Smartsupp Live Chat script -->
   <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
@@ -53,7 +53,6 @@ include_once "./includes/init.php";
       s.parentNode.insertBefore(c, s);
     })(document);
   </script>
-  <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
   <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
 
 

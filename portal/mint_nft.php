@@ -331,8 +331,8 @@ if (isset($_POST['create_item'])) {
                     </div>
 
                     <div class="form-group">
-                        <label for="price">Royalties</label>
-                        <input type="text" class="form-control" min="0" step=".01" value="10%" name="royalties" required readonly>
+                        <label for="price">Royalties(%)</label>
+                        <input type="text" class="form-control" min="0" step=".01" value="10" name="royalties" required readonly>
                         <!-- <input type="number" class="form-control" name="price" min="0" step=".01" required> -->
                     </div>
                     <div class="image__preview">

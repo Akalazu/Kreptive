@@ -59,7 +59,7 @@
 
 
 
-    <!-- Smartsupp Live Chat script -->
+    <!-- Smartsupp Live Chat -->
     <script type="text/javascript">
         var _smartsupp = _smartsupp || {};
         _smartsupp.key = '5cb72bfceac0248ce873cd52fd5f375ac09b1cdc';

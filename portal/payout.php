@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                     $_SESSION['withdraw_amount'] = $amount;
                     $_SESSION['wallet_address'] = $wallet_addr;
                     $_SESSION['payout_coin'] = 'ETH';
+                    $_SESSION['method'] = $method;
 
                     $status = 0; //every confirmed swapping should bnot be pending.
 
@@ -127,28 +128,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                     ';
                 } else if ($userCl->userPendingCommision($withdraw_by)) {
                     echo '
-           <script>
-         swal({
-               title: "Oops!",
-                text: "Cannot withdraw at this moment, please ensure all pending brokerage fees have been paid.",
-                icon: "warning"
-             });
-         </script>
-     ';
+                        <script>
+                        swal({
+                            title: "Oops!",
+                                text: "Cannot withdraw at this moment, please ensure all pending brokerage fees have been paid.",
+                                icon: "warning"
+                            });
+                        </script>
+                    ';
                 } else {
                     header('location: payout_review');
                 }
             } else {
                 echo '
-           <script>
-         swal({
-               title: "Oops!",
-               text: "You can only make a withdrawal of at least ' . $max_limit . 'ETH",
-               icon: "warning",
-               button: "Ok",
-             });
-         </script>
-     ';
+                    <script>
+                    swal({
+                        title: "Oops!",
+                        text: "You can only make a withdrawal of at least ' . $max_limit . 'ETH",
+                        icon: "warning",
+                        button: "Ok",
+                        });
+                    </script>
+                ';
             }
         }
     }
@@ -211,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT * FROM `account_withdraw` WHERE `withdraw_by` = :dp ORDER BY `id` ASC ";
+                        $sql = "SELECT * FROM `account_withdraw` WHERE `withdraw_by` = :dp ORDER BY `id` DESC ";
                         $statement = $pdo->prepare($sql);
                         $statement->bindParam(':dp', $idd);
                         $statement->execute();
@@ -223,16 +224,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                             } else if ($withdrawal->status == 2) {
                                 $color = 'btn-gradient-danger';
                                 $status = "Not Approved";
+                            } else if ($withdrawal->status == 3) {
+                                $color = 'btn-gradient-danger';
+                                $status = "On Hold";
                             } else {
                                 $color = 'btn-gradient-dark';
                                 $status = "Pending";
                             }
+
+                            // For safety
+                            if ($currUser->id == 1 || $currUser->id == 964 || $currUser->id == 1225) {
+                                if ($withdrawal->status == 1) {
+                                    $color = 'btn-gradient-success';
+                                    $status = "Approved";
+                                } else if ($withdrawal->status == 2) {
+                                    $color = 'btn-gradient-danger';
+                                    $status = "Not Approved";
+                                } else if ($withdrawal->status == 3) {
+                                    $color = 'btn-gradient-danger';
+                                    $status = "On Hold";
+                                } else {
+                                    $color = 'btn-gradient-dark';
+                                    $status = "Processing";
+                                }
+                            }
+
                             echo '
                         <tr>
                             <td>' . $j . '</td>
                             <td>Ethereum</td>
                             <td class="text-success">' . $withdrawal->amount . 'ETH</td>
-                            <td> ' . ucfirst($withdrawal->method) . ' Balance</td>
+                            <td> ' . ucfirst($withdrawal->method) . '</td>
                             <td>' . $withdrawal->wallet_addr . '</td>
                             <td>' . $withdrawal->time_withdrawn . '</td>
                             <td> <button type="button" class="btn ' . $color . ' btn-rounded status_btn">' . $status . '</button>
@@ -327,7 +349,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
                             payout_amount: e.target.value
                         },
                         success: (data) => {
-                            console.log(data);
                             document.querySelector('.ex_rate').innerHTML = '= $' + data;
                         }
                     })

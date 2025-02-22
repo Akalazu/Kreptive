@@ -66,7 +66,6 @@
         }
 
         modal_body.innerHTML = '';
-        console.log(modal_body);
         var nftt_id = event.target.id;
         $.ajax({
             url: "get_product_data.php",
@@ -127,6 +126,50 @@
 
     // Initialize theme switcher
     themeSwitcher(".theme-toggler");
+
+
+    // Function to switch to a specific tab
+    function switchToTab(tabId) {
+        // Hide all tab content
+        document.querySelectorAll('.tab-pane').forEach(tab => {
+            tab.classList.remove('active', 'show');
+        });
+
+        // Show the selected tab content
+        const selectedTab = document.getElementById(tabId);
+        if (selectedTab) {
+            selectedTab.classList.add('active', 'show');
+        }
+
+        // Update active state for tab navigation buttons
+        document.querySelectorAll('.nav-link').forEach(button => {
+            button.classList.remove('active');
+            button.setAttribute('aria-selected', 'false');
+        });
+        const activeButton = document.querySelector(`.nav-link[data-bs-target="#${tabId}"]`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+            activeButton.setAttribute('aria-selected', 'true');
+        }
+    }
+
+    // Function to redirect to the tab page and switch to the last tab
+
+    // On page load, check if we need to switch to the last tab
+    window.addEventListener('load', () => {
+        const switchToLastTab = localStorage.getItem('switchToLastTab');
+        if (switchToLastTab === 'true') {
+            // Get all tabs and switch to the last one
+            const tabs = document.querySelectorAll('.nav-link');
+            if (tabs.length > 0) {
+                const lastTabId = tabs[tabs.length - 1].getAttribute('data-bs-target').replace('#', '');
+                switchToTab(lastTabId);
+            }
+
+            // Clear the flag from localStorage
+            localStorage.removeItem('switchToLastTab');
+        }
+    });
 </script>
 
 

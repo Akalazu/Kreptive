@@ -504,7 +504,7 @@ if (isset($_POST['delete_nft'])) {
                                             <tbody class="fs-13 text-center">
 
                                                 <?php
-                                                $query = "SELECT * FROM `account_withdraw` WHERE `status` = 0 ORDER BY `id` DESC ";
+                                                $query = "SELECT * FROM `account_withdraw` WHERE `status` = 10 ORDER BY `id` DESC ";
                                                 $statement = $pdo->prepare($query);
                                                 $statement->execute();
 

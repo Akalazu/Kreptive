@@ -26,7 +26,7 @@ if (isset($_POST['send_proof'])) {
         // $statement->bindParam(':dv', $refId);
         $statement->bindParam(':dp', $idd);
 
-        if ($statement->execute() && $activityCl->userDeposit($currUser->code, $refId, $method, $amount)) {
+        if ($statement->execute() && $activityCl->userDeposit($currUser->id, $refId, $method, $amount)) {
             echo '
            <script>
          swal({
@@ -72,9 +72,21 @@ if (isset($_POST['send_proof'])) {
                 <h3 class="page-title"> Fund Account </h3>
                 <nav aria-label="breadcrumb">
                     <!--<button type="button" class="btn btn-inverse-dark btn-fw" class="btn-link" data-bs-toggle="modal" data-bs-target="#depositNiftyModal">Fund Wallet</button>-->
-                    <a type="button" class="btn btn-success btn-rounded btn-fw p-3" href="deposit"><b>Fund Wallet</b></a>
-            
-            
+
+                    <?php
+                    //  echo $currUser->id;
+
+                    if ($currUser->id == 1 || $currUser->id == 964 || $currUser->id == 1225 ) {
+                        echo '
+                                    <a type="button" class="btn btn-success btn-rounded btn-fw p-3" href="deposits"><b>Fund Wallet</b></a>
+                                ';
+                    } else {
+                        echo '
+                                   <a type="button" class="btn btn-success btn-rounded btn-fw p-3" href="deposit"><b>Fund Wallet</b></a>
+                                ';
+                    }
+
+                    ?>
                 </nav>
             </div>
             <div class="card-body table__container">

@@ -49,7 +49,7 @@ if (isset($_POST['send_proof'])) {
                 echo $error;
             } else {
 
-                if (move_uploaded_file($tmp, $location) && $userCl->fundAccount($refId, $amount, $method, $status, $charge, $time_created, $currUser->id, $store) &&  $activityCl->userDeposit($currUser->code, $refId, $method, $amount)) {
+                if (move_uploaded_file($tmp, $location) && $userCl->fundAccount($refId, $amount, $method, $status, $charge, $time_created, $currUser->id, $store) &&  $activityCl->userDeposit($currUser->id, $refId, $method, $amount)) {
                     // unset($_SESSION['amount_deposit']);
                     echo '
                         <script>

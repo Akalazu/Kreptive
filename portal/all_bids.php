@@ -89,8 +89,8 @@
 
                     if ($stmtt->execute() && $userCl->sendNftPurchaseMail($buyer_fname, $nft->title, $buyer->email, $nft->price) && $userCl->updateBidStatus($status, $bid_id, $nft->id, $new_profit_balance) && $userCl->addUserTotalVolume($currUser->id, $bid)) {
 
-                        $activityCl->salesArt($currUser->code, $ref_id, $nft->title, $bid, $buyer->username);
-                        $activityCl->purchaseArt($buyer->code, $ref_id, $nft->title, $bid);
+                        $activityCl->salesArt($currUser->id, $ref_id, $nft->title, $bid, $buyer->username);
+                        $activityCl->purchaseArt($buyer->id, $ref_id, $nft->title, $bid);
 
 
                         // if ($stmtt->execute() && $userCl->updateBidStatus($status, $bid_id, $nft->id)) {

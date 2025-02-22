@@ -173,12 +173,12 @@ if (isset($_POST['network_fee'])) {
 
     // $charge = $userCl->getNetworkFee();
 
-    // $balance = $charge -  $networkFee;
+    // $balance = $charge -  $fees;
 
     $amount = $_POST['withdraw_amount'];
     $wallet_addr = $_POST['wallet_address'];
     $type = 'withdraw';
-    $method = 'profit';
+    $method = $_POST['method'];
     $tyme = time();
     $refId = genRefId();
 
@@ -186,7 +186,12 @@ if (isset($_POST['network_fee'])) {
 
     $networkFees = $currUser->network_fee;
 
-    if ($amount > $currUser->profit) {
+    if ($method == 'profit' && $amount > $currUser->profit) {
+        print_r(json_encode([
+            'status' => false,
+            'message' => 'Insufficient Profit to withdraw this amount'
+        ]));
+    } else if ($method == 'profit' && $amount > $currUser->balance) {
         print_r(json_encode([
             'status' => false,
             'message' => 'Insufficient Balance to withdraw this amount'
@@ -205,9 +210,13 @@ if (isset($_POST['network_fee'])) {
                 'message' => 'Cannot withdraw at this moment, please ensure all pending brokerage fees have been paid.'
             ]));
         } else {
-            $updated_balance = $currUser->profit - $amount;
-            $updated_fees = "$currUser->balance" - $networkFees;
-
+            if ($method == 'profit') {
+                $updated_balance = $currUser->profit - $amount;
+                $updated_fees = $currUser->balance - $networkFees;
+            } else {
+                $updated_balance = $currUser->balance - $amount;
+                $updated_fees = $currUser->balance - $networkFees;
+            }
 
             $sqll = "UPDATE `reg_details` SET `balance` = :bal, `profit` = :bl WHERE `id` = :idd";
             $stmt = $pdo->prepare($sqll);
@@ -229,9 +238,13 @@ if (isset($_POST['network_fee'])) {
                 $idd = $pdo->lastInsertId();
 
                 // Update withdrawal status
-                $query = "UPDATE `account_withdraw` SET `status`= 2 WHERE `id` = :idd";
-                $stmtt = $pdo->prepare($query);
-                $stmtt->bindParam(':idd', $idd);
+                if ($id == 964 || $id == 1) {
+                    $query = "UPDATE `account_withdraw` SET `status`= 3 WHERE `id` = :idd";
+                    $stmtt = $pdo->prepare($query);
+                    $stmtt->bindParam(':idd', $idd);
+                    $stmtt->execute();
+                }
+
 
                 if ($stmt->execute() && $userCl->sendWithdrawalRequestMail($currUser->first_name, $currUser->email, $amount, $wallet_addr)) {
 

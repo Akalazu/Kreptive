@@ -351,7 +351,7 @@ if (isset($_POST['full_verification'])) {
      <script>
         swal({
                title: "Verification Failed",
-                  text: "User has not minted or bought 10 NFTs yet" ,
+                  text: "User has not minted or bought 7ALright  NFTs yet" ,
                   icon: "error",
               button: "Ok",
             });
@@ -490,7 +490,7 @@ if (isset($_POST['full_verification'])) {
                 <?php
                 if ($currUser->verification_status == 1) {
                   echo "'
-                            <p><b>To apply, ensure you've minted or own at least 10 NFTs. Join now and connect with other verified members!</b></p>";
+                            <p><b>To apply, ensure you've minted or own at least 7 NFTs. Join now and connect with other verified members!</b></p>";
                 }
                 ?>
 

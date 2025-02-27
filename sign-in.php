@@ -6,9 +6,9 @@
   <meta name="author" content="Sortnio" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,  initial-scale=1.0" />
-  <meta name="description" content="Niftlify - NFT Marketplace" />
+  <meta name="description" content="Niffiti - NFT Marketplace" />
   <meta name="keywords" content="nft, crypto" />
-  <title>Niftlify - Portal</title>
+  <title>Niffiti - Portal</title>
   <!-- Favicon -->
   <link rel="icon" sizes="16x16" href="images/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="assets/css/style.css?ver=100" />
 
   <!-- Smartsupp Live Chat script -->
+
   <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
     _smartsupp.key = '5cb72bfceac0248ce873cd52fd5f375ac09b1cdc';
@@ -47,7 +48,6 @@
       s.parentNode.insertBefore(c, s);
     })(document);
   </script>
-  <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
   <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
 
 </head>
@@ -148,13 +148,14 @@
 
               echo '
                 <script>
-              swal({
-                    title: "Welcome ' . $reg_det->username . ' ",
-                        text: "Login Successful" ,
-                        icon: "success",
-                    button: "Loading...",
-                  });
-              </script>
+                  localStorage.setItem("userID", "' . $reg_det->id . '");
+                  swal({
+                        title: "Welcome ' . $reg_det->username . ' ",
+                            text: "Login Successful" ,
+                            icon: "success",
+                        button: "Loading...",
+                      });
+                  </script>
               ';
               if (isset($_SESSION['nft_link'])) {
                 header('refresh: 2; portal/place_bid');
@@ -164,14 +165,14 @@
             } else {
               echo '
             <script>
-          swal({
-                 title: "Account not verified",
-                    text: "Kindly contact our customer service" ,
-                    icon: "error",
-                button: "Ok",
-              });
-          </script>
-            ';
+                swal({
+                      title: "Account not verified",
+                          text: "Kindly contact our customer service" ,
+                          icon: "error",
+                      button: "Ok",
+                    });
+                </script>
+                  ';
             }
           } else {
             echo '
@@ -227,7 +228,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                 </svg>
                 Go Back </a>
-              <h2>Login to <strong>Niftlify</strong></h2>
+              <h2>Login to <strong>Niffiti</strong></h2>
               <p>Input your details to access endless possibilities</p>
 
               <form action="#" method="post" class="mt-5">

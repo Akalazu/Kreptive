@@ -11,9 +11,9 @@ include_once "./includes/init.php";
   <meta name="author" content="Sortnio" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,  initial-scale=1.0" />
-  <meta name="description" content="Niftlify - NFT Marketplace" />
+  <meta name="description" content="Niffiti - NFT Marketplace" />
   <meta name="keywords" content="nft, crypto" />
-  <title>Niftlify - Portal</title>
+  <title>Niffiti - Portal</title>
   <!-- Favicon -->
   <link rel="icon" sizes="16x16" href="images/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
@@ -208,6 +208,7 @@ include_once "./includes/init.php";
         $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
         $sql = "INSERT INTO `reg_details`(`first_name`, `last_name`, `code`,`username`, `address`, `mint_fee`,`email`, `password`, `verify_code`, `verified`, `withdraw_limit`) VALUES ( :aa , :bb , :cc, :uu , :wa, :mf, :ee , :pp, :vc, :vv, :wl) ";
+
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':aa', $fname);
         $statement->bindParam(':bb', $lname);
@@ -275,7 +276,7 @@ include_once "./includes/init.php";
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7 py-5">
             <!-- <img src="images/logo__dark.png" class="img-fluid" alt="" style="width: 100px;"> -->
-            <h3 style="margin-top: -10px; margin-bottom: 10px; text-align: center;">Sign up with <strong>Niftlify</strong></h3>
+            <h3 style="margin-top: -10px; margin-bottom: 10px; text-align: center;">Sign up with <strong>Niffiti</strong></h3>
 
             <form action="#" method="post">
               <div class="form-group">

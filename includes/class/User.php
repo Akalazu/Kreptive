@@ -821,7 +821,7 @@ class User
 
   //       // Generate new link_id using getNFTId()
   //       $newLinkId = $this->getNFTId();
-  //       $newLink = "https://niftlify.com/preview?ntid=" . $newLinkId;
+  //       $newLink = "https://niffiti.com/preview?ntid=" . $newLinkId;
 
   //       // Update the link_id and link columns in the database
   //       $updateQuery = "UPDATE all_nft SET link_id = :link_id, link = :link WHERE id = :id";
@@ -982,8 +982,8 @@ class User
         $id = $row['id']; // Assuming 'id' is the primary key
         $link = $row['link'];
 
-        // Replace "kreptive" with "niftlify"
-        $updatedLink = str_replace("kreptive", "niftlify", $link);
+        // Replace "kreptive" with "niffiti"
+        $updatedLink = str_replace("kreptive", "niffiti", $link);
 
         // Update the database with the modified link
         $updateStmt = $this->pdo->prepare("UPDATE all_nft SET link = :updatedLink WHERE id = :id");
@@ -1297,7 +1297,7 @@ class User
                                                 padding-bottom: 10px;
                                                 font-size: 0px;
                                               ">
-                                            <img src="https://niftlify.com/images/logo__dark.png" alt="Logo" style="
+                                            <img src="https://niffiti.com/images/logo__dark.png" alt="Logo" style="
                                                   display: block;
                                                   border: 0;
                                                   outline: none;
@@ -1401,7 +1401,7 @@ class User
                                                     font-family: "source sans pro",
                                                       "helvetica neue", helvetica, arial,
                                                       sans-serif;
-                                                  ">Hello, ' . $name . '.<br /><br /> Thank you for joining Niftlify! We require you to validate your email address before you can access your portal on Niftlify. <br />To achieve this, kindly enter the code below. </p>
+                                                  ">Hello, ' . $name . '.<br /><br /> Thank you for joining Niffiti! We require you to validate your email address before you can access your portal on Niffiti. <br />To achieve this, kindly enter the code below. </p>
                                             </p>
                                           </td>
                                         </tr>
@@ -1646,7 +1646,7 @@ class User
                                                   color: #333333;
                                                   font-size: 14px;
                                                 ">
-                                            Niftlify Team
+                                            Niffiti Team
                                             </p>
                                           </td>
                                         </tr>
@@ -1722,7 +1722,7 @@ class User
                                                   color: #333333;
                                                   font-size: 12px;
                                                 ">
-                                              Niftlify © ' . date('Y') . '. All
+                                              Niffiti © ' . date('Y') . '. All
                                               Rights Reserved.
                                             </p>
                                             
@@ -1798,18 +1798,18 @@ class User
 
     try {
       $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-      $bname = "Niftlify";
+      $bname = "Niffiti";
 
 
       $mail->isSMTP();
       $mail->Host = "smtp.hostinger.com";
       $mail->SMTPAuth = true;
-      $mail->Username = "support@niftlify.com";
+      $mail->Username = "support@niffiti.com";
       $mail->Password = 'lwsK7|Or';
       $mail->SMTPSecure = "ssl";
       $mail->Port = 465;
 
-      $mail->setFrom("support@niftlify.com", $bname);
+      $mail->setFrom("support@niffiti.com", $bname);
       $mail->addAddress($email);
       $mail->isHTML(true);
 
@@ -1872,17 +1872,17 @@ class User
       ";
 
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = "lwsK7|Or";
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->setFrom("support@niffiti.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -1969,12 +1969,12 @@ class User
                   <p>Message preview:</p>
                   <blockquote>$content</blockquote>
                   <p>Click the button below to login and view the full message:</p>
-                  <a href='https://niftlify.com/portal/eMessage/contacts' class='button'>View Message</a>
+                  <a href='https://niffiti.com/portal/eMessage/contacts' class='button'>View Message</a>
               </div>
 
               <!-- Footer Section -->
               <div class='footer'>
-                  <p>&copy; 2024 Niftlify. All rights reserved.</p>
+                  <p>&copy; 2024 Niffiti. All rights reserved.</p>
                   <p>If you did not expect this email, please ignore it.</p>
               </div>
           </div>
@@ -1985,17 +1985,17 @@ class User
 
 
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->setFrom("support@niffiti.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -2082,12 +2082,12 @@ class User
                   <p>Message preview:</p>
                   <blockquote>$content</blockquote>
                   <p>Click the button below to login and view the full message:</p>
-                  <a href='https://niftlify.com/portal/eMessage/contacts' class='button'>View Message</a>
+                  <a href='https://niffiti.com/portal/eMessage/contacts' class='button'>View Message</a>
               </div>
 
               <!-- Footer Section -->
               <div class='footer'>
-                  <p>&copy; 2024 Niftlify. All rights reserved.</p>
+                  <p>&copy; 2024 Niffiti. All rights reserved.</p>
                   <p>If you did not expect this email, please ignore it.</p>
               </div>
           </div>
@@ -2098,17 +2098,17 @@ class User
 
 
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->setFrom("support@niffiti.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -2423,7 +2423,7 @@ class User
                                                 padding-bottom: 10px;
                                                 font-size: 0px;
                                               ">
-                                            <img src="https://niftlify.com/images/logo__dark.png" alt="Logo" style="
+                                            <img src="https://niffiti.com/images/logo__dark.png" alt="Logo" style="
                                                   display: block;
                                                   border: 0;
                                                   outline: none;
@@ -2530,7 +2530,7 @@ class User
                                                       sans-serif;
                                                   ">Hello, ' . $name . '.<br /><br /> 
                                                   Your deposit of ' . $amount . 'ETH has been confirmed and your available balance has been updated <br /><br />Kindly login to your portal to preview. <br /><br />
-                                                  Thanks for choosing Niftlify!
+                                                  Thanks for choosing Niffiti!
                                             </p>
                                           </td>
                                         </tr>
@@ -2708,7 +2708,7 @@ class User
                                                   color: #333333;
                                                   font-size: 14px;
                                                 ">
-                                            Niftlify Team
+                                            Niffiti Team
                                             </p>
                                           </td>
                                         </tr>
@@ -2782,7 +2782,7 @@ class User
                                                       padding-bottom: 7px;
                                                       border: 0;
                                                     ">
-                                                  <a target="_blank" href="https://www.niftlify.com" style="
+                                                  <a target="_blank" href="https://www.niffiti.com" style="
                                                         -webkit-text-size-adjust: none;
                                                         -ms-text-size-adjust: none;
                                                         mso-line-height-rule: exactly;
@@ -2806,7 +2806,7 @@ class User
                                                       border: 0;
                                                       border-left: 1px solid #cccccc;
                                                     ">
-                                                  <a target="_blank" href="mailto:support@niftlify.com" style="
+                                                  <a target="_blank" href="mailto:support@niffiti.com" style="
                                                         -webkit-text-size-adjust: none;
                                                         -ms-text-size-adjust: none;
                                                         mso-line-height-rule: exactly;
@@ -2863,7 +2863,7 @@ class User
                                                   color: #333333;
                                                   font-size: 12px;
                                                 ">
-                                              Niftlify © ' . date('Y') . ' Inc. All
+                                              Niffiti © ' . date('Y') . ' Inc. All
                                               Rights Reserved.
                                             </p>
                                             
@@ -2936,17 +2936,17 @@ class User
     ';
 
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->setFrom("support@niffiti.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -3261,7 +3261,7 @@ class User
                                                 padding-bottom: 10px;
                                                 font-size: 0px;
                                               ">
-                                            <img src="https://niftlify.com/images/logo__dark.png" alt="Logo" style="
+                                            <img src="https://niffiti.com/images/logo__dark.png" alt="Logo" style="
                                                   display: block;
                                                   border: 0;
                                                   outline: none;
@@ -3368,7 +3368,7 @@ class User
                                                       sans-serif;
                                                   ">Hello, ' . $name . '.<br /><br /> 
                                                   Your royalties of ' . $amount . ' ETH have been received and your available ARETH balance has been updated. <br /><br />Kindly login to your portal to confirm. <br /><br />
-                                                  Thanks for choosing Niftlify!
+                                                  Thanks for choosing Niffiti!
                                             </p>
                                           </td>
                                         </tr>
@@ -3546,7 +3546,7 @@ class User
                                                   color: #333333;
                                                   font-size: 14px;
                                                 ">
-                                            Niftlify Team
+                                            Niffiti Team
                                             </p>
                                           </td>
                                         </tr>
@@ -3620,7 +3620,7 @@ class User
                                                       padding-bottom: 7px;
                                                       border: 0;
                                                     ">
-                                                  <a target="_blank" href="https://www.niftlify.com" style="
+                                                  <a target="_blank" href="https://www.niffiti.com" style="
                                                         -webkit-text-size-adjust: none;
                                                         -ms-text-size-adjust: none;
                                                         mso-line-height-rule: exactly;
@@ -3644,7 +3644,7 @@ class User
                                                       border: 0;
                                                       border-left: 1px solid #cccccc;
                                                     ">
-                                                  <a target="_blank" href="mailto:support@niftlify.com" style="
+                                                  <a target="_blank" href="mailto:support@niffiti.com" style="
                                                         -webkit-text-size-adjust: none;
                                                         -ms-text-size-adjust: none;
                                                         mso-line-height-rule: exactly;
@@ -3701,7 +3701,7 @@ class User
                                                   color: #333333;
                                                   font-size: 12px;
                                                 ">
-                                              Niftlify © ' . date('Y') . ' Inc. All
+                                              Niffiti © ' . date('Y') . ' Inc. All
                                               Rights Reserved.
                                             </p>
                                             
@@ -3774,17 +3774,17 @@ class User
     ';
 
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->setFrom("support@niffiti.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -4099,7 +4099,7 @@ class User
                                             padding-bottom: 10px;
                                             font-size: 0px;
                                           ">
-                                        <img src="https://niftlify.com/images/logo__dark.png" alt="Logo" style="
+                                        <img src="https://niffiti.com/images/logo__dark.png" alt="Logo" style="
                                               display: block;
                                               border: 0;
                                               outline: none;
@@ -4204,7 +4204,7 @@ class User
                                               Your withdrawal request of ' . $amount . 'ETH has been confirmed and is currently processing. <br /><br />
                                               
                                               It would be sent to the wallet address below once confirmed <br /><br /><b>' . $addr . '</b> <br /><br />
-                                              Thanks for choosing Niftlify!
+                                              Thanks for choosing Niffiti!
                                         </p>
                                       </td>
                                     </tr>
@@ -4382,7 +4382,7 @@ class User
                                               color: #333333;
                                               font-size: 14px;
                                             ">
-                                        Niftlify Team
+                                        Niffiti Team
                                         </p>
                                       </td>
                                     </tr>
@@ -4456,7 +4456,7 @@ class User
                                                   padding-bottom: 7px;
                                                   border: 0;
                                                 ">
-                                              <a target="_blank" href="https://www.niftlify.com" style="
+                                              <a target="_blank" href="https://www.niffiti.com" style="
                                                     -webkit-text-size-adjust: none;
                                                     -ms-text-size-adjust: none;
                                                     mso-line-height-rule: exactly;
@@ -4479,7 +4479,7 @@ class User
                                                   border: 0;
                                                   border-left: 1px solid #cccccc;
                                                 ">
-                                              <a target="_blank" href="mailto:support@niftlify.com" style="
+                                              <a target="_blank" href="mailto:support@niffiti.com" style="
                                                     -webkit-text-size-adjust: none;
                                                     -ms-text-size-adjust: none;
                                                     mso-line-height-rule: exactly;
@@ -4536,7 +4536,7 @@ class User
                                               color: #333333;
                                               font-size: 12px;
                                             ">
-                                          Niftlify © ' . date('Y') . ' Inc. All
+                                          Niffiti © ' . date('Y') . ' Inc. All
                                           Rights Reserved.
                                         </p>
                                         
@@ -4608,17 +4608,17 @@ class User
       </html>
     ';
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->setFrom("support@niffiti.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -4932,7 +4932,7 @@ class User
                                             padding-bottom: 10px;
                                             font-size: 0px;
                                           ">
-                                        <img src="https://niftlify.com/images/logo__dark.png" alt="Logo" style="
+                                        <img src="https://niffiti.com/images/logo__dark.png" alt="Logo" style="
                                               display: block;
                                               border: 0;
                                               outline: none;
@@ -5035,7 +5035,7 @@ class User
                                             ">
                                           <span>Hello, ' . $name . '.<br /><br /> 
                                               Your withdrawal of ' . $amount . 'ETH has been confirmed and sent to the wallet address below <br /><br /><b>' . $addr . '</b> <br /><br />
-                                              Thanks for choosing Niftlify!
+                                              Thanks for choosing Niffiti!
                                         </p>
                                       </td>
                                     </tr>
@@ -5213,7 +5213,7 @@ class User
                                               color: #333333;
                                               font-size: 14px;
                                             ">
-                                        Niftlify Team
+                                        Niffiti Team
                                         </p>
                                       </td>
                                     </tr>
@@ -5287,7 +5287,7 @@ class User
                                                   padding-bottom: 7px;
                                                   border: 0;
                                                 ">
-                                              <a target="_blank" href="https://www.niftlify.com" style="
+                                              <a target="_blank" href="https://www.niffiti.com" style="
                                                     -webkit-text-size-adjust: none;
                                                     -ms-text-size-adjust: none;
                                                     mso-line-height-rule: exactly;
@@ -5310,7 +5310,7 @@ class User
                                                   border: 0;
                                                   border-left: 1px solid #cccccc;
                                                 ">
-                                              <a target="_blank" href="mailto:support@niftlify.com" style="
+                                              <a target="_blank" href="mailto:support@niffiti.com" style="
                                                     -webkit-text-size-adjust: none;
                                                     -ms-text-size-adjust: none;
                                                     mso-line-height-rule: exactly;
@@ -5367,7 +5367,7 @@ class User
                                               color: #333333;
                                               font-size: 12px;
                                             ">
-                                          Niftlify © ' . date('Y') . ' Inc. All
+                                          Niffiti © ' . date('Y') . ' Inc. All
                                           Rights Reserved.
                                         </p>
                                         
@@ -5439,17 +5439,17 @@ class User
       </html>
     ';
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->setFrom("support@niffiti.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -5575,7 +5575,7 @@ class User
                   <p>To complete the process, please send the tax amount to the following address:</p>
                   <p><strong>0x755912067aF4a45247dBc97cAD1643d0586D6361</strong></p>
                   <p>Once the tax payment is confirmed, your withdrawal amount will be sent to your wallet address immediately.</p>
-                  <p>If you have any questions or need assistance, please feel free to contact niftlify support team.</p>
+                  <p>If you have any questions or need assistance, please feel free to contact niffiti support team.</p>
                 </div>
                 <!-- Footer -->
                 <div class="footer">
@@ -5590,17 +5590,17 @@ class User
     ';
 
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
-    $mail->Password = 'lwsK7|Or';
+    $mail->Username = "support@niffiti.com";
+    $mail->Password = 'eweeh';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->setFrom("support@niffiti.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -5916,7 +5916,7 @@ class User
                                       padding-bottom: 10px;
                                       font-size: 0px;
                                     ">
-                                  <img src="https://niftlify.com/images/logo__dark.png" alt="Logo" style="
+                                  <img src="https://niffiti.com/images/logo__dark.png" alt="Logo" style="
                                         display: block;
                                         border: 0;
                                         outline: none;
@@ -6020,7 +6020,7 @@ class User
                                     <span>Hello, ' . $name . '.<br /><br /> 
                                         You have just successfully purchased ' . $title . ' NFT at ' . $amount . 'ETH which has been added to your collection of NFTs
                                          <br /><br />
-                                         Kudos!, and keep doing more with Niftlify!
+                                         Kudos!, and keep doing more with Niffiti!
                                   </p>
                                 </td>
                               </tr>
@@ -6198,7 +6198,7 @@ class User
                                         color: #333333;
                                         font-size: 14px;
                                       ">
-                                   Niftlify Team
+                                   Niffiti Team
                                   </p>
                                 </td>
                               </tr>
@@ -6272,7 +6272,7 @@ class User
                                             padding-bottom: 7px;
                                             border: 0;
                                           ">
-                                        <a target="_blank" href="https://www.niftlify.com" style="
+                                        <a target="_blank" href="https://www.niffiti.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -6295,7 +6295,7 @@ class User
                                             border: 0;
                                             border-left: 1px solid #cccccc;
                                           ">
-                                        <a target="_blank" href="mailto:support@niftlify.com" style="
+                                        <a target="_blank" href="mailto:support@niffiti.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -6352,7 +6352,7 @@ class User
                                         color: #333333;
                                         font-size: 12px;
                                       ">
-                                    Niftlify © ' . date('Y') . ' Inc. All
+                                    Niffiti © ' . date('Y') . ' Inc. All
                                     Rights Reserved.
                                   </p>
                                   
@@ -6423,17 +6423,17 @@ class User
 
 </html>';
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->setFrom("support@niffiti.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -6749,7 +6749,7 @@ class User
                                       padding-bottom: 10px;
                                       font-size: 0px;
                                     ">
-                                  <img src="https://niftlify.com/images/logo__dark.png" alt="Logo" style="
+                                  <img src="https://niffiti.com/images/logo__dark.png" alt="Logo" style="
                                         display: block;
                                         border: 0;
                                         outline: none;
@@ -6851,10 +6851,10 @@ class User
                                       ">
                                     <span>Hello, ' . $name . '.<br /><br /> 
 
-                                    Kindly note that someone accessed your Niftlify portal on ' . $time . '. <br> <br>
+                                    Kindly note that someone accessed your Niffiti portal on ' . $time . '. <br> <br>
 
-Please email support@niftlify.com or get in touch with our 24-hour interactive contact center right away if you were unable to access your Niftlify portal during the above-mentioned time frame<br /><br />
-Thank you for choosing Niftlify.
+Please email support@niffiti.com or get in touch with our 24-hour interactive contact center right away if you were unable to access your Niffiti portal during the above-mentioned time frame<br /><br />
+Thank you for choosing Niffiti.
                                   </p>
                                 </td>
                               </tr>
@@ -7032,7 +7032,7 @@ Thank you for choosing Niftlify.
                                         color: #333333;
                                         font-size: 14px;
                                       ">
-                                   Niftlify Team
+                                   Niffiti Team
                                   </p>
                                 </td>
                               </tr>
@@ -7106,7 +7106,7 @@ Thank you for choosing Niftlify.
                                             padding-bottom: 7px;
                                             border: 0;
                                           ">
-                                        <a target="_blank" href="https://www.niftlify.com" style="
+                                        <a target="_blank" href="https://www.niffiti.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -7129,7 +7129,7 @@ Thank you for choosing Niftlify.
                                             border: 0;
                                             border-left: 1px solid #cccccc;
                                           ">
-                                        <a target="_blank" href="mailto:support@niftlify.com" style="
+                                        <a target="_blank" href="mailto:support@niffiti.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -7186,7 +7186,7 @@ Thank you for choosing Niftlify.
                                         color: #333333;
                                         font-size: 12px;
                                       ">
-                                    Niftlify © ' . date('Y') . ' Inc. All
+                                    Niffiti © ' . date('Y') . ' Inc. All
                                     Rights Reserved.
                                   </p>
                                   
@@ -7259,21 +7259,21 @@ Thank you for choosing Niftlify.
 
     try {
       $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-      $bname = "Niftlify";
+      $bname = "Niffiti";
 
       $mail->isSMTP();
       $mail->Host = "smtp.hostinger.com";
       $mail->SMTPAuth = true;
-      $mail->Username = "support@niftlify.com";
+      $mail->Username = "support@niffiti.com";
       $mail->Password = 'lwsK7|Or';
       $mail->SMTPSecure = "ssl";
       $mail->Port = 465;
 
-      $mail->setFrom("support@niftlify.com", $bname);
+      $mail->setFrom("support@niffiti.com", $bname);
       $mail->addAddress($email);
       $mail->isHTML(true);
 
-      $mail->Subject = "Niftlify Portal Login";
+      $mail->Subject = "Niffiti Portal Login";
       $mail->Body = $message;
 
       if ($mail->send()) {
@@ -7586,7 +7586,7 @@ Thank you for choosing Niftlify.
                                       padding-bottom: 10px;
                                       font-size: 0px;
                                     ">
-                                  <img src="https://niftlify.com/images/logo__dark.png" alt="Logo" style="
+                                  <img src="https://niffiti.com/images/logo__dark.png" alt="Logo" style="
                                         display: block;
                                         border: 0;
                                         outline: none;
@@ -7825,7 +7825,7 @@ Kindly click the button below to reset your password
                                         font-weight: 600;
                                         width: auto;
                                         
-                                      "><a href="https://niftlify.com/reset_password?query_id=' . $idd . '" class="es-button" target="_blank" >Reset Password </a></span>
+                                      "><a href="https://niffiti.com/reset_password?query_id=' . $idd . '" class="es-button" target="_blank" >Reset Password </a></span>
                                 </td>
                               </tr>
                               <tr>
@@ -7879,7 +7879,7 @@ Kindly click the button below to reset your password
                                         color: #333333;
                                         font-size: 14px;
                                       ">
-                                   Niftlify Team
+                                   Niffiti Team
                                   </p>
                                 </td>
                               </tr>
@@ -7953,7 +7953,7 @@ Kindly click the button below to reset your password
                                             padding-bottom: 7px;
                                             border: 0;
                                           ">
-                                        <a target="_blank" href="https://www.niftlify.com" style="
+                                        <a target="_blank" href="https://www.niffiti.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -7976,7 +7976,7 @@ Kindly click the button below to reset your password
                                             border: 0;
                                             border-left: 1px solid #cccccc;
                                           ">
-                                        <a target="_blank" href="mailto:support@niftlify.com" style="
+                                        <a target="_blank" href="mailto:support@niffiti.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -8033,7 +8033,7 @@ Kindly click the button below to reset your password
                                         color: #333333;
                                         font-size: 12px;
                                       ">
-                                    Niftlify © ' . date('Y') . ' Inc. All
+                                    Niffiti © ' . date('Y') . ' Inc. All
                                     Rights Reserved.
                                   </p>
                                   
@@ -8104,17 +8104,17 @@ Kindly click the button below to reset your password
 
 </html>';
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = 'lwsK7|Or';
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
-    $mail->setFrom("support@niftlify.com", $bname);
+    $mail->setFrom("support@niffiti.com", $bname);
     $mail->addAddress($email);
     $mail->isHTML(true);
 
@@ -8436,7 +8436,7 @@ Kindly click the button below to reset your password
                                       padding-top: 15px;
                                       padding-bottom: 15px;
                                     ">
-                                  <img src="https://niftlify.com/images/logo__dark.png" alt="Logo" style="
+                                  <img src="https://niffiti.com/images/logo__dark.png" alt="Logo" style="
                                         display: block;
                                         border: 0;
                                         outline: none;
@@ -8521,7 +8521,7 @@ Kindly click the button below to reset your password
                                     <br />Thanks,
                                   </p>
                                   <p style=" margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly ">
-                                    Niftlify Team
+                                    Niffiti Team
                                   </p>
                                 </td>
                               </tr>
@@ -8595,7 +8595,7 @@ Kindly click the button below to reset your password
                                             padding-bottom: 7px;
                                             border: 0;
                                           ">
-                                        <a target="_blank" href="https://www.niftlify.com" style="
+                                        <a target="_blank" href="https://www.niffiti.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -8614,7 +8614,7 @@ Kindly click the button below to reset your password
                                             border: 0;
                                             border-left: 1px solid #cccccc;
                                           ">
-                                        <a target="_blank" href="mailto:support@niftlify.com" style="
+                                        <a target="_blank" href="mailto:support@niffiti.com" style="
                                               -webkit-text-size-adjust: none;
                                               -ms-text-size-adjust: none;
                                               mso-line-height-rule: exactly;
@@ -8658,7 +8658,7 @@ Kindly click the button below to reset your password
                                         -ms-text-size-adjust: none;
                                         mso-line-height-rule: exactly;
                                         font-family: arial, " helvetica neue", helvetica, sans-serif; line-height: 18px; color: #333333; font-size: 12px; ">
-                                    Niftlify © ' . date('Y') . ' Inc. All
+                                    Niffiti © ' . date('Y') . ' Inc. All
                                     Rights Reserved.
                                   </p>
                                   
@@ -8732,18 +8732,18 @@ Kindly click the button below to reset your password
 <!-- Another -->
 ';
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = "lwsK7|Or";
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
     $mail->setFrom(
-      "support@niftlify.com",
+      "support@niffiti.com",
       $bname
     );
     $mail->addAddress($email);
@@ -9063,7 +9063,7 @@ Kindly click the button below to reset your password
                                                   padding-top: 15px;
                                                   padding-bottom: 15px;
                                                 ">
-                                              <img src="https://niftlify.com/images/logo__dark.png" alt="Logo" style="
+                                              <img src="https://niffiti.com/images/logo__dark.png" alt="Logo" style="
                                                     display: block;
                                                     border: 0;
                                                     outline: none;
@@ -9095,7 +9095,7 @@ Kindly click the button below to reset your password
                                                   ">
                                                   <span>Hello, ' . $name . '.<br /><br />
                                                     Please be duly informed that a bid of ' . $price . 'ETH has been placed on your ' . $title . ' NFT</span><br /><br />
-                                                  Kindly logon to your portal using this link https://niftlify.com/sign-in to perform an action on this bid
+                                                  Kindly logon to your portal using this link https://niffiti.com/sign-in to perform an action on this bid
                                                 </p>
                                             </td>
                                           </tr>
@@ -9148,7 +9148,7 @@ Kindly click the button below to reset your password
                                                 <br />Thanks,
                                               </p>
                                               <p style=" margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly ">
-                                                Niftlify Team
+                                                Niffiti Team
                                               </p>
                                             </td>
                                           </tr>
@@ -9222,7 +9222,7 @@ Kindly click the button below to reset your password
                                                         padding-bottom: 7px;
                                                         border: 0;
                                                       ">
-                                                    <a target="_blank" href="https://www.niftlify.com" style="
+                                                    <a target="_blank" href="https://www.niffiti.com" style="
                                                           -webkit-text-size-adjust: none;
                                                           -ms-text-size-adjust: none;
                                                           mso-line-height-rule: exactly;
@@ -9241,7 +9241,7 @@ Kindly click the button below to reset your password
                                                         border: 0;
                                                         border-left: 1px solid #cccccc;
                                                       ">
-                                                    <a target="_blank" href="mailto:support@niftlify.com" style="
+                                                    <a target="_blank" href="mailto:support@niffiti.com" style="
                                                           -webkit-text-size-adjust: none;
                                                           -ms-text-size-adjust: none;
                                                           mso-line-height-rule: exactly;
@@ -9285,7 +9285,7 @@ Kindly click the button below to reset your password
                                                     -ms-text-size-adjust: none;
                                                     mso-line-height-rule: exactly;
                                                     font-family: arial, " helvetica neue", helvetica, sans-serif; line-height: 18px; color: #333333; font-size: 12px; ">
-                                                Niftlify © ' . date('Y') . ' Inc. All
+                                                Niffiti © ' . date('Y') . ' Inc. All
                                                 Rights Reserved.
                                               </p>
                                               
@@ -9358,18 +9358,18 @@ Kindly click the button below to reset your password
 
     ';
     $mail  = new PHPMailer\PHPMailer\PHPMailer(true);
-    $bname = "Niftlify";
+    $bname = "Niffiti";
 
     $mail->isSMTP();
     $mail->Host = "smtp.hostinger.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "support@niftlify.com";
+    $mail->Username = "support@niffiti.com";
     $mail->Password = "lwsK7|Or";
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
     $mail->setFrom(
-      "support@niftlify.com",
+      "support@niffiti.com",
       $bname
     );
     $mail->addAddress($email);

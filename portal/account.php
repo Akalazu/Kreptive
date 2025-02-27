@@ -433,11 +433,10 @@ if (isset($_POST['full_verification'])) {
               </form>
 
 
-
               <h4 class="my-3">Profile Link</h4>
               <div class="mb-3">
                 <div class="position-relative">
-                  <input type="text" class="form-control form-control-s1" id="profileLink" name="newpwrd" value="https://niftlify.com/<?= $currUser->first_name ?>/<?= $currUser->address ?>" />
+                  <input type="text" class="form-control form-control-s1" id="profileLink" name="newpwrd" value="https://niffiti.com/<?= $currUser->first_name ?>/<?= $currUser->address ?>" />
                   <span class="password-toggle" title="Toggle show/hide pasword">
                     <em class="password-shown mdi mdi-content-copy" onClick="copyProfileLink()"></em>
                   </span>

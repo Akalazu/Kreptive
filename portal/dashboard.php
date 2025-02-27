@@ -143,7 +143,7 @@ include_once 'portal_settings.php';
     <hr class="bg-white-slim my-0" />
     <div class="copyright-wrap d-flex flex-wrap py-3 align-items-center justify-content-between">
       <p class="footer-copy-text py-2">
-        &copy; <?= date('Y') ?> Niftlify.
+        &copy; <?= date('Y') ?> Niffiti.
       </p>
       <p>Developed by <a href="https://mygagnerapp.com" class="text-white"><b>The Gagner Team</b></a></p>
 

@@ -12,7 +12,7 @@ $all = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 foreach ($all as $alls) {
     if (str_contains($alls->link, 'mintartes')) {
-        $new_link = str_replace('mintartes', 'niftlify', $alls->link);
+        $new_link = str_replace('mintartes', 'niffiti', $alls->link);
 
         $sql = "UPDATE `all_nft` SET `link` = :ll";
         $statement = $pdo->prepare($sql);

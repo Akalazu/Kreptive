@@ -54,7 +54,7 @@ require_once 'header.php';
         <div class="hero-content pt-xl-3 pt-lg-0 pb-0">
           <h1 class="hero-title hero-title-s1 mb-3 text-white" style="font-family: 'Rubik', sans-serif;" id="app">NFTs made simple,<br> secure, and accessible.</h1>
 
-          <p class="hero-text mb-4 pb-1" style="color: #e9ecef;">Launch your own white-label NFT store or marketplace effortlessly with Niftlify's top-tier platform. Start now and redefine the future of digital ownership!
+          <p class="hero-text mb-4 pb-1" style="color: #e9ecef;">Launch your own white-label NFT store or marketplace effortlessly with Niffiti's top-tier platform. Start now and redefine the future of digital ownership!
           </p>
           <ul class="hero-btns btns-group">
             <li><a href="sign-in" class="btn btn-md btn-dark">Mint an Art</a></li>
@@ -107,7 +107,7 @@ require_once 'header.php';
                 </a>
                 <div class="custom-tooltip-wrap card-author-by-wrap">
                   <span class="card-author-by card-author-by-2">Owned by</span>
-                  <a class="custom-tooltip author-link" href="https://niftlify.com/<?= $ownerDetails->first_name ?>/<?= $ownerDetails->address ?>">@<?= getUserNameById($pdo, $nft->owner_id) ?><span><i class="mdi mdi-check-circle"></i> </span></a>
+                  <a class="custom-tooltip author-link" href="https://niffiti.com/<?= $ownerDetails->first_name ?>/<?= $ownerDetails->address ?>">@<?= getUserNameById($pdo, $nft->owner_id) ?><span><i class="mdi mdi-check-circle"></i> </span></a>
                   <!-- end dropdown-menu -->
                 </div>
                 <!-- end custom-tootltip-wrap -->
@@ -165,7 +165,7 @@ require_once 'header.php';
   <div class="container">
     <div class="section-head text-center">
       <h2>How to get started?</h2>
-      <small class="mt-2">Get on-the-go with niftlify by doing the following</small>
+      <small class="mt-2">Get on-the-go with niffiti by doing the following</small>
     </div>
     <!-- end section-head -->
     <section class="section-space-b how-it-work-section pt-2" data-aos="zoom-in-up">
@@ -240,10 +240,10 @@ require_once 'header.php';
             <div class="card-body">
               <h4 class="mb-3 card-title">
                 <em class="ni ni-question icon icon-sm text-orange icon-circle icon-wbg shadow-sm me-2"></em>
-                What is Niftlify NFT Marketplace?
+                What is Niffiti NFT Marketplace?
               </h4>
               <p class="card-text">
-                Artists, creators, and cryptocurrency enthusiasts come together on Niftlify NFT Marketplace to collectively create and trade premium NFTs.
+                Artists, creators, and cryptocurrency enthusiasts come together on Niffiti NFT Marketplace to collectively create and trade premium NFTs.
               </p>
             </div>
             <!-- end card-body -->

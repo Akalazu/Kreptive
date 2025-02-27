@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Niftlify - Portal</title>
+    <title>Niffiti - Portal</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets/assets/vendors/css/vendor.bundle.base.css">
@@ -37,23 +37,8 @@
     <script src="../assets/js/jquery.min.js"></script>
 
     <!-- Smartsupp Live Chat script -->
-    <?php
-    if ($currUser->id == 964 || $currUser->id == 1225) {
-        echo "
-                 <script type='text/javascript'>
-                    var _smartsupp = _smartsupp || {};
-                    _smartsupp.key = '07e8f4cfbd525e6f4e3c33265f93c811bea2424e';
-                    window.smartsupp||(function(d) {
-                      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-                      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-                      c.type='text/javascript';c.charset='utf-8';c.async=true;
-                      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-                    })(document);
-                </script>
-            ";
-    } else {
-        echo "
-                <script type='text/javascript'>
+
+    <script type='text/javascript'>
         var _smartsupp = _smartsupp || {};
         _smartsupp.key = '5cb72bfceac0248ce873cd52fd5f375ac09b1cdc';
         window.smartsupp || (function(d) {
@@ -70,10 +55,7 @@
             s.parentNode.insertBefore(c, s);
         })(document);
     </script>
-            ";
-    }
 
-    ?>
 
 </head>
 <style>

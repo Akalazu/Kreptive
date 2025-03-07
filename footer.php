@@ -53,7 +53,7 @@
                                     <li><a href="about-us">About Us</a></li>
                                     <li><a href="privacy_policy">Privacy Policy</a></li>
                                     <li><a href="term_of_service">Terms of Service</a></li>
-                                    <li><a href="sign-in">Join our Community</a></li>
+                                    <!-- <li><a href="sign-in">Join our Community</a></li> -->
 
                                 </ul>
                             </div>

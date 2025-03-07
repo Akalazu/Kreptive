@@ -2,6 +2,8 @@
 
 require_once '../../includes/init.php';
 
+header('Location: logout');
+
 if (isset($_SESSION['currid'])) {
     $idd = $_SESSION['currid'];
     $sql = "SELECT * FROM `reg_details` WHERE id = :idd";

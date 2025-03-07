@@ -196,12 +196,12 @@
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="eMessage/">
                             <span class="menu-title">Community</span>
                             <i class="mdi mdi-forum menu-icon"></i>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="deposit_logs">
                             <span class="menu-title">Fund Account</span>

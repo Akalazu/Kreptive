@@ -57,7 +57,7 @@ include_once "portal_settings.php";
 
                         </ul>
                         <div class="tab-content mt-4" id="myTabContent">
-                            <div class="tab-pane fade show active" id="bonus" role="tabpanel" aria-labelledby="bonus-tab">
+                            <div class="tab-pane fade" id="bonus" role="tabpanel" aria-labelledby="bonus-tab">
                                 <div class="col-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body table__container">
@@ -103,7 +103,7 @@ include_once "portal_settings.php";
                                 </div>
                                 <!-- END -->
                             </div>
-                            <div class="tab-pane fade" id="logins" role="tabpanel" aria-labelledby="login-tab">
+                            <div class="tab-pane fade show active" id="logins" role="tabpanel" aria-labelledby="login-tab">
                                 <div class="col-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body table__container">

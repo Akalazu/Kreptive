@@ -706,7 +706,7 @@ class User
     // SQL query to get the 2 most recent transactions for each table
     $queries = [
       'account_deposit' => "SELECT 'deposit' AS type, amount, id, status, date_created FROM account_deposit WHERE depositor = :userId ORDER BY id DESC LIMIT 2",
-      'bonus' => "SELECT 'bonus' AS type, amount, id, status, date_created FROM account_deposit WHERE depositor = :userId ORDER BY id DESC LIMIT 2",
+      'bonus' => "SELECT 'bonus' AS type, amount, id, status, date_created FROM account_bonus WHERE depositor = :userId ORDER BY id DESC LIMIT 2",
       'account_withdrawal' => "SELECT 'withdraw' AS type, amount, id , status, time_withdrawn FROM account_withdraw WHERE withdraw_by = :userId ORDER BY id DESC LIMIT 2",
       'commission' => "SELECT * FROM commission WHERE user_id = :userId ORDER BY id DESC LIMIT 2"
     ];

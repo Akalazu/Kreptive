@@ -69,13 +69,23 @@ if (isset($_POST['save_author_collections'])) {
 
 if (isset($_POST['create_item'])) {
 
-    $mint_fee = $_POST['mint_fee'];
+    $mint_fee = $userCl->getDepoCharge();
 
     if ($currUser->balance <= 0 && $currUser->lazy_mint == 1) {
         $remaining_balance = $currUser->balance;
+        $from = 'balance';
+        if ($remaining_balance < 0) {
+            $from = 'profit';
+            $remaining_balance = $currUser->profit - ($mint_fee ?? 0.1);
+        }
         $type = "lazy";
     } else {
         $remaining_balance = $currUser->balance - ($mint_fee ?? 0.1);
+        $from = 'balance';
+        if ($remaining_balance < 0) {
+            $from = 'profit';
+            $remaining_balance = $currUser->profit - ($mint_fee ?? 0.1);
+        }
         $type = "not_lazy";
     }
 
@@ -140,7 +150,7 @@ if (isset($_POST['create_item'])) {
                         $link_id = $userCl->getNFTId();
                         $link = "https://niffiti.com/$currUser->first_name-$currUser->last_name/$link_id";
 
-                        $sqll = "UPDATE `reg_details` SET `balance`= :bl WHERE id = :idd";
+                        $sqll = "UPDATE `reg_details` SET `$from`= :bl WHERE id = :idd";
                         $stmt = $pdo->prepare($sqll);
                         $stmt->bindParam(':bl', $remaining_balance);
                         $stmt->bindParam(':idd', $idd);

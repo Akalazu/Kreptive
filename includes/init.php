@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-//exit();
+exit();
 
 ob_start();
 session_start();

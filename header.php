@@ -58,8 +58,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 
-
-    <!-- Smartsupp Live Chat -->
     <script type="text/javascript">
         var _smartsupp = _smartsupp || {};
         _smartsupp.key = 'c8f9076e067ae286a1c08521c1e1b536514e189b';

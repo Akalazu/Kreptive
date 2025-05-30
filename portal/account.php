@@ -480,18 +480,11 @@ if (isset($_POST['full_verification'])) {
             <div class="tab-pane fade" id="validate-profile" role="tabpanel" aria-labelledby="validate-profile-tab">
               <div class="profile-setting-panel">
                 <p class="mb-3 fs-14">
-                  Verify your identity to unlock exclusive access to our community.
+                  Verify your identity to unlock exclusive access.
                 </p>
                 <p>
-                  Start by submitting a valid document as the first step of verification. Once approved, you can apply for full verification to access all community privileges.
+                  Start by submitting a valid document as the first step of verification. Once approved, you can apply for full verification to access all privileges.
                 </p>
-
-                <?php
-                if ($currUser->verification_status == 1) {
-                  echo "'
-                            <p><b>To apply, ensure you've minted or own at least 7 NFTs. Join now and connect with other verified members!</b></p>";
-                }
-                ?>
 
                 <hr class="my-4" />
 

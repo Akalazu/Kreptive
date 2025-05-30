@@ -137,7 +137,7 @@ foreach ($all as $alls) {
                                 <!-- <a href="account.html" class="btn btn-light">Profit</a> -->
                                 <span>
                                     <p class="hero-author-username mb-1 ">Account Balance</p>
-                                    <h2 class="amount__value d-flex align-items-center"><span class="curr_amount" data-val="<?= $currUser->balance * $ethereumToUsdRate + ($currUser->profit * $ethereumToUsdRate) ?>">-</span> </h2>
+                                    <h2 class="amount__value d-flex align-items-center"><span class="curr_amount" data-val="<?= $currUser->balance * $ethereumToUsdRate?>">-</span> </h2>
                                 </span>
 
                                 <div class="d-flex align-items-center gap-3">
@@ -150,11 +150,11 @@ foreach ($all as $alls) {
                         </div>
                     </div>
                     <div class="col-md-6 mb-3 mb-md-0">
-                        <div class="card card-full card-s3 bal-cards" style="height: 250px;">
+                        <div class="card card-full card-s3 bal-cards" >
                             <div class="hero-action-wrap ">
 
-                                <h5 class="my-4" style="color: #c7dbff;font-weight: 800;">Crypto</h5>
-                                <div class="coins d-flex justify-content-between align-items-center gap-3 mb-4">
+                                <h5 style="color: #c7dbff;font-weight: 800;">Crypto</h5>
+                                <div class="coins d-flex justify-content-between align-items-center gap-3">
                                     <span class="coin-info d-flex align-items-center gap-2">
                                         <span class="coin_img">
                                             <img src="../assets/images/ethereum.svg" alt="">
@@ -168,25 +168,6 @@ foreach ($all as $alls) {
 
                                     <div class="coin-price">
                                         <span class="dollar__equi"><?= $currUser->balance ?> ETH</span>
-                                    </div>
-                                </div>
-
-                                <hr style="background-color: #c7dbff;">
-
-                                <div class="coins d-flex justify-content-between align-items-center gap-3 mb-4">
-                                    <span class="coin-info d-flex align-items-center gap-2">
-                                        <span class="coin_img">
-                                            <img src="../assets/images/arbi.svg" alt="">
-                                        </span>
-
-                                        <span>
-                                            <p class="mb-1">ETH <span class="crypto_name">Arbitrum</span></p>
-                                            <span class="dollar__equi">$<?= number_format($currUser->profit * $ethereumToUsdRate, 2) ?></span>
-                                        </span>
-                                    </span>
-
-                                    <div class="coin-price">
-                                        <span class="dollar__equi"><?= $currUser->profit ?> ETH</span>
                                     </div>
                                 </div>
 
@@ -308,15 +289,14 @@ foreach ($all as $alls) {
                             <p>The NFT Marketplace</p>
                             <div class="row">
                                 <?php
-                                $sql = "SELECT * FROM `all_nft` WHERE `status` = 1 AND `owner_id` != :oi ORDER BY `id` DESC LIMIT 15";
-                                $stmt = $pdo->prepare($sql);
-                                $stmt->bindParam(':oi', $currUser->id);
-                                $stmt->execute();
+                                    $sql = "SELECT * FROM `all_nft` WHERE `status` = 1 AND `owner_id` != :oi ORDER BY `id` DESC LIMIT 15";
+                                    $stmt = $pdo->prepare($sql);
+                                    $stmt->bindParam(':oi', $currUser->id);
+                                    $stmt->execute();
 
-                                $all_nft = $stmt->fetchAll(PDO::FETCH_OBJ);
+                                    $all_nft = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-                                foreach ($all_nft as $nft) {
-
+                                    foreach ($all_nft as $nft) {
 
                                 ?>
                                     <div class="col-md-4 my-3 overview__item">

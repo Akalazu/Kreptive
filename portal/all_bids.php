@@ -57,7 +57,8 @@
         
         ';
         } else {
-            $new_profit_balance = $currUser->profit + $bid;
+            // This was changed to balance...
+            $new_profit_balance = $currUser->balance + $bid;
 
 
             $ref_id = genRefId();

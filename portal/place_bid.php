@@ -21,7 +21,7 @@ if (isset($_SESSION['nft_link'])) {
     }
 } else if (isset($_GET['nftqrs'])) {
     $nft_id = $_SESSION['nftqrs'] = $_GET['nftqrs'];
-}else{
+} else {
     echo "Session has invalid";
     die();
 }
@@ -82,7 +82,8 @@ if (isset($_POST['place_bid'])) {
         $statement = $pdo->prepare($query);
         $statement->bindParam(':bi', $bidder);
         $statement->bindParam(':rc', $owner_id);
-        $statement->bindParam(':rold', $owner_details->profit);
+        // This was changed to balance ...
+        $statement->bindParam(':rold', $owner_details->balance);
         $statement->bindParam(':bd', $bid_price);
         $statement->bindParam(':rnew', $status);
         $statement->bindParam(':ai', $nftt_id);

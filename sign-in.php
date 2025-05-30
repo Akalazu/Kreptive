@@ -117,9 +117,6 @@
   <div class="page-wrap">
     <?php
 
-
-
-
     if (isset($_POST['submit_btn'])) {
       $email = sanitizeText(sanitizeMail($_POST['email']));
 

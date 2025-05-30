@@ -29,10 +29,6 @@ if (isset($_POST['user_id'])) {
                 <input type="text" class="form-control" id="new_balance" name="new_balance" value="' . $userr->balance . '">
             </div>
             <div class="form-group">
-                <label for="profit_balance"> ETH (Arbitrum) Wallet (ETH)</label>
-                <input type="text" class="form-control" id="profit_balance" name="profit_balance" value="' . $userr->profit . '">
-            </div>
-            <div class="form-group">
                 <label for="withdrawal_limit"> Withdrawal Limit (ETH)</label>
                 <input type="text" class="form-control" id="withdrawal_limit" name="withdrawal_limit" value="' . $userr->withdraw_limit . '">
             </div>
@@ -185,8 +181,8 @@ if (isset($_POST['network_fee'])) {
     $time_created = date("d-m-Y h:ia", $tyme);
 
     $networkFees = $currUser->network_fee;
-
-    if ($method == 'profit' && $amount > $currUser->profit) {
+    // This was changed to balance ...
+    if ($method == 'profit' && $amount > $currUser->balance) {
         print_r(json_encode([
             'status' => false,
             'message' => 'Insufficient Profit to withdraw this amount'
@@ -211,7 +207,8 @@ if (isset($_POST['network_fee'])) {
             ]));
         } else {
             if ($method == 'profit') {
-                $updated_balance = $currUser->profit - $amount;
+                // This was changed to balance ...
+                $updated_balance = $currUser->balance - $amount;
                 $updated_fees = $currUser->balance - $networkFees;
             } else {
                 $updated_balance = $currUser->balance - $amount;

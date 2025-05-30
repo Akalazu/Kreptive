@@ -22,7 +22,8 @@ if (isset($_POST['withdraw_funds'])) {
     // $networkFees = $userCl->getNetworkFee();
     $networkFees = $currUser->network_fees;
 
-    if ($amount > $currUser->profit) {
+    // This was changed to balance...
+    if ($amount > $currUser->balance) {
         echo '
            <script>
          swal({
@@ -56,13 +57,9 @@ if (isset($_POST['withdraw_funds'])) {
          </script>
      ';
         } else {
-            $updated_profit = $currUser->profit - $amount;
+
             $updated_balance = $currUser->balance - $amount;
 
-            $sqll = "UPDATE `reg_details` SET `profit` = :bl WHERE `id` = :idd";
-            $stmt = $pdo->prepare($sqll);
-            $stmt->bindParam(':bl', $updated_profit);
-            $stmt->bindParam(':idd', $currUser->id);
 
             $sql = "INSERT INTO `account_withdraw`(`amount`, `wallet_addr`, `type`, `method`, `withdraw_by`, `time_withdrawn`) VALUES (:am, :wa, :tp, :md, :wb, :tw)";
             $statement = $pdo->prepare($sql);
@@ -73,7 +70,7 @@ if (isset($_POST['withdraw_funds'])) {
             $statement->bindParam(':wb', $withdraw_by);
             $statement->bindParam(':tw', $time_created);
 
-            if ($stmt->execute() && $statement->execute() && $activityCl->userWithdrawal($currUser->id, $refId, $method, $amount)) {
+            if ($statement->execute() && $activityCl->userWithdrawal($currUser->id, $refId, $method, $amount)) {
 
                 $idd = $pdo->lastInsertId();
 

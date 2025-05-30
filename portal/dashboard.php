@@ -22,11 +22,7 @@ include_once 'portal_settings.php';
           <h2 class="hero-author-title mb-1 text-white d-flex align-items-center"><?= $currUser->balance ?><small style="font-size: 18px; background-color: white; color: black; padding: 5px; border-radius: 5px; margin-left: 5px">ETH</small></h2>
         </div>
         <!-- end author-hero-content -->
-        <div class="hero-action-wrap">
-          <!-- <a href="account.html" class="btn btn-light">Profit</a> -->
-          <p class="hero-author-username mb-1 text-white text-center">Profit</p>
-          <h2 class="hero-author-title mb-1 text-white d-flex align-items-center"><?= $currUser->profit ?><small style="font-size: 18px; background-color: white; color: black; padding: 5px; border-radius: 5px; margin-left: 5px">ETH</small></h2>
-        </div>
+
       </div>
       <!-- end author-hero-content-wrap -->
     </div>

@@ -71,23 +71,9 @@ if (isset($_POST['create_item'])) {
 
     $mint_fee = $userCl->getDepoCharge();
 
-    if ($currUser->balance <= 0 && $currUser->lazy_mint == 1) {
-        $remaining_balance = $currUser->balance;
-        $from = 'balance';
-        if ($remaining_balance < 0) {
-            $from = 'profit';
-            $remaining_balance = $currUser->profit - ($mint_fee ?? 0.1);
-        }
-        $type = "lazy";
-    } else {
-        $remaining_balance = $currUser->balance - ($mint_fee ?? 0.1);
-        $from = 'balance';
-        if ($remaining_balance < 0) {
-            $from = 'profit';
-            $remaining_balance = $currUser->profit - ($mint_fee ?? 0.1);
-        }
-        $type = "not_lazy";
-    }
+    $remaining_balance = $currUser->balance - ($mint_fee ?? 0.1);
+
+    $from = 'balance';
 
     $title = sanitizeName($_POST['name']);
     $description = sanitizeText($_POST['message']);
@@ -150,7 +136,7 @@ if (isset($_POST['create_item'])) {
                         $link_id = $userCl->getNFTId();
                         $link = "https://niffiti.com/$currUser->first_name-$currUser->last_name/$link_id";
 
-                        $sqll = "UPDATE `reg_details` SET `$from`= :bl WHERE id = :idd";
+                        $sqll = "UPDATE `reg_details` SET `balance`= :bl WHERE id = :idd";
                         $stmt = $pdo->prepare($sqll);
                         $stmt->bindParam(':bl', $remaining_balance);
                         $stmt->bindParam(':idd', $idd);
@@ -372,7 +358,6 @@ if (isset($_POST['create_item'])) {
                         <label for="accept_terms" class="mb-0">A 10% brokerage fee in ETH applies to successful sales.</label>
                     </div>
             </div>
-
 
             <button type="submit" class="btn btn-primary me-2 mt-4" name="create_item">Submit</button>
             </form>

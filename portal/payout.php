@@ -95,16 +95,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
             }
         } else {
 
-            if ($amount > $currUser->profit) {
+            // This was changed to balance ...
+            if ($amount > $currUser->balance) {
                 echo '
-           <script>
-         swal({
-               title: "Oops!",
-                text: "Insufficient Balance to withdraw this amount",
-                icon: "warning"
-             });
-         </script>
-     ';
+             <script>
+                    swal({
+                    title: "Oops!",
+                        text: "Insufficient Balance to withdraw this amount",
+                        icon: "warning"
+                    });
+            </script>
+            ';
             } else if ($amount >= $max_limit) {
 
                 $_SESSION['withdraw_amount'] = $amount;
@@ -161,6 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
     // die();
 
 }
+
 ?>
 <style>
     .status_btn {
@@ -183,7 +185,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
         text-align: center;
     }
 </style>
-
 
 <div class="row">
     <div class="col-12 grid-margin stretch-card">
@@ -284,12 +285,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
             <div class="modal-body">
 
                 <?php
-                if ($currUser->profit > 0) {
-                    $output = 'Minimum ' . $max_limit . ' ETH';
-                } else {
-                    $output = '';
-                }
-
+                $output = 'Minimum ' . $max_limit . ' ETH';
                 ?>
 
                 <form method="post" enctype="multipart/form-data">
@@ -304,16 +300,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['send_proof'])) {
 
                     <div class="form-group">
                         <label for="account">Withdraw From</label>
-                        <select class="form-control" id="account" name="method" onchange="toggleInput()" required>
-                            <option selected value="" disabled>Select Option</option>
-                            <option value="balance">ETH Wallet - <?= $currUser->balance ?>ETH</option>
-                            <option value="profit">ETH (ARB) Wallet - <?= $currUser->profit ?>ETH</option>
-                        </select>
+                        <input type="text" name="method" id="account" class="form-control form-control-s1" value="balance" readonly required>
                     </div>
                     <!-- <div class="form-group" id="wallet_address" style="display: none;"> -->
                     <div class="form-group">
                         <label for="addr">Wallet Address</label>
-                        <input type="text" name="wallet_addr" id="addr" class="form-control form-control-s1" placeholder="Enter Address" requiredare you seriousGo>
+                        <input type="text" name="wallet_addr" id="addr" class="form-control form-control-s1" placeholder="Enter Address" required>
                     </div>
                     <label for="method">Network </label>
                     <input type="text" id="method" class="form-control form-control-s1 mb-3" value="ERC20" name="method" disabled style="background: none!important;">

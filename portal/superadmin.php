@@ -165,26 +165,26 @@ if (isset($_POST['delete_nft'])) {
 
                 if ($statement->execute()) {
                     echo '
-            <script>
-            swal({
-                title: "Success",
-                text: "The deposit has been successfully declined",
-                icon: "success"
-            })
-            </script>
-           
-            ';
+                            <script>
+                            swal({
+                                title: "Success",
+                                text: "The deposit has been successfully declined",
+                                icon: "success"
+                            })
+                            </script>
+                        
+                            ';
                 } else {
                     echo '
-            <script>
-            swal({
-                title: "Oops!",
-                text: "An error occured, kindly try again",
-                icon: "warning"
-            })
-            </script>
-           
-            ';
+                        <script>
+                        swal({
+                            title: "Oops!",
+                            text: "An error occured, kindly try again",
+                            icon: "warning"
+                        })
+                        </script>
+                    
+                        ';
                 }
             }
 
@@ -203,19 +203,20 @@ if (isset($_POST['delete_nft'])) {
 
                 // $updated_balance =  $curr_balance - $withdraw;
 
-                $updated_balance = $recipient->profit - $withdraw;
+                // This was changed to balance
+                $updated_balance = $recipient->balance - $withdraw;
 
                 if ($updated_balance < 0) {
                     echo '
-            <script>
-            swal({
-                title: "Oops!",
-                text: "User has Insufficient Balance to withdraw this amount",
-                icon: "warning"
-            })
-            </script>
-           
-            ';
+                    <script>
+                    swal({
+                        title: "Oops!",
+                        text: "User has Insufficient Balance to withdraw this amount",
+                        icon: "warning"
+                    })
+                    </script>
+                
+                    ';
                 } else {
                     //Update User Balance
                     $sql = "UPDATE `reg_details` SET `profit` = :bl WHERE `id` = :idd";
@@ -268,26 +269,26 @@ if (isset($_POST['delete_nft'])) {
 
                 if ($statement->execute()) {
                     echo '
-            <script>
-            swal({
-                title: "Success",
-                text: "The withdrawal has been successfully declined",
-                icon: "success"
-            })
-            </script>
-           
-            ';
+                    <script>
+                    swal({
+                        title: "Success",
+                        text: "The withdrawal has been successfully declined",
+                        icon: "success"
+                    })
+                    </script>
+                
+                    ';
                 } else {
                     echo '
-            <script>
-            swal({
-                title: "Oops!",
-                text: "An error occured, kindly try again",
-                icon: "warning"
-            })
-            </script>
-           
-            ';
+                    <script>
+                    swal({
+                        title: "Oops!",
+                        text: "An error occured, kindly try again",
+                        icon: "warning"
+                    })
+                    </script>
+                
+                    ';
                 }
             }
 
@@ -302,26 +303,26 @@ if (isset($_POST['delete_nft'])) {
                 if ($statement->execute()) {
                     $userCl->updateTotalArtsCreated($author_idd);
                     echo '
-            <script>
-            swal({
-                title: "Success",
-                text: "NFT has been successfully approved",
-                icon: "success"
-            })
-            </script>
-           
-            ';
+                    <script>
+                    swal({
+                        title: "Success",
+                        text: "NFT has been successfully approved",
+                        icon: "success"
+                    })
+                    </script>
+                
+                    ';
                 } else {
                     echo '
-            <script>
-            swal({
-                title: "Oops!",
-                text: "An error occured, kindly try again",
-                icon: "warning"
-            })
-            </script>
-           
-            ';
+                    <script>
+                    swal({
+                        title: "Oops!",
+                        text: "An error occured, kindly try again",
+                        icon: "warning"
+                    })
+                    </script>
+                
+                    ';
                 }
             }
 
@@ -334,26 +335,26 @@ if (isset($_POST['delete_nft'])) {
 
                 if ($statement->execute()) {
                     echo '
-            <script>
-            swal({
-                title: "Success",
-                text: "NFT has been successfully declined",
-                icon: "success"
-            })
-            </script>
-           
-            ';
+                    <script>
+                    swal({
+                        title: "Success",
+                        text: "NFT has been successfully declined",
+                        icon: "success"
+                    })
+                    </script>
+                
+                    ';
                 } else {
                     echo '
-            <script>
-            swal({
-                title: "Oops!",
-                text: "An error occured, kindly try again",
-                icon: "warning"
-            })
-            </script>
-           
-            ';
+                    <script>
+                    swal({
+                        title: "Oops!",
+                        text: "An error occured, kindly try again",
+                        icon: "warning"
+                    })
+                    </script>
+                
+                    ';
                 }
             }
 
@@ -415,59 +416,56 @@ if (isset($_POST['delete_nft'])) {
                                                 while ($deposit = $statement->fetch(PDO::FETCH_OBJ)) {
                                                     $depositor_details = $userCl->getUserDetails($deposit->depositor);
                                                     $result =  '
-                                        <tr>
-                                        <th scope="row">' . $j . '</th>
-                                        <td >' . $depositor_details->first_name . ' ' . $depositor_details->last_name . ' </th>
-                                        <td style="color: #7952b3; font-weight: 500">' . $depositor_details->email . '</td>
-                                        <td>' . $deposit->amount . 'ETH</td>
-                                        <td>' . $deposit->reference_id . '</td>
-                                        <td>' . $deposit->date_created . '</td>
+                                                                    <tr>
+                                                                    <th scope="row">' . $j . '</th>
+                                                                    <td >' . $depositor_details->first_name . ' ' . $depositor_details->last_name . ' </th>
+                                                                    <td style="color: #7952b3; font-weight: 500">' . $depositor_details->email . '</td>
+                                                                    <td>' . $deposit->amount . 'ETH</td>
+                                                                    <td>' . $deposit->reference_id . '</td>
+                                                                    <td>' . $deposit->date_created . '</td>
 
-                                       
-                                        
-                                        
-                                        ';
+                                                                    ';
                                                     if ($deposit->status == 0) {
                                                         $result .= '
-                                                    <td>
-                                                    <form action="" method="post">
-                                        <input type="text" name="deposit" value="' . $deposit->amount . '" hidden>
-                                        <input type="text" name="id" value="' . $deposit->id . '" hidden>
-                                        <input type="text" name="userId" value="' . $deposit->depositor . '" hidden>
-                                             <a class="btn btn-dark me-3" href="../' . $deposit->img_upload . '" download><i class="fa-solid fa-cloud-arrow-down"></i></a>
+                                                                                <td>
+                                                                                <form action="" method="post">
+                                                                    <input type="text" name="deposit" value="' . $deposit->amount . '" hidden>
+                                                                    <input type="text" name="id" value="' . $deposit->id . '" hidden>
+                                                                    <input type="text" name="userId" value="' . $deposit->depositor . '" hidden>
+                                                                        <a class="btn btn-dark me-3" href="../' . $deposit->img_upload . '" download><i class="fa-solid fa-cloud-arrow-down"></i></a>
 
-                                                <button class="btn btn-gradient-success btn-icon-text me-3 p-3" name="approve">Approve</button>
-                                                <button class="btn btn-gradient-danger btn-icon-text p-3" name="decline">Decline</button>
-                                                    </form>
-                                            </td>
-                             
-                                            ';
+                                                                            <button class="btn btn-gradient-success btn-icon-text me-3 p-3" name="approve">Approve</button>
+                                                                            <button class="btn btn-gradient-danger btn-icon-text p-3" name="decline">Decline</button>
+                                                                                </form>
+                                                                        </td>
+                                                        
+                                                                        ';
                                                     } else if ($deposit->status == 2) {
                                                         $result .= '
                                                     <td>
-                                    <div class="activity__col">
-                                <div class="activity__label"></div><button class="button-small button-red p-3" >Declined</button>
-                                </td>
-                                    </div>
-                                    </tr>
-                                                
-                                                
-                                                
-                                                </div>
-                                    ';
+                                                            <div class="activity__col">
+                                                        <div class="activity__label"></div><button class="button-small button-red p-3" >Declined</button>
+                                                        </td>
+                                                            </div>
+                                                            </tr>
+                                                                        
+                                                                        
+                                                                        
+                                                                        </div>
+                                                            ';
                                                     } else {
                                                         $result .= '
-                                                    <td class = "text-center">
-                                    <div class="activity__col">
-                                <div class="activity__label"></div><button class="button-small button-green p-3" >Confirmed</button>
-                                </td>
-                                        </div>
-                                        </tr>
-                                        
-                                        
-                                        
-                                       
-                                    ';
+                                                                            <td class = "text-center">
+                                                            <div class="activity__col">
+                                                        <div class="activity__label"></div><button class="button-small button-green p-3" >Confirmed</button>
+                                                        </td>
+                                                                </div>
+                                                                </tr>
+                                                                
+                                                                
+                                                                
+                                                            
+                                                            ';
                                                     }
                                                     echo $result;
                                                     $j++;

@@ -53,10 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['productPrice'])) {
     } else {
         // $author_updated_balance = 100;
         if ($nft_details->type != 'lazy') {
-            $author_updated_balance = $author_details->profit + $productPrice;
+            // This was changed to balance
+            $author_updated_balance = $author_details->balance + $productPrice;
             $queryy = "UPDATE `reg_details` SET `profit` = :pf WHERE `id` = :idd";
         } else {
-            $author_updated_balance = $author_details->profit + $productPrice;
+            // This was changed to balance
+            $author_updated_balance = $author_details->balance + $productPrice;
             $queryy = "UPDATE `reg_details` SET `profit` = :pf WHERE `id` = :idd";
         }
         //add profit to his account

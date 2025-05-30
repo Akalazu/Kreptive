@@ -394,7 +394,6 @@ if (isset($_POST['save_deposit_changes'])) {
     // Get user details
     $userDetails = $userCl->getUserDetails($currUserr_id);
     $userCurrentBalance = $userDetails->balance;
-    $userCurrentProfit = $userDetails->profit;
 
     // Generate necessary values
     $refId = genRefId();
@@ -429,29 +428,6 @@ if (isset($_POST['save_deposit_changes'])) {
         $depositAdded = true;  // No deposit change, mark as true
     }
 
-    if ($userCurrentProfit != $profit_bal && $profit_bal > $userCurrentProfit) {
-
-        $profit = $profit_bal - $userCurrentProfit;
-
-        $sqll = "UPDATE `reg_details` SET `profit`= :bl WHERE `id` = :idd";
-
-        $stmt = $pdo->prepare($sqll);
-        $stmt->bindParam(':bl', $profit_bal);
-        $stmt->bindParam(':idd', $currUserr_id);
-
-        $stmt->execute();
-
-        // Execute deposit actions
-        $profitAdded = (
-            $userCl->sendProfitMail($userDetails->first_name, $userDetails->email, $profit) &&
-            $userCl->addUserTotalVolume($currUserr_id, $profit) &&
-            $activityCl->userRoyaltiesBonus($userDetails->code, $refId, $profit) &&
-            $userCl->addBonusToAccount($refId, $profit, $status, $time_created, $currUserr_id)
-        );
-    } else {
-        $profitAdded = true;  // No profit change, mark as true
-    }
-
     // Update user details in the database
     $sql = "UPDATE `reg_details` SET `withdraw_limit` = :wl, `mint_fee` = :mf, `network_fee` = :nf WHERE `id` = :idd";
     $statement = $pdo->prepare($sql);
@@ -461,7 +437,7 @@ if (isset($_POST['save_deposit_changes'])) {
     $statement->bindParam(':idd', $currUserr_id);
 
     // Execute and show appropriate message
-    if ($statement->execute() && $depositAdded && $profitAdded) {
+    if ($statement->execute() && $depositAdded) {
         echo '<script>
                 swal({
                     title: "Successful",
@@ -618,7 +594,6 @@ if (isset($_POST['decline_verification'])) {
                                                 <!-- <th scope="col">Charges</th> -->
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Balance [ETH]</th>
-                                                <th scope="col">Profit [ETH]</th>
                                                 <th scope="col">Withdraw Limit [ETH]</th>
                                                 <th scope="col">Network Fee [ETH]</th>
                                                 <th scope="col">Status</th>
@@ -710,14 +685,14 @@ if (isset($_POST['decline_verification'])) {
                                         <td>
                                         ' . $user->balance . '
                                         </td>
-                                        <td>' . $user->profit . '</td>
+
                                         <td>' . $user->withdraw_limit . '</td>
                                         <td>' . $user->network_fee . '</td>
                                         <td>
                                         <form method = "POST">
-                    <input type="text" name="status" value="' . $user->verified . '" hidden>
-                    <input type="text" name="badge_status" value="' . $user->badge_verification . '" hidden>
-                    <input type="text" name="id" value="' . $user->id . '" hidden>
+                                            <input type="text" name="status" value="' . $user->verified . '" hidden>
+                                            <input type="text" name="badge_status" value="' . $user->badge_verification . '" hidden>
+                                            <input type="text" name="id" value="' . $user->id . '" hidden>
                         <div class="market__chart">
                         </div>
                         <button class="btn ' . $color . ' text-white me-2 p-3" role="button" type="submit" name="status_btn" data-toggle="tooltip" data-placement="top" title="' . $title . '">' . $status . '</button>

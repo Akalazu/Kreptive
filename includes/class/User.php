@@ -261,7 +261,7 @@ class User
   {
 
     $owner = $this->getUserDetails($id);
-    $updatedProfit = $owner->profit + $royalties;
+    $updatedProfit = $owner->balance + $royalties;
 
     // $query = "UPDATE `reg_details` SET `mint_balance` = :ry WHERE `id` = :idd";
     $query = "UPDATE `reg_details` SET `profit` = :ry WHERE `id` = :idd";
@@ -318,6 +318,7 @@ class User
       return false;
     }
   }
+  
   public function getCurrExchangeRate()
   {
     $sql = "SELECT * FROM `exchange_rate` WHERE `id` = 1";
